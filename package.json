@@ -1,0 +1,26 @@
+{
+  "name": "blog-system",
+  "private": true,
+  "scripts": {
+    "start": "meteor --port 4000 --settings config/settings.dev.json --no-lint"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bcrypt": "^1.0.3",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "meteor-node-stubs": "^0.3.2",
+    "moment": "^2.19.2",
+    "pace": "0.0.4",
+    "simpl-schema": "^1.1.0",
+    "underscore": "^1.8.3",
+    "winston": "^2.3.1",
+    "winston-mongodb": "^2.0.10",
+    "datatables.net-bs": "^1.10.16",
+    "mongo-object": "^0.1.2",
+    "npm": "^5.8.0",
+    "select2": "^4.0.6-rc.1",
+    "select2-bootstrap-theme": "^0.1.0-beta.10"
+  }
+}
