@@ -1,0 +1,10 @@
+<template name="formImageUploaderFiles">
+  {{#if uploadedFiles.count}}
+    {{#each file in uploadedFiles.each}}
+      <img data-id="{{ file._id }}" width="120" src="{{file.link}}" class="margin">
+      <button type="button" data-id="{{file._id}}" class="btn btn-danger btn-remove-image">X</button>
+    {{/each}}
+  {{else}}
+    <div>还没有上传图片</div>
+  {{/if}}
+</template>

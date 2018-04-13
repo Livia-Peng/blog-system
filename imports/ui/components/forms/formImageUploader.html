@@ -1,0 +1,9 @@
+<template name="formImageUploader">
+  {{#with currentUpload}}
+    上传文件 <b>{{file.name}}</b>:
+    <span id="progress">{{progress.get}}%</span>
+  {{else}}
+    <input id="fileInput" type="file" />
+    <p><small>可上传的文件格式： <code>jpeg</code> 或 <code>png</code>，图片尺寸小于 10MB</small></p>
+  {{/with}}
+</template>
