@@ -1,0 +1,151 @@
+<template name="AdminBlogCreate">
+    <div id="content-container" class="row">
+        <div id="page-head" class="col-sm-10 col-sm-offset-1">
+        </div>
+
+
+        <!--Page content-->
+        <!--===================================================-->
+        <div id="page-content" class="col-sm-10 col-sm-offset-1">
+
+            <!-- Contact Toolbar -->
+            <div class="row pad-btm">
+                <div class="col-sm-6 col-sm-offset-6 toolbar-right text-right">
+                    <button class="btn btn-default">Preview</button>
+                    <button class="btn btn-default">Draft</button>
+                    <button class="btn btn-primary">Save &amp; Publish</button>
+                </div>
+            </div>
+
+
+            <div class="fixed-fluid">
+                <div class="fixed-sm-300 pull-sm-right">
+                    <div class="panel">
+                        <div class="panel-body">
+
+                            <p class="text-main text-bold text-uppercase">Featured Image</p>
+                            <p>Featured images are images that represent an individual Post, Page, or Custom Post Type.</p>
+                            <!--Dropzonejs-->
+                            <!--===================================================-->
+                            <div class="dropzone-container">
+                                <form id="demo-dropzone" action="#">
+                                    <div class="dz-default dz-message">
+                                        <div class="dz-icon">
+                                            <i class="demo-pli-upload-to-cloud icon-5x"></i>
+                                        </div>
+                                        <div>
+                                            <span class="dz-text">Drop files to upload</span>
+                                            <p class="text-sm text-muted">or click to pick manually</p>
+                                        </div>
+                                    </div>
+                                    <div class="fallback">
+                                        <form action="#" method="post" enctype="multipart/form-data">
+                                            <input name="file" type="file" multiple>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--===================================================-->
+                            <!-- End Dropzonejs -->
+
+
+                            <hr>
+
+                            <p class="text-main text-bold text-uppercase">Publish</p>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">Status</label>
+                                    <div class="col-sm-7">
+                                        <div class="select">
+                                            <select>
+                                                <option value="push">Published</option>
+                                                <option value="push">Unpublish</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">Visibility</label>
+                                    <div class="col-sm-7">
+                                        <div class="select">
+                                            <select>
+                                                <option value="none" selected="" disabled="disabled">Public</option>
+                                                <option value="push">Private</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">Categories</label>
+                                    <div class="col-sm-7">
+                                        <div class="select">
+                                            <select>
+                                                <option value="none" selected="" disabled="disabled">UnCategorized</option>
+                                                <option value="push">Internet</option>
+                                                <option value="push">Movies</option>
+                                                <option value="push">Musics</option>
+                                                <option value="push">Entertainment</option>
+                                                <option value="push">Sports</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <p class="text-main text-sm text-uppercase text-bold">Public Settings</p>
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">Allow comments</label>
+                                    <div class="col-sm-7">
+                                        <input class="toggle-switch" id="demo-allow-comments" type="checkbox" checked>
+                                        <label for="demo-allow-comments"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">Allow trackbacks</label>
+                                    <div class="col-sm-7">
+                                        <input class="toggle-switch" id="demo-allow-tbpb" type="checkbox">
+                                        <label for="demo-allow-tbpb"></label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="fluid">
+                    <div class="form-group">
+                        <input type="text" placeholder="Blog Title" class="form-control input-lg" autofocus>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div id="demo-summernote">
+                                <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops</p>
+                                <p><i>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</i></p>
+                                <blockquote>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                    <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                                </blockquote>
+                                <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek,</p>
+                                <p>Two driven jocks help fax my big quiz. Quick, Baz, get my woven flax jodhpurs! "Now fax quiz Jack!" my brave ghost pled. Five quacking zephyrs jolt my wax bed. Flummoxed by job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad milk. A very bad quack might jinx zippy fowls. Few quips galvanized the mock jury box. Quick brown dogs jump over the lazy fox. The jay, pig, fox, zebra, and my wolves quack! Blowzy red vixens fight for a quick jump. Joaquin Phoenix was gazed by MTV for luck. A wizard’s job is to vex chumps quickly in fog. Watch "Jeopardy!", Alex Trebek's fun TV quiz game. Woven silk pyjamas exchanged for blue quartz. Brawny gods just</p>
+                                <p>Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV quiz. How quickly daft jumping zebras vex.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {{> formImageUploader}}
+        </div>
+        <!--===================================================-->
+        <!--End page content-->
+
+    </div>
+</template>
