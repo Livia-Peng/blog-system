@@ -1,6 +1,7 @@
 /**
  * Created by livia on 2018/1/21.
  */
+import {Meteor} from "meteor/meteor";
 import SimpleSchema from "simpl-schema";
 import {Tracker} from "meteor/tracker";
 import {App} from "./app.js";
