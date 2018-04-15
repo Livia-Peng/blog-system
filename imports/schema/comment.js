@@ -6,9 +6,14 @@ import {Tracker} from "meteor/tracker";
 // import {App} from '/imports/app';
 
 export const comment = new sSchema({
-  title: {
+  blogId: {
     type: String,
-    unique: true
+    label: '博文Id'
+  },
+  // todo： 存储形式待思考
+  content: {
+    type: String,
+    label: '评论内容'
   },
 }, {tracker: Tracker});
 

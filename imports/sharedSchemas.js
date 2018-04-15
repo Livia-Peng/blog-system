@@ -17,7 +17,7 @@ sSchema.setDefaultMessages(cnMessages);
 
 export const BasicSchema = new sSchema({
   createdAt: {
-    type: Date,
+    type: String,
     label: '创建时间',
     optional: true,
     autoValue: function() {
@@ -50,7 +50,7 @@ export const BasicSchema = new sSchema({
     }
   },
   lastUpdatedAt: {
-    type: Date,
+    type: String,
     label: '更新时间',
     optional: true,
     autoValue: function() {
