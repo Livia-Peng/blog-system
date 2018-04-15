@@ -13,8 +13,8 @@ Meteor.startup(() => {
  */
 function createSuperAdmin() {
   const superAdmin = App.config.server.superAdmin;
-  Logger.info('has Logger.info');
-  Logger.debug('has Logger.debug');
+  // Logger.info('has Logger.info');
+  // Logger.debug('has Logger.debug');
   if (superAdmin) {
     let superAdminId = '';
     let superAdminDoc = Meteor.users.findOne({username: superAdmin.username});

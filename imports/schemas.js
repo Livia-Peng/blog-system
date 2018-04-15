@@ -1,14 +1,6 @@
 /**
  * Created by livia on 2018/1/21.
  */
-import SimpleSchema from "simpl-schema"
-import { Tracker } from "meteor/tracker"
-
-import cnMessages from "./startup/both/SchemaMessages.cn.js";
-// import { App } from "./app.js";
-
-SimpleSchema.setDefaultMessages(cnMessages);
-
 import {user} from './schema/users.js';
 import {blog} from './schema/blog.js';
 import {comment} from './schema/comment.js';

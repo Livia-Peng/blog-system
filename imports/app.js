@@ -12,7 +12,9 @@ App.config = {
   }
 };
 
-App.strings = {};
+App.strings = {
+  unknown: 'unknown',
+};
 
 App.err = {};
 
