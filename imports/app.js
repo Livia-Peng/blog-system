@@ -17,6 +17,10 @@ App.strings = {};
 App.err = {};
 
 if (Meteor.isServer) {
+  App.env = {
+    isDebug: !!process.env.isDebug || false,
+  };
+
   App.config.server = {
     superAdmin: {
       username: "admin",

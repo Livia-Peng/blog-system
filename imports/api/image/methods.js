@@ -5,6 +5,6 @@ import {Meteor} from "meteor/meteor";
 
 Meteor.methods({
   'image.insert'(doc) {
-    console.log(doc);
+    Logger.debug(doc);
   },
 });

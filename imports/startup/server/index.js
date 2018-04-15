@@ -4,8 +4,8 @@
 import { Meteor } from 'meteor/meteor';
 
 import './fixtures.js'
+import './logger.js'
 import '/imports/collections.js'
-// import './logger.js'
 
 Meteor.startup(() => {
   // code to run on server at startup

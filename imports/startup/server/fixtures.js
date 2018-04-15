@@ -3,8 +3,6 @@ import {Meteor} from "meteor/meteor";
 import {Accounts} from "meteor/accounts-base";
 import {App} from "/imports/app.js";
 
-let superAdminId = '';
-
 Meteor.startup(() => {
   // 创建superAdmin
   createSuperAdmin();
@@ -15,8 +13,10 @@ Meteor.startup(() => {
  */
 function createSuperAdmin() {
   const superAdmin = App.config.server.superAdmin;
-  console.log('superAdmin', superAdmin);
+  Logger.info('has Logger.info');
+  Logger.debug('has Logger.debug');
   if (superAdmin) {
+    let superAdminId = '';
     let superAdminDoc = Meteor.users.findOne({username: superAdmin.username});
     if (!superAdminDoc) {
       superAdminId = Accounts.createUser({
@@ -27,10 +27,10 @@ function createSuperAdmin() {
           tel: superAdmin.tel
         }
       });
-      console.log('=====创建SuperAdmin，ID为：' + superAdminId + '=====');
+      Logger.info('=====创建SuperAdmin，ID为：' + superAdminId + '=====');
     } else {
       superAdminId = superAdminDoc._id;
-      console.log('=====SuperAdmin已经存在，ID为：' + superAdminId + '=====');
+      Logger.debug('=====SuperAdmin已经存在，ID为：' + superAdminId + '=====');
     }
   }
 }
