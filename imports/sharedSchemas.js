@@ -13,7 +13,8 @@ Meteor.isClient && (window.Buffer = require('buffer').Buffer);
 
 export const sSchema = SimpleSchema;
 sSchema.setDefaultMessages(cnMessages);
-// todo: add autoForm
+
+sSchema.extendOptions(['autoform']);
 
 export const BasicSchema = new sSchema({
   createdAt: {

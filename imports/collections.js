@@ -13,7 +13,7 @@ Blog.attachSchema(Schemas.blog);
 Comment.attachSchema(Schemas.comment);
 Interest.attachSchema(Schemas.interest);
 
-Meteor.users.attachSchema(Schemas.user);
+// Meteor.users.attachSchema(Schemas.user);
 
 export const Collections = {
   Blog: Blog,

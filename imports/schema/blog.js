@@ -14,7 +14,7 @@ export const blog = new sSchema({
   abstract: {
     type: String,
     label: '文章摘要',
-    option: true,
+    optional: true,
     autoValue: function () {
       if (this.value) {
         return this.value
