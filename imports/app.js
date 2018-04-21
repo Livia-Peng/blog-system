@@ -8,12 +8,14 @@ export const App = {};
 App.config = {
   siteTitle: '个人博客',
   format: {
+    datetime: "YYYY-MM-DD HH:mm",
     datetimeLog: "YYYY-MM-DD HH:mm:ss SSS"
   }
 };
 
 App.strings = {
   unknown: 'unknown',
+  noRecord: '无',
 };
 
 App.err = {};
