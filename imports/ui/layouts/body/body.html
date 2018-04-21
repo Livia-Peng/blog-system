@@ -1,25 +1,25 @@
 <template name="Admin_body">
-    <div id="container" class="effect aside-float aside-bright mainnav-out slide navbar-fixed">
-        <!--NAVBAR-->
-        {{> headerMain}}
+  <div id="container" class="effect aside-float aside-bright mainnav-out slide navbar-fixed">
+    <!--NAVBAR-->
+    {{> headerMain}}
 
-        <div class="boxed">
-            <!--CONTENT CONTAINER-->
-            {{> Template.dynamic template=main}}
+    <div class="boxed">
+      <!--CONTENT CONTAINER-->
+      {{> Template.dynamic template=main}}
 
-            <!--ASIDE-->
-            {{> asideContainer}}
+      <!--ASIDE-->
+      {{> asideContainer}}
 
-            <!--MAIN NAVIGATION-->
-            {{> sideNavigation}}
-        </div>
-
-        <!-- FOOTER -->
-        {{> footer}}
-
-        <!-- SCROLL PAGE BUTTON -->
-        <button class="scroll-top btn">
-            <i class="pci-chevron chevron-up"></i>
-        </button>
+      <!--MAIN NAVIGATION-->
+      {{> sideNavigation}}
     </div>
+
+    <!-- FOOTER -->
+    {{> footer}}
+
+    <!-- SCROLL PAGE BUTTON -->
+    <button class="scroll-top btn">
+      <i class="pci-chevron chevron-up"></i>
+    </button>
+  </div>
 </template>
