@@ -3,11 +3,11 @@
  */
 import './blogBrowse.html'
 import {Template} from 'meteor/templating'
-import { Meteor } from 'meteor/meteor'
+import {Meteor} from 'meteor/meteor'
 
 
 Template.AdminBlogBrowse.created = function () {
-  this.autorun( function() {
+  this.autorun(function () {
     if (Meteor.userId()) {
       FlowRouter.go('Admin.blog')
     }
