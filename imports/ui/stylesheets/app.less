@@ -1,0 +1,83 @@
+@import "./variable.less";
+
+// 导航栏样式 =======================
+.nav-adjust {
+  z-index: 4000 !important;
+
+  .brand-title {
+    padding: 0 30px !important;
+  }
+  .navbar-top-links {
+    li > a {
+      color: @nav-font-color;
+    }
+    li > a:not(.mainnav-toggle) > i {
+      color: @nav-font-color;
+    }
+    li > a:hover, .open > a, .open > a:focus {
+      background-color: @nav-active-bg-color !important;
+      color: @nav-font-active-color !important;
+    }
+    .menu-list {
+      padding: 0;
+      li {
+        list-style: none;
+        float: left;
+      }
+      li > a {
+        font-size: 15px;
+        font-weight: 600;
+        width: 100px;
+        text-align: center;
+        padding: 20px 0;
+        display: block;
+      }
+      li > a:hover, li > .active {
+        color: @nav-font-active-color;
+        background-color: @nav-active-bg-color;
+        padding: 18px 0;
+        border-bottom: 2px solid @primary-color;
+      }
+    }
+    .dropdown-user {
+      zoom: 1;
+      margin-bottom: 10px !important;
+      li:first-child a {
+        cursor: default;
+      }
+    }
+    .dropdown-user:after {
+      .clear-float-by-after
+    }
+  }
+
+  @media (min-width: @screen-md) {
+    .navbar-brand {
+      width: 170px !important;
+    }
+
+    .navbar-content {
+      margin-left: 170px !important;
+    }
+  }
+
+  @media (min-width: @screen-sm) {
+    .navbar-content {
+      margin-left: 170px !important;
+    }
+  }
+}
+
+
+// ui block ========================
+div.UIBlock {
+  background: rgba(0, 0, 0, 0.3);
+}
+div.UIBlock .spinner .message {
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.dimmer {
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+}

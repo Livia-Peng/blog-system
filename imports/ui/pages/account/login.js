@@ -47,7 +47,7 @@ Template.AdminLogin.events({
         }
       }else{
         console.log('login success');
-        FlowRouter.go('Admin.blog');
+        FlowRouter.go('admin.blog');
       }
     })
   },

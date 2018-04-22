@@ -4,5 +4,6 @@
 
 import './plugins.js'
 import './routes.js'
+import './customizedHelpers.js'
 
 Meteor.subscribe('images');
