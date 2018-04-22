@@ -50,7 +50,9 @@ const tableBasic = () => {
       if (!user) {
         throw new Meteor.Error('用户数据不存在')
       }
-      let sel = {};
+      let sel = {
+        $and: []
+      };
       sel['$and'].push(selector);
       Logger.debug('==> selector changed to : ', sel);
 

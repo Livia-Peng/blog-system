@@ -18,23 +18,17 @@ TabularFactory({
     return {}
   },
   columns: [
-    {data: "username", title: "手机号"},
-    {
-      data: "profile.name",
-      title: "姓名",
-      render: (val) => {
-        return '<label>姓名</label>' + (val ? val : App.strings.noRecord);
-      }
-    },
+    {data: "username", title: "账号"},
+    {data: "profile.name", title: "姓名"},
     {
       data: "createdAt",
       title: "创建时间",
       render: function (val) {
-        if (val instanceof Date) {
-          return '<label>创建时间</label>' + moment(val).format(App.config.format.datetime);
-        } else {
-          return '<label>创建时间</label>' + App.strings.noRecord;
-        }
+        return moment(val).format(App.config.format.datetime) || App.strings.noRecord;
+        // if (val instanceof Date) {
+        // } else {
+        //   return ;
+        // }
       }
     },
     // {
