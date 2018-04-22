@@ -1,7 +1,7 @@
 /**
  * Created by livia on 2018/1/18.
  */
-import './body.html'
+import './AdminBody.html'
 import '../header/headerMain.js'
 import '../aside/asideContainer.js'
 import '../sideNavigation/sideNavigation.js'
