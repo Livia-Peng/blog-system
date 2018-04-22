@@ -46,9 +46,7 @@ FlowRouter.route(rtM.notFound.path, {
   name: rtM.notFound.name,
   action() {
     DocHead.setTitle(`${rtM.notFound.title} | ${App.config.siteTitle}`);
-    BlazeLayout.render('Admin_body', {
-      main: rtM.notFound.template,
-    });
+    BlazeLayout.render(rtM.notFound.template);
   }
 });
 

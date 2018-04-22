@@ -108,7 +108,7 @@ export const routerMeta = {
     parent: '',
     params: [],
     breadcrumb: '',
-    template: 'AdminUserManage'
+    template: ''
   },
 
   // todo

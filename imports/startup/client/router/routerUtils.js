@@ -8,7 +8,7 @@ export function routerGen(router, routerDefs) {
   routerDefs.forEach((def) => {
     let triggersEnter = def.hasOwnProperty('triggersEnter') ? def.triggersEnter : [];
     if (def.name.indexOf('admin.') === 0) { // 如果是admin，需要登录验证
-      triggersEnter = [AccountsTemplates.ensureSignedIn].concat(triggersEnter);
+      // triggersEnter = [AccountsTemplates.ensureSignedIn].concat(triggersEnter);
     }
     router.route(def.path, {
       name: def.name,
