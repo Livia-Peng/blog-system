@@ -4,14 +4,13 @@
     {{> headerMain}}
 
     <div class="boxed">
-      <!--CONTENT CONTAINER-->
-      {{> Template.dynamic template=main}}
+      <div id="content-container">
+        {{> Template.dynamic template=bc}}
 
-      <!--ASIDE-->
-      {{> asideContainer}}
-
-      <!--MAIN NAVIGATION-->
-      {{> sideNavigation}}
+        <div id="page-content">
+          {{> Template.dynamic template=main}}
+        </div>
+      </div>
     </div>
 
     <!-- FOOTER -->
