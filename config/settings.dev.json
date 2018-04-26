@@ -1,5 +1,17 @@
 {
-  "public": {},
+  "public": {
+    "staleSessionInactivityTimeout": 1800000,
+    "staleSessionHeartbeatInterval": 180000,
+    "staleSessionPurgeInterval": 60000,
+    "staleSessionForceLogout": true,
+    "staleSessionActivityEvents": "mousemove click keydown",
+    "connectionBanner": {
+      "connectionLostText": "服务器跑丢了.....",
+      "tryReconnectText": "点击连接...",
+      "reconnectBeforeCountdownText": "正在尝试重连...",
+      "reconnectAfterCountdownText": "秒..."
+    }
+  },
   "private": {
     "log": {
       "collection": "logs",
