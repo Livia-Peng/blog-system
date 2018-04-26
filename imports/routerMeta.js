@@ -2,16 +2,7 @@ export const routerMeta = {
   home: {
     path: '/',
     name: 'home',
-    title: '主页',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: 'blogBrowse'
-  },
-  browse: {
-    path: '/browse',
-    name: 'browse',
-    title: '浏览',
+    title: '首页',
     parent: '',
     params: [],
     breadcrumb: '',
@@ -115,7 +106,7 @@ export const routerMeta = {
   system: {
     path: '/admin/system',
     name: 'admin.system',
-    title: '系统设置',
+    title: '系统管理',
     parent: '',
     params: []
   }

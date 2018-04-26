@@ -16,14 +16,13 @@ import '/imports/ui/pages/notFound/notFound.js'
 import './router/routeDefs.js'
 
 FlowRouter.route('/', {
-  name: 'admin.home',
-  triggersEnter: [function () {
-    if (Meteor.userId()) {
-      FlowRouter.go(rtM.blog.path);
-    } else {
-      FlowRouter.go(rtM.browse.path);
-    }
-  }]
+  name: rtM.home.name,
+  action() {
+    DocHead.setTitle(`${rtM.home.title} | ${App.config.siteTitle}`);
+    BlazeLayout.render('Admin_body', {
+      main: rtM.home.template,
+    });
+  }
 });
 
 FlowRouter.route(rtM.login.path, {
@@ -47,15 +46,5 @@ FlowRouter.route(rtM.notFound.path, {
   action() {
     DocHead.setTitle(`${rtM.notFound.title} | ${App.config.siteTitle}`);
     BlazeLayout.render(rtM.notFound.template);
-  }
-});
-
-FlowRouter.route(rtM.browse.path, {
-  name: rtM.browse.name,
-  action() {
-    DocHead.setTitle(`${rtM.notFound.title} | ${App.config.siteTitle}`);
-    BlazeLayout.render('Admin_body', {
-      main: rtM.browse.template,
-    });
   }
 });

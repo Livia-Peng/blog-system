@@ -9,8 +9,5 @@ import { Meteor } from 'meteor/meteor'
 Template.AdminBlogList.created = function () {
   this.autorun( function() {
     console.log(Meteor.userId())
-    // if (Meteor.user()) {
-    //   FlowRouter.go('Admin.browse')
-    // }
   })
 };

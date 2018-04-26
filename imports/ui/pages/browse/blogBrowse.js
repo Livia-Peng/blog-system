@@ -10,9 +10,6 @@ Template.blogBrowse.helpers({});
 
 Template.blogBrowse.onCreated(function () {
   this.autorun(function () {
-    if (Meteor.userId()) {
-      FlowRouter.go('Admin.blog')
-    }
   })
 });
 
