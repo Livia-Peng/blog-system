@@ -4,15 +4,13 @@
 import './headerMain.html'
 import {Meteor} from "meteor/meteor"
 import {App} from "/imports/app.js"
-import {Subs} from "/imports/subs.js"
 import {FlowRouter} from "meteor/kadira:flow-router"
 import {routerMeta} from "/imports/routerMeta"
-
 
 Template.headerMain.helpers({
   user: function () {
     const user = Meteor.user();
-    if (user && user.profile !== undefined) {
+    if (user && user.profile) {
       return {
         username: user.username,
         name: user.profile.name,

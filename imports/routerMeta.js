@@ -49,7 +49,7 @@ export const routerMeta = {
   blog: {
     path: '/blog',
     name: 'admin.blog',
-    title: '博文首页',
+    title: '我的博客',
     parent: '',
     params: [],
     breadcrumb: '',
