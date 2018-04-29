@@ -3,51 +3,48 @@
  */
 import './login.html'
 import {Template} from 'meteor/templating'
-import { Meteor } from 'meteor/meteor'
-import { ReactiveDict } from 'meteor/reactive-dict'
+import {Meteor} from 'meteor/meteor'
+import {FlowRouter} from "meteor/kadira:flow-router"
+import {ReactiveDict} from 'meteor/reactive-dict'
 
 Template.AdminLogin.helpers({
   isLoggingIn: function () {
     return Template.instance().loginState.get('isLoggingIn');
-  },
-  isLoginErr: function () {
-    return Template.instance().loginState.get('isLoggingInError');
   },
   loginErrMsg: function () {
     return Template.instance().loginState.get('loginErrMsg');
   }
 });
 
-
 Template.AdminLogin.created = function () {
-  let loginState = new ReactiveDict();
-  loginState.set('isLoggingIn', false);
-  loginState.set('isLoggingInError', false);
-  loginState.set('loginErrMsg', '');
-  this.loginState = loginState;
+  this.loginState = new ReactiveDict();
+  this.loginState.set('isLoggingIn', false);
+  this.loginState.set('loginErrMsg', '');
 };
 
 Template.AdminLogin.events({
   'submit form': function (event, inst) {
     event.preventDefault();
-    let target = event.target;
-    let userAccount = $(target).serializeArray();
-    // console.log(userAccount);
+    const target = event.target;
+    const formData = $(target).serializeArray();
+    // console.log(formData);
 
+    if (inst.loginState.get('isLoggingIn')) {
+      return
+    }
     inst.loginState.set('isLoggingIn', true);
-    inst.loginState.set('isLoggingInError', false);
+    inst.loginState.set('loginErrMsg', '');
 
-    Meteor.loginWithPassword(userAccount[0].value, userAccount[1].value, (error) => {
+    Meteor.loginWithPassword(formData[0].value, formData[1].value, (error) => {
       inst.loginState.set('isLoggingIn', false);
       if (error) {
         console.log(error);
-        inst.loginState.set('isLoggingInError', true);
         if (error.error === 403) {
           inst.loginState.set('loginErrMsg', '用户名密码错误');
         }
-      }else{
+      } else {
         console.log('login success');
-        FlowRouter.go('admin.blog');
+        FlowRouter.go('/');
       }
     })
   },

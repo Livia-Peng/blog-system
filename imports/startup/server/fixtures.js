@@ -17,7 +17,7 @@ function createSuperAdmin() {
   // Logger.debug('has Logger.debug');
   if (superAdmin) {
     let superAdminId = '';
-    let superAdminDoc = Meteor.users.findOne({username: superAdmin.username});
+    const superAdminDoc = Meteor.users.findOne({username: superAdmin.username});
     if (!superAdminDoc) {
       superAdminId = Accounts.createUser({
         username: superAdmin.username,
@@ -25,6 +25,7 @@ function createSuperAdmin() {
         profile: {
           name: superAdmin.name,
           tel: superAdmin.tel,
+          email: superAdmin.email,
           isSuper: true
         }
       });

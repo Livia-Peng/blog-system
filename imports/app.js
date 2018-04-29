@@ -65,8 +65,13 @@ if (Meteor.isServer) {
       password: "superAdmin",
       name: "超级管理员",
       tel: "17612739581",
+      email: 'livia_peng@163.com',
     }
   };
 
-  App.err.server = {}
+  App.err.server = {
+    inviteCodeErr: new Meteor.Error('邀请码错误'),
+    dbWriteErr: new Meteor.Error('系统异常，请联系系统管理员'),
+    userExistedErr: new Meteor.Error('用户名已存在，请登录，或更改注册用户名'),
+  }
 }
