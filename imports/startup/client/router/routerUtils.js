@@ -1,14 +1,21 @@
 /**
  * Created by livia on 2018/4/22.
  */
-import {checkIdRegEx} from "/imports/app/client/utils";
-import {Subs} from "/imports/subs.js";
+import {Meteor} from 'meteor/meteor'
+import {checkIdRegEx} from "/imports/app/client/utils"
+import {FlowRouter} from "meteor/kadira:flow-router"
+import {Subs} from "/imports/subs.js"
 
 export function routerGen(router, routerDefs) {
   routerDefs.forEach((def) => {
     let triggersEnter = def.hasOwnProperty('triggersEnter') ? def.triggersEnter : [];
-    if (def.name.indexOf('admin.') === 0) { // 如果是admin，需要登录验证
-      // triggersEnter = [AccountsTemplates.ensureSignedIn].concat(triggersEnter);
+    // 如果是admin，需要登录验证
+    if (def.name.indexOf('admin.') === 0) {
+      triggersEnter = [function (context) {
+        if (!Meteor.user()) {
+          FlowRouter.go('/login')
+        }
+      }].concat(triggersEnter);
     }
     router.route(def.path, {
       name: def.name,

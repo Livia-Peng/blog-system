@@ -66,7 +66,7 @@ export const routerMeta = {
   },
   blogView: {
     path: '/blog/:bid/view',
-    name: 'admin.blog.view',
+    name: 'blog.view',
     title: '博文详情',
     parent: 'admin.blog',
     params: ['bid'],
