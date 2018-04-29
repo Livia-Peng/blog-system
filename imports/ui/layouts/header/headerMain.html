@@ -35,7 +35,7 @@
             <!-- blog -->
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                <i class="demo-pli-pen"></i>
+                <i class="demo-pli-pen-5"></i>
                 <!--<span class="badge badge-header badge-danger"></span>-->
               </a>
               <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
@@ -43,7 +43,7 @@
                   <div class="nano-content">
                     <ul class="head-list">
                       <li>
-                        <a class="media" href="{{pathFor routerMeta.blogCreate.name}}">
+                        <a class="media" href="{{pathFor ROUTER.blogCreate.name}}">
                           <div class="media-left">
                             <i class="demo-pli-file-edit icon-2x"></i>
                           </div>
@@ -54,7 +54,7 @@
                         </a>
                       </li>
                       <li>
-                        <a class="media" href="{{pathFor routerMeta.blogConfig.name}}">
+                        <a class="media" href="{{pathFor ROUTER.blogConfig.name}}">
                           <div class="media-left">
                             <i class="demo-pli-wrench icon-2x"></i>
                           </div>
@@ -96,7 +96,7 @@
                 </div>
                 <!--Dropdown footer-->
                 <div class="pad-all bord-top">
-                  <a href="{{pathFor routerMeta.blog.name}}" class="btn-link text-main box-block">
+                  <a href="{{pathFor ROUTER.blog.name}}" class="btn-link text-main box-block">
                     <i class="pci-chevron chevron-right pull-right"></i>我的博客
                   </a>
                 </div>
@@ -116,22 +116,22 @@
               <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                 <ul class="head-list">
                   <li>
-                    <a href="{{pathFor routerMeta.accountInfo.name}}">
+                    <a href="{{pathFor ROUTER.accountInfo.name}}">
                       <i class="demo-pli-male icon-lg icon-fw"></i> {{user.name}}</a>
                   </li>
                   <li>
-                    <a href="{{pathFor routerMeta.accountNews.name}}">
+                    <a href="{{pathFor ROUTER.accountNews.name}}">
                       <!--<span class="badge badge-danger pull-right">9</span>-->
                       <i class="demo-pli-mail icon-lg icon-fw"></i> 我的消息</a>
                   </li>
                   <li>
-                    <a href="{{pathFor routerMeta.accountConfig.name}}">
+                    <a href="{{pathFor ROUTER.accountConfig.name}}">
                       <!--<span class="label label-success pull-right">New</span>-->
                       <i class="demo-pli-gear icon-lg icon-fw"></i> 账户设置</a>
                   </li>
                   {{#if user.isSuper}}
                     <li>
-                      <a href="{{pathFor routerMeta.system.name}}">
+                      <a href="{{pathFor ROUTER.system.name}}">
                         <!--<span class="label label-success pull-right">New</span>-->
                         <i class="demo-pli-wrench icon-lg icon-fw"></i> 系统设置</a>
                     </li>
