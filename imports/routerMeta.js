@@ -73,6 +73,55 @@ export const routerMeta = {
     breadcrumb: '',
     template: 'AdminBlogView'
   },
+  blogConfig: {
+    path: '/blog',
+    name: 'admin.blog.config',
+    title: '博客管理',
+    parent: '',
+    params: [],
+    breadcrumb: '',
+    template: ''
+  },
+
+  // todo
+  accountInfo: {
+    path: '/account/info',
+    name: 'admin.account.info',
+    title: '我的主页',
+    parent: '',
+    params: [],
+    breadcrumb: '',
+    template: ''
+  },
+  accountNews: {
+    path: '/account/news',
+    name: 'admin.account.news',
+    title: '我的消息',
+    parent: '',
+    params: [],
+    breadcrumb: '',
+    template: ''
+  },
+  accountConfig: {
+    path: '/account/config',
+    name: 'admin.account.config',
+    title: '账户设置',
+    parent: '',
+    params: [],
+    breadcrumb: '',
+    template: ''
+  },
+
+  // todo
+  system: {
+    path: '/admin/system',
+    name: 'admin.system',
+    title: '系统管理',
+    parent: '',
+    params: [],
+    breadcrumb: '',
+    template: ''
+  },
   blogManage: {
     path: '/manage/blog',
     name: 'admin.manage.blog',
@@ -91,23 +140,4 @@ export const routerMeta = {
     breadcrumb: '',
     template: 'AdminUserManage'
   },
-  // todo
-  account: {
-    path: '/account',
-    name: 'admin.account',
-    title: '个人资料',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: ''
-  },
-
-  // todo
-  system: {
-    path: '/admin/system',
-    name: 'admin.system',
-    title: '系统管理',
-    parent: '',
-    params: []
-  }
 };

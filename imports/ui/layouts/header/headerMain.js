@@ -3,6 +3,7 @@
  */
 import './headerMain.html'
 import {Meteor} from "meteor/meteor"
+import {Template} from 'meteor/templating'
 import {App} from "/imports/app.js"
 import {FlowRouter} from "meteor/kadira:flow-router"
 import {routerMeta} from "/imports/routerMeta"
@@ -12,9 +13,9 @@ Template.headerMain.helpers({
     const user = Meteor.user();
     if (user && user.profile) {
       return {
-        username: user.username,
+        // username: user.username,
         name: user.profile.name,
-        role: user.profile.role
+        isSuper: user.profile.isSuper
       }
     }
   },
@@ -37,17 +38,15 @@ Template.headerMain.helpers({
 });
 
 Template.headerMain.onCreated(function () {
-  
 });
 
 Template.headerMain.onRendered(function () {
-  
 });
 
 Template.headerMain.events({
   "click a[href='/logout']": function (event) {
-    UIBlock.block('登出中...');
     event.preventDefault();
+    UIBlock.block('登出中...');
     Meteor.logout(function (err) {
       UIBlock.unblock();
       if (err) {

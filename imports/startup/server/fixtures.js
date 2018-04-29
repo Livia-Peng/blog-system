@@ -9,7 +9,7 @@ Meteor.startup(() => {
 });
 
 /**
- * 创建SuperAdmin用户
+ * 创建superAdmin
  */
 function createSuperAdmin() {
   const superAdmin = App.config.server.superAdmin;
@@ -24,13 +24,14 @@ function createSuperAdmin() {
         password: superAdmin.password,
         profile: {
           name: superAdmin.name,
-          tel: superAdmin.tel
+          tel: superAdmin.tel,
+          isSuper: true
         }
       });
-      Logger.info('=====创建SuperAdmin，ID为：' + superAdminId + '=====');
+      Logger.info('=====创建superAdmin，ID为：' + superAdminId + '=====');
     } else {
       superAdminId = superAdminDoc._id;
-      Logger.debug('=====SuperAdmin已经存在，ID为：' + superAdminId + '=====');
+      Logger.debug('=====superAdmin已经存在，ID为：' + superAdminId + '=====');
     }
   }
 }

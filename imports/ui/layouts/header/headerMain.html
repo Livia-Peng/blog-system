@@ -35,13 +35,35 @@
             <!-- blog -->
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                <i class="demo-pli-bell"></i>
-                <span class="badge badge-header badge-danger"></span>
+                <i class="demo-pli-pen"></i>
+                <!--<span class="badge badge-header badge-danger"></span>-->
               </a>
               <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
                 <div class="nano scrollable">
                   <div class="nano-content">
                     <ul class="head-list">
+                      <li>
+                        <a class="media" href="{{pathFor routerMeta.blogCreate.name}}">
+                          <div class="media-left">
+                            <i class="demo-pli-file-edit icon-2x"></i>
+                          </div>
+                          <div class="media-body">
+                            <p class="mar-no text-nowrap text-main text-semibold">新建博文</p>
+                            <!--<small>Last Update 8 hours ago</small>-->
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="media" href="{{pathFor routerMeta.blogConfig.name}}">
+                          <div class="media-left">
+                            <i class="demo-pli-wrench icon-2x"></i>
+                          </div>
+                          <div class="media-body">
+                            <p class="mar-no text-nowrap text-main text-semibold">博客管理</p>
+                          </div>
+                        </a>
+                      </li>
+                      <!-- todo: 空间利用率-->
                       <li>
                         <a href="#" class="media add-tooltip" data-title="Used space : 95%" data-container="body" data-placement="bottom">
                           <div class="media-left">
@@ -57,70 +79,25 @@
                           </div>
                         </a>
                       </li>
-                      <li>
-                        <a class="media" href="#">
-                          <div class="media-left">
-                            <i class="demo-pli-file-edit icon-2x"></i>
-                          </div>
-                          <div class="media-body">
-                            <p class="mar-no text-nowrap text-main text-semibold">Write a news article</p>
-                            <small>Last Update 8 hours ago</small>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="media" href="#">
-                          <span class="label label-info pull-right">New</span>
-                          <div class="media-left">
-                            <i class="demo-pli-speech-bubble-7 icon-2x"></i>
-                          </div>
-                          <div class="media-body">
-                            <p class="mar-no text-nowrap text-main text-semibold">Comment Sorting</p>
-                            <small>Last Update 8 hours ago</small>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="media" href="#">
-                          <div class="media-left">
-                            <i class="demo-pli-add-user-star icon-2x"></i>
-                          </div>
-                          <div class="media-body">
-                            <p class="mar-no text-nowrap text-main text-semibold">New User Registered</p>
-                            <small>4 minutes ago</small>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="media" href="#">
-                          <div class="media-left">
-                            <img class="img-circle img-sm" alt="Profile Picture" src="/img/profile-photos/9.png">
-                          </div>
-                          <div class="media-body">
-                            <p class="mar-no text-nowrap text-main text-semibold">Lucy sent you a message</p>
-                            <small>30 minutes ago</small>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="media" href="#">
-                          <div class="media-left">
-                            <img class="img-circle img-sm" alt="Profile Picture" src="/img/profile-photos/3.png">
-                          </div>
-                          <div class="media-body">
-                            <p class="mar-no text-nowrap text-main text-semibold">Jackson sent you a message</p>
-                            <small>40 minutes ago</small>
-                          </div>
-                        </a>
-                      </li>
+                      <!-- todo: 消息提示-->
+                      <!--<li>-->
+                        <!--<a class="media" href="#">-->
+                          <!--<div class="media-left">-->
+                            <!--<i class="demo-pli-add-user-star icon-2x"></i>-->
+                          <!--</div>-->
+                          <!--<div class="media-body">-->
+                            <!--<p class="mar-no text-nowrap text-main text-semibold">New User Registered</p>-->
+                            <!--<small>4 minutes ago</small>-->
+                          <!--</div>-->
+                        <!--</a>-->
+                      <!--</li>-->
                     </ul>
                   </div>
                 </div>
-
                 <!--Dropdown footer-->
                 <div class="pad-all bord-top">
-                  <a href="#" class="btn-link text-main box-block">
-                    <i class="pci-chevron chevron-right pull-right"></i>Show All Notifications
+                  <a href="{{pathFor routerMeta.blog.name}}" class="btn-link text-main box-block">
+                    <i class="pci-chevron chevron-right pull-right"></i>我的博客
                   </a>
                 </div>
               </div>
@@ -128,32 +105,39 @@
             <!--User-->
             <li id="dropdown-user" class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-              <span class="ic-user pull-right">
-                  <i class="demo-pli-male"></i>
-              </span>
+                <span class="ic-user pull-right">
+                    <i class="demo-pli-male"></i>
+                </span>
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <!--You can also display a user name in the navbar.-->
                 <!--<div class="username hidden-xs">{{user.name}}</div>-->
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
               </a>
-
-
               <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                 <ul class="head-list">
                   <li>
-                    <a href="#"><i class="demo-pli-male icon-lg icon-fw"></i> Profile</a>
+                    <a href="{{pathFor routerMeta.accountInfo.name}}">
+                      <i class="demo-pli-male icon-lg icon-fw"></i> {{user.name}}</a>
                   </li>
                   <li>
-                    <a href="#"><span class="badge badge-danger pull-right">9</span><i class="demo-pli-mail icon-lg icon-fw"></i> Messages</a>
+                    <a href="{{pathFor routerMeta.accountNews.name}}">
+                      <!--<span class="badge badge-danger pull-right">9</span>-->
+                      <i class="demo-pli-mail icon-lg icon-fw"></i> 我的消息</a>
                   </li>
                   <li>
-                    <a href="#"><span class="label label-success pull-right">New</span><i class="demo-pli-gear icon-lg icon-fw"></i> Settings</a>
+                    <a href="{{pathFor routerMeta.accountConfig.name}}">
+                      <!--<span class="label label-success pull-right">New</span>-->
+                      <i class="demo-pli-gear icon-lg icon-fw"></i> 账户设置</a>
                   </li>
+                  {{#if user.isSuper}}
+                    <li>
+                      <a href="{{pathFor routerMeta.system.name}}">
+                        <!--<span class="label label-success pull-right">New</span>-->
+                        <i class="demo-pli-wrench icon-lg icon-fw"></i> 系统设置</a>
+                    </li>
+                  {{/if}}
                   <li>
-                    <a href="#"><i class="demo-pli-computer-secure icon-lg icon-fw"></i> Lock screen</a>
-                  </li>
-                  <li>
-                    <a href="/logout"><i class="demo-pli-unlock icon-lg icon-fw"></i> Logout</a>
+                    <a href="/logout"><i class="demo-pli-unlock icon-lg icon-fw"></i> 登出</a>
                   </li>
                 </ul>
               </div>
