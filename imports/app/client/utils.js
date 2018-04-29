@@ -34,8 +34,8 @@ export const showError = function (error) {
  * @returns {boolean}
  */
 export const checkIdRegEx = function (id, view) {
-    return (App.strings.idReg).test(id)
-  };
+  return (App.config.regExp.id).test(id)
+};
 
 /**
  * 路由id错误跳转not-found页面

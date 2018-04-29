@@ -9,15 +9,22 @@ App.config = {
   siteTitle: '个人博客系统',
   format: {
     datetime: "YYYY-MM-DD HH:mm",
-    datetimeLog: "YYYY-MM-DD HH:mm:ss SSS"
-  }
+    datetimeLog: "YYYY-MM-DD HH:mm:ss SSS",
+    name: '用户名只允许由字母、数字、下划线、中划线组成，4-16位',
+  },
+  regExp: {
+    name: /^[a-zA-Z0-9_-]{4,16}$/, // 字母、数字、下划线、减号组成，字母开头，4-16位
+    email: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, // 只允许英文字母、数字、下划线、英文句号、以及中划线组成
+    tel: /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/, // 手机号码正则匹配式
+    id: /^[A-Za-z0-9]{17}$/, //id正则匹配
+    qq: /^[1-9][0-9]{4,10}$/, //qq正则匹配
+    wx: /^[a-zA-Z]([-_a-zA-Z0-9]{5,19})+$/, //微信正则匹配
+  },
 };
 
 App.strings = {
   unknown: 'unknown',
   noRecord: '无',
-  telReg: /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/, // 手机号码正则匹配式
-  idReg: /^[A-Za-z0-9]{17}$/, //id正则匹配
   firstOption: '- 请选择 -',
 };
 
@@ -43,7 +50,9 @@ App.selector = {
   },
 };
 
-App.err = {};
+App.err = {
+  whatFormatErr: (what, format = '') => new Meteor.Error(what + '格式错误！' + format),
+};
 
 if (Meteor.isServer) {
   App.env = {
