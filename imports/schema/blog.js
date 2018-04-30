@@ -8,27 +8,49 @@ import {Tracker} from "meteor/tracker";
 export const blog = new sSchema({
   name: {
     type: String,
-    index: 1,
-    label: '文章标题'
+    label: '文章标题',
+    min: 2,
+    max: 15,
   },
   abstract: {
     type: String,
     label: '文章摘要',
     optional: true,
+    max: 100,
     autoValue: function () {
       if (this.value) {
         return this.value
       }
       const content = this.field('content').value;
       if (content) {
-      //  todo:
+        //  todo:
       }
     }
   },
-  // todo： 存储形式待思考
   content: {
-    type: Array,
-    label: '文章内容'
+    type: String,
+    label: '文章内容',
+    min: 200,
+  },
+  isPublished: {
+    type: Boolean,
+    label: '是否发布',
+    optional: true,
+  },
+  allowComment: {
+    type: Boolean,
+    label: '是否允许评论',
+    optional: true,
+  },
+  visibility: {
+    type: String,
+    label: '可见性',
+    optional: true,
+  },
+  category: {
+    type: String,
+    label: '文章类别',
+    optional: true,
   },
   skinCount: {
     type: Number,

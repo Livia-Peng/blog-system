@@ -20,12 +20,26 @@ App.config = {
     qq: /^[1-9][0-9]{4,10}$/, //qq正则匹配
     wx: /^[a-zA-Z]([-_a-zA-Z0-9]{5,19})+$/, //微信正则匹配
   },
+  summerNoteToolbar: [
+    ['style', ['style', 'fontsize', 'color']],
+    ['format', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+    ['paragraph', ['ol', 'ul', 'paragraph', 'height']],
+    ['insert', ['table', 'hr', 'undo', 'redo', 'fullscreen']],
+  ],
 };
 
 App.strings = {
   unknown: 'unknown',
   noRecord: '无',
   firstOption: '- 请选择 -',
+  categories: {
+    internet: '互联网',
+    reading: '读书',
+    movies: '电影',
+    musics: '音乐',
+    entertainment: '游戏娱乐',
+    sports: '运动',
+  },
 };
 
 App.selector = {

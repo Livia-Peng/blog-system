@@ -18,7 +18,7 @@ sSchema.extendOptions(['autoform']);
 
 export const BasicSchema = new sSchema({
   createdAt: {
-    type: String,
+    type: Date,
     label: '创建时间',
     optional: true,
     autoValue: function() {
@@ -51,7 +51,7 @@ export const BasicSchema = new sSchema({
     }
   },
   lastUpdatedAt: {
-    type: String,
+    type: Date,
     label: '更新时间',
     optional: true,
     autoValue: function() {

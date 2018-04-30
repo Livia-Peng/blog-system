@@ -22,7 +22,7 @@ export const Logger = new (winston.Logger)({
           && options.meta.hasOwnProperty('profile')
           && options.meta.profile.hasOwnProperty('name');
 
-        const user = hasUser ? `${options.meta.profile.name} ${options.meta.profile.tenant.active} ${options.meta._id}` : '-';
+        const user = hasUser ? `${options.meta.profile.name} ${options.meta._id}` : '-';
         const meta = hasMeta ? '-META-> \n\t -> ' + EJSON.stringify(options.meta) : '';
 
         // Return string will be passed to logger.
