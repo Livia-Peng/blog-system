@@ -12,6 +12,7 @@ import '/imports/ui/layouts/body/AdminBody.js'
 import '/imports/ui/pages/blog/blogList.js'
 import '/imports/ui/pages/blog/blogView.js'
 import '/imports/ui/pages/blog/blogCreate.js'
+import '/imports/ui/pages/blog/blogEdit.js'
 
 import '/imports/ui/pages/manage/blogManage.js'
 import '/imports/ui/pages/manage/userManage.js'
@@ -72,6 +73,26 @@ const mainDefs = [
       BlazeLayout.render('Admin_body', {
         bc: rtM.blogView.breadcrumb,
         main: rtM.blogView.template,
+      });
+    },
+  },
+  {
+    path: rtM.blogEdit.path,
+    name: rtM.blogEdit.name,
+    title: rtM.blogEdit.title,
+    breadcrumb: {
+      title: rtM.blogEdit.title,
+      parent: rtM.blogEdit.parent,
+      params: rtM.blogEdit.params
+    },
+    subs: function (params, queryParams) {
+      sf.blogById(this, params, queryParams)
+    },
+    action: function () {
+      DocHead.setTitle(`${rtM.blogEdit.title} | ${App.config.siteTitle}`);
+      BlazeLayout.render('Admin_body', {
+        bc: rtM.blogEdit.breadcrumb,
+        main: rtM.blogEdit.template,
       });
     },
   },

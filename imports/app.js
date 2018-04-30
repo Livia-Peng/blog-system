@@ -40,6 +40,10 @@ App.strings = {
     entertainment: '游戏娱乐',
     sports: '运动',
   },
+  collection: {
+    user: '用户',
+    blog: '博文',
+  },
 };
 
 App.selector = {
@@ -87,5 +91,7 @@ if (Meteor.isServer) {
     inviteCodeErr: new Meteor.Error('邀请码错误'),
     dbWriteErr: new Meteor.Error('系统异常，请联系系统管理员'),
     userExistedErr: new Meteor.Error('用户名已存在，请登录，或更改注册用户名'),
+    whatNotExist: (what) => new Meteor.Error(what + '不存在或部分数据缺失'),
+    dupOperateErr: (operation) => new Meteor.Error('数据已' + operation + '，请勿重复' + operation),
   }
 }

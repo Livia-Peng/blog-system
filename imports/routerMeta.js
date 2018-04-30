@@ -73,6 +73,15 @@ export const routerMeta = {
     breadcrumb: '',
     template: 'AdminBlogView'
   },
+  blogEdit: {
+    path: '/blog/:bid/edit',
+    name: 'admin.blog.edit',
+    title: '博文修改',
+    parent: 'admin.blog',
+    params: ['bid'],
+    breadcrumb: '',
+    template: 'AdminBlogEdit'
+  },
   blogConfig: {
     path: '/blog',
     name: 'admin.blog.config',

@@ -32,11 +32,11 @@ export function routerGen(router, routerDefs) {
 export const subsFn = {
   blogById: function (self, params, queryParams) {
     if (checkIdRegEx(params.bid, '博文')) {
-      self.register('blogById', Subs.subscribe('blog.byId', params.bid, {}));
+      self.register('blogById', Subs.subscribe('blog_byId', params.bid, {}));
     }
   },
   blogAll: function (self, params, queryParams, fields = {}) {
-    self.register('blogAll', Subs.subscribe('blog.all', fields));
+    self.register('blogAll', Subs.subscribe('blog_all', fields));
   },
 
   system: function (self, params, queryParams) {
