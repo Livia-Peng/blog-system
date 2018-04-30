@@ -121,7 +121,6 @@ export const routerMeta = {
     template: ''
   },
 
-  // todo
   system: {
     path: '/admin/system',
     name: 'admin.system',
@@ -129,24 +128,6 @@ export const routerMeta = {
     parent: '',
     params: [],
     breadcrumb: '',
-    template: ''
-  },
-  blogManage: {
-    path: '/manage/blog',
-    name: 'admin.manage.blog',
-    title: '博文管理',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: 'AdminBlogManage'
-  },
-  userManage: {
-    path: '/manage/user',
-    name: 'admin.manage.user',
-    title: '用户管理',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: 'AdminUserManage'
+    template: 'AdminSystem'
   },
 };

@@ -1,0 +1,11 @@
+<template name="cellBlogButton">
+  <div class="btn-groups">
+    <!--<a href="#" class="btn btn-icon demo-pli-gear icon-lg add-tooltip"-->
+       <!--data-original-title="Settings" data-container="body"></a>-->
+    <a class="btn btn-icon demo-pli-file-text-image icon-lg"
+       href="{{pathFor ROUTER.blogView.name bid=_id}}" title="查看详情"></a>
+    <a class="btn btn-icon demo-pli-pen-5 icon-lg"
+       href="{{pathFor ROUTER.blogEdit.name bid=_id}}" title="编辑"></a>
+    <a class="btn btn-icon demo-pli-trash icon-lg" title="删除" data-id="{{_id}}"></a>
+  </div>
+</template>

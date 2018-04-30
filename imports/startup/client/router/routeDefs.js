@@ -14,8 +14,8 @@ import '/imports/ui/pages/blog/blogView.js'
 import '/imports/ui/pages/blog/blogCreate.js'
 import '/imports/ui/pages/blog/blogEdit.js'
 
-import '/imports/ui/pages/manage/blogManage.js'
-import '/imports/ui/pages/manage/userManage.js'
+import '/imports/ui/pages/manage/system.js'
+
 
 const mainDefs = [
   // blog
@@ -96,38 +96,21 @@ const mainDefs = [
       });
     },
   },
-  // manager
+  // system
   {
-    path: rtM.blogManage.path,
-    name: rtM.blogManage.name,
-    title: rtM.blogManage.title,
+    path: rtM.system.path,
+    name: rtM.system.name,
+    title: rtM.system.title,
     breadcrumb: {
-      title: rtM.blogManage.title,
-      parent: rtM.blogManage.parent,
-      params: rtM.blogManage.params
+      title: rtM.system.title,
+      parent: rtM.system.parent,
+      params: rtM.system.params
     },
     action: function () {
-      DocHead.setTitle(`${rtM.blogManage.title} | ${App.config.siteTitle}`);
+      DocHead.setTitle(`${rtM.system.title} | ${App.config.siteTitle}`);
       BlazeLayout.render('Admin_body', {
-        bc: rtM.blogManage.breadcrumb,
-        main: rtM.blogManage.template,
-      });
-    }
-  },
-  {
-    path: rtM.userManage.path,
-    name: rtM.userManage.name,
-    title: rtM.userManage.title,
-    breadcrumb: {
-      title: rtM.userManage.title,
-      parent: rtM.userManage.parent,
-      params: rtM.userManage.params
-    },
-    action: function () {
-      DocHead.setTitle(`${rtM.userManage.title} | ${App.config.siteTitle}`);
-      BlazeLayout.render('Admin_body', {
-        bc: rtM.userManage.breadcrumb,
-        main: rtM.userManage.template,
+        bc: rtM.system.breadcrumb,
+        main: rtM.system.template,
       });
     }
   },

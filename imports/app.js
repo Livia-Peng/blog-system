@@ -40,6 +40,11 @@ App.strings = {
     entertainment: '游戏娱乐',
     sports: '运动',
   },
+  visibilities: {
+    public: '所有人可见',
+    friend: '仅好友可见',
+    private: '仅自己可见'
+  },
   collection: {
     user: '用户',
     blog: '博文',

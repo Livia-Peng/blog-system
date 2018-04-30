@@ -43,6 +43,15 @@ Meteor.methods({
       handleCatchErr(err)
     }
   },
+
+  account_findName (userId) {
+    Logger.info('########## Methods account_findName userId:', userId);
+    const user = Meteor.users.findOne({_id: userId});
+    if (user && user.profile) {
+      // Logger.debug('account_findName user:', user, {});
+      return user.profile.name
+    }
+  }
 });
 
 // 创建账户
