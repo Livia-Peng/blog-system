@@ -83,7 +83,7 @@ export const routerMeta = {
     template: 'AdminBlogEdit'
   },
   blogConfig: {
-    path: '/blog',
+    path: '/blog/config',
     name: 'admin.blog.config',
     title: '博客管理',
     parent: '',
