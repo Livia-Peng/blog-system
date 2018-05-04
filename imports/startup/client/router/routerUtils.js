@@ -13,7 +13,7 @@ export function routerGen(router, routerDefs) {
     if (def.name.indexOf('admin.') === 0) {
       triggersEnter = [function (context) {
         if (!Meteor.user()) {
-          FlowRouter.go('/login')
+          // FlowRouter.go('/login')
         }
       }].concat(triggersEnter);
     }

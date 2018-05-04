@@ -1,0 +1,97 @@
+<template name="blogPanelImg">
+  <div class="panel">
+    <div class="blog-header">
+      <img class="img-responsive" src="/img/blog-img-1.jpg" alt="Image">
+    </div>
+    <div class="blog-content">
+      <div class="blog-title media-block">
+        <a href="#" class="btn-link">
+          <h2>Far far away, behind the word mountains</h2>
+        </a>
+      </div>
+      <div class="blog-body">
+        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring
+          which I enjoy with my whole heart. </p>
+      </div>
+    </div>
+    {{> blogFooter}}
+  </div>
+</template>
+
+<template name="blogPanelIcon">
+  <div class="panel">
+    <div class="blog-header bg-info text-center blog-img-sm">
+      <i class="demo-pli-mail-send icon-5x"></i>
+    </div>
+    <div class="blog-content">
+      <div class="blog-title media-block">
+        <a href="#" class="btn-link">
+          <h2>Blazzing fast</h2>
+        </a>
+      </div>
+      <div class="blog-body">
+        <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+          born and I will give you a complete account of the system.</p>
+      </div>
+    </div>
+    {{> blogFooter}}
+  </div>
+</template>
+
+<template name="blogPanelBg">
+  <div class="panel {{bgColor}}">
+    <div class="blog-content">
+      <div class="blog-title media-block">
+        <a href="#" class="btn-link">
+          <h2>Common words.</h2>
+        </a>
+      </div>
+      <div class="blog-body">
+        <p>To achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+          words.</p>
+      </div>
+    </div>
+    {{> blogFooter}}
+  </div>
+</template>
+
+<template name="blogPanelBlockQuote">
+  <div class="panel">
+    <div class="blog-header bg-warning pad-all">
+      <blockquote class="bq-sm bq-open bq-close mar-no">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </blockquote>
+    </div>
+    <div class="blog-content">
+      <div class="blog-title media-block">
+        <div class="media-right textright">
+          <a href="#" class="btn btn-icon demo-pli-paperclip icon-lg add-tooltip" data-original-title="Add file"
+             data-container="body"></a>
+        </div>
+        <div class="media-body">
+          <a href="#" class="btn-link">
+            <h2>Achieve this</h2>
+          </a>
+        </div>
+      </div>
+      <div class="blog-body">
+        <p>The European languages are members of the same family. Their separate existence is a myth. For
+          science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their
+          grammar, their pronunciation and their most common words. Everyone realizes why a new common language
+          would be desirable: one could refuse to pay expensive translators. To achieve this, it would be
+          necessary to have uniform grammar, pronunciation and more common words.</p>
+      </div>
+    </div>
+    {{> blogFooter}}
+  </div>
+</template>
+
+<template name="blogFooter">
+  <div class="blog-footer">
+    <div class="media-left">9 Days ago</div>
+    <div class="media-body text-right">
+      <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>456</span>
+      <i class="demo-pli-speech-bubble-5 icon-fw"></i>22
+    </div>
+  </div>
+</template>

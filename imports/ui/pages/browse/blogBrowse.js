@@ -4,6 +4,7 @@
 import './blogBrowse.html'
 import {Template} from 'meteor/templating'
 import {Meteor} from 'meteor/meteor'
+import '/imports/ui/components/blogPanel/blogPanels.js'
 
 
 Template.blogBrowse.helpers({});
