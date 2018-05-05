@@ -48,7 +48,7 @@ TabularFactory({
 // 博文管理
 TabularFactory({
   name: 'systemBlogManage',
-  extraFields: [],
+  extraFields: ['createdBy'],
   collection: Collections.Blog,
   order: [[0, 'desc']],
   selector: function () {
@@ -89,18 +89,10 @@ TabularFactory({
     {
       data: "createdBy",
       title: "创建人",
-      render: function (val) {
-        if (val) {
-          // Meteor.call('account_findName', val, function (err, result) {
-          //   if (err) {
-          //     console.log(err);
-          //   } else if (result) {
-          //     return result
-          //   }
-          //   return App.strings.noRecord
-          // })
-        } else {
-          return App.strings.noRecord
+      tmpl: Meteor.isClient && Template.cellCreatedBy,
+      tmplContext(rowData) {
+        return {
+          createdBy: rowData.createdBy
         }
       }
     },

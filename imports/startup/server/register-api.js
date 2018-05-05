@@ -4,6 +4,7 @@
 
 // account
 import '/imports/api/account/methods.js'
+import '/imports/api/account/server/publications.js'
 
 // inviteCode
 import '/imports/api/inviteCode/methods.js'
