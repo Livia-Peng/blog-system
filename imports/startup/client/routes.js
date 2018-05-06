@@ -8,12 +8,12 @@ import {routerMeta as rtM} from '/imports/routerMeta.js'
 import {App} from '/imports/app.js'
 
 import '/imports/ui/layouts/body/AdminBody.js'
-import '/imports/ui/pages/browse/blogBrowse.js'
+import '/imports/ui/pages/home/blogHome'
 import '/imports/ui/pages/account/login.js'
 import '/imports/ui/pages/account/register.js'
 import '/imports/ui/pages/notFound/notFound.js'
 
-import './router/routeDefs.js'
+import './router/routerDefs.js'
 
 FlowRouter.route('/', {
   name: rtM.home.name,

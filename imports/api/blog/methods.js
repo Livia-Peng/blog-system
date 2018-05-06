@@ -8,22 +8,22 @@ import {checkIsLogin, handleCatchErr, getChangedDoc, schemaValidate} from '/impo
 import {Schemas} from '/imports/schemas.js'
 
 Meteor.methods({
-  blog_insert (insertDoc) {
-    Logger.info('########## Methods blog_insert insertDoc: ', insertDoc, Meteor.user());
+  article_insert (insertDoc) {
+    Logger.info('########## Methods article_insert insertDoc: ', insertDoc, Meteor.user());
     checkIsLogin();
-    schemaValidate(Schemas.blog, insertDoc, 'blog_insert');
+    schemaValidate(Schemas.blog, insertDoc, 'article_insert');
     try {
       const blogId = Blog.insert(insertDoc);
-      Logger.info('**** > Methods blog_insert success, id: ', blogId);
+      Logger.info('**** > Methods article_insert success, id: ', blogId);
       return blogId
     } catch (err) {
-      Logger.error('**** > Methods blog_insert error:', err, {});
+      Logger.error('**** > Methods article_insert error:', err, {});
       handleCatchErr(err)
     }
   },
 
-  blog_update (blogId, updateDoc) {
-    Logger.info('########## Methods blog_update:', {
+  article_update (blogId, updateDoc) {
+    Logger.info('########## Methods article_update:', {
       blogId: blogId, updateDoc: updateDoc, user: Meteor.user()
     });
     checkIsLogin();
@@ -33,16 +33,16 @@ Meteor.methods({
     }
     const changedDoc = getChangedDoc(updateDoc, blogCurDoc);
     if (_.isEmpty(changedDoc)) {
-      Logger.debug('blog 并无更新，直接返回');
+      Logger.debug('article 并无更新，直接返回');
       return true
     }
-    schemaValidate(Schemas.blog, _.extend({}, blogCurDoc, changedDoc), 'blog_update');
+    schemaValidate(Schemas.blog, _.extend({}, blogCurDoc, changedDoc), 'article_update');
     try {
       const result = Blog.update({_id: blogId}, {$set: changedDoc});
-      Logger.info('**** > Methods blog_update success, result: ', result);
+      Logger.info('**** > Methods article_update success, result: ', result);
       return result
     } catch (err) {
-      Logger.error('**** > Methods blog_update error:', err, {});
+      Logger.error('**** > Methods article_update error:', err, {});
       handleCatchErr(err)
     }
   },

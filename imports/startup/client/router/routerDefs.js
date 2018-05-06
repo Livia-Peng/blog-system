@@ -10,9 +10,9 @@ import {routerMeta as rtM} from '/imports/routerMeta.js';
 import '/imports/ui/layouts/body/AdminBody.js'
 
 import '/imports/ui/pages/blog/blogList.js'
-import '/imports/ui/pages/blog/blogView.js'
-import '/imports/ui/pages/blog/blogCreate.js'
-import '/imports/ui/pages/blog/blogEdit.js'
+import '/imports/ui/pages/article/articleView.js'
+import '/imports/ui/pages/article/articleCreate.js'
+import '/imports/ui/pages/article/articleEdit.js'
 
 import '/imports/ui/pages/manage/system.js'
 
@@ -29,7 +29,7 @@ const mainDefs = [
       params: rtM.blog.params
     },
     subs: function (params, queryParams) {
-      sf.blogAll(this, params, queryParams, {});
+      sf.articleAll(this, params, queryParams, {});
     },
     action: function () {
       DocHead.setTitle(`${rtM.blog.title} | ${App.config.siteTitle}`);
@@ -39,60 +39,61 @@ const mainDefs = [
       });
     }
   },
+  // article
   {
-    path: rtM.blogCreate.path,
-    name: rtM.blogCreate.name,
-    title: rtM.blogCreate.title,
+    path: rtM.articleCreate.path,
+    name: rtM.articleCreate.name,
+    title: rtM.articleCreate.title,
     breadcrumb: {
-      title: rtM.blogCreate.title,
-      parent: rtM.blogCreate.parent,
-      params: rtM.blogCreate.params
+      title: rtM.articleCreate.title,
+      parent: rtM.articleCreate.parent,
+      params: rtM.articleCreate.params
     },
     action: function () {
-      DocHead.setTitle(`${rtM.blogCreate.title} | ${App.config.siteTitle}`);
+      DocHead.setTitle(`${rtM.articleCreate.title} | ${App.config.siteTitle}`);
       BlazeLayout.render('Admin_body', {
-        bc: rtM.blogCreate.breadcrumb,
-        main: rtM.blogCreate.template,
+        bc: rtM.articleCreate.breadcrumb,
+        main: rtM.articleCreate.template,
       });
     },
   },
   {
-    path: rtM.blogView.path,
-    name: rtM.blogView.name,
-    title: rtM.blogView.title,
+    path: rtM.articleView.path,
+    name: rtM.articleView.name,
+    title: rtM.articleView.title,
     breadcrumb: {
-      title: rtM.blogView.title,
-      parent: rtM.blogView.parent,
-      params: rtM.blogView.params
+      title: rtM.articleView.title,
+      parent: rtM.articleView.parent,
+      params: rtM.articleView.params
     },
     subs: function (params, queryParams) {
-      sf.blogById(this, params, queryParams)
+      sf.articleById(this, params, queryParams)
     },
     action: function () {
-      DocHead.setTitle(`${rtM.blogView.title} | ${App.config.siteTitle}`);
+      DocHead.setTitle(`${rtM.articleView.title} | ${App.config.siteTitle}`);
       BlazeLayout.render('Admin_body', {
-        bc: rtM.blogView.breadcrumb,
-        main: rtM.blogView.template,
+        bc: rtM.articleView.breadcrumb,
+        main: rtM.articleView.template,
       });
     },
   },
   {
-    path: rtM.blogEdit.path,
-    name: rtM.blogEdit.name,
-    title: rtM.blogEdit.title,
+    path: rtM.articleEdit.path,
+    name: rtM.articleEdit.name,
+    title: rtM.articleEdit.title,
     breadcrumb: {
-      title: rtM.blogEdit.title,
-      parent: rtM.blogEdit.parent,
-      params: rtM.blogEdit.params
+      title: rtM.articleEdit.title,
+      parent: rtM.articleEdit.parent,
+      params: rtM.articleEdit.params
     },
     subs: function (params, queryParams) {
-      sf.blogById(this, params, queryParams)
+      sf.articleById(this, params, queryParams)
     },
     action: function () {
-      DocHead.setTitle(`${rtM.blogEdit.title} | ${App.config.siteTitle}`);
+      DocHead.setTitle(`${rtM.articleEdit.title} | ${App.config.siteTitle}`);
       BlazeLayout.render('Admin_body', {
-        bc: rtM.blogEdit.breadcrumb,
-        main: rtM.blogEdit.template,
+        bc: rtM.articleEdit.breadcrumb,
+        main: rtM.articleEdit.template,
       });
     },
   },

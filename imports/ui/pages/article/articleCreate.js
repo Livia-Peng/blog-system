@@ -1,7 +1,7 @@
 /**
  * Created by livia on 2018/1/19.
  */
-import './blogCreate.html'
+import './articleCreate.html'
 import {Template} from 'meteor/templating'
 import {Meteor} from 'meteor/meteor'
 import {Image} from '/imports/api/image/image.js'
@@ -13,15 +13,15 @@ import {routerMeta} from '/imports/routerMeta.js'
 import '../../components/forms/formImageUploader.js'
 import '../../components/artical/articleInfo.js'
 
-Template.AdminBlogCreate.helpers({
+Template.AdminArticleCreate.helpers({
 });
 
-Template.AdminBlogCreate.onCreated(function () {
+Template.AdminArticleCreate.onCreated(function () {
   this.autorun(() => {
   })
 });
 
-Template.AdminBlogCreate.onRendered(function () {
+Template.AdminArticleCreate.onRendered(function () {
   setTimeout(function () {
     $('#summernote-content').summernote({
       height: 210,
@@ -32,28 +32,28 @@ Template.AdminBlogCreate.onRendered(function () {
   }, 0)
 });
 
-Template.AdminBlogCreate.events({
+Template.AdminArticleCreate.events({
   'click button[data-action="save-article"]': function (event, inst) {
     event.preventDefault();
     const target = $(event.target);
     const dataFor = target.attr('data-for');
-    let blogInfo = getBlogInfoData();
+    let articleInfo = getBlogInfoData();
     switch (dataFor) {
-      case 'draft': blogInfo.isPublished = false; break;
-      case 'publish': blogInfo.isPublished = true; break;
+      case 'draft': articleInfo.isPublished = false; break;
+      case 'publish': articleInfo.isPublished = true; break;
       default: return
     }
-    blogInfo.name = $('input[name="blogTitle"]').val();
-    blogInfo.content = $('#summernote-content').summernote('code');
-    // console.log(blogInfo);
+    articleInfo.name = $('input[name="articleTitle"]').val();
+    articleInfo.content = $('#summernote-content').summernote('code');
+    // console.log(articleInfo);
     SUIBlock.block('保存中...');
-    Meteor.call('blog_insert', blogInfo, function (err, result) {
+    Meteor.call('article_insert', articleInfo, function (err, result) {
       SUIBlock.unblock();
       if (err) {
         showError(err)
       } else if (result) {
         Notify.saveSuccess();
-        FlowRouter.go(routerMeta.blogView.name, {bid: result})
+        FlowRouter.go(routerMeta.articleView.name, {aid: result})
       }
     })
   },

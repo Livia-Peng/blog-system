@@ -30,13 +30,13 @@ export function routerGen(router, routerDefs) {
 }
 
 export const subsFn = {
-  blogById: function (self, params, queryParams) {
-    if (checkIdRegEx(params.bid, '博文')) {
-      self.register('blogById', Subs.subscribe('blog_byId', params.bid, {}));
+  articleById: function (self, params, queryParams) {
+    if (checkIdRegEx(params.aid, '博文')) {
+      self.register('articleById', Subs.subscribe('article_byId', params.aid, {}));
     }
   },
-  blogAll: function (self, params, queryParams, fields = {}) {
-    self.register('blogAll', Subs.subscribe('blog_all', fields));
+  articleAll: function (self, params, queryParams, fields = {}) {
+    self.register('articleAll', Subs.subscribe('article_all', fields));
   },
 
   system: function (self, params, queryParams) {

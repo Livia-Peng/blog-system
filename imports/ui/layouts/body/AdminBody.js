@@ -7,4 +7,4 @@ import '../aside/asideContainer.js'
 import '../sideNavigation/sideNavigation.js'
 import '../footer/footer.js'
 
-import '../../pages/browse/blogBrowse.js'
+import '../../pages/home/blogHome.js'

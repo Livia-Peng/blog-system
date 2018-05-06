@@ -47,7 +47,7 @@
 │   │   │   ├── plugins.js                          // 插件引入
 │   │   │   ├── routes.js                           // 路由引入
 │   │   │   └── router
-│   │   │       ├── routeDefs.js                    // 路由自定义
+│   │   │       ├── routerDefs.js                    // 路由自定义
 │   │   │       └── routeUtils.js                   // 路由生成方法
 │   │   └── server
 │   │       ├── fixtures.js                         // 数据自动填充
@@ -90,6 +90,7 @@
 │       │   │   ├── login.js
 │       │   │   ├── register.html
 │       │   │   └── register.js
+│       │   ├── blog                                // 博客展示和管理
 │       │   ├── article                             // 文章创建、修改、详情等主要页面
 │       │   ├── home                                // 首页
 │       │   ├── manage                              // 系统管理页面

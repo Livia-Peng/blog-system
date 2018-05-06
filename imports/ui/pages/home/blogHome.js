@@ -1,7 +1,7 @@
 /**
  * Created by livia on 2018/1/18.
  */
-import './blogBrowse.html'
+import './blogHome.html'
 import {Template} from 'meteor/templating'
 import {Meteor} from 'meteor/meteor'
 import '/imports/ui/components/blogPanel/blogPanels.js'

@@ -1,9 +1,9 @@
-<template name="AdminBlogEdit">
+<template name="AdminArticleEdit">
   <div class="">
     <div class="row pad-btm">
       <div class="col-sm-6 col-sm-offset-6 toolbar-right text-right">
         <a href="{{pathFor ROUTER.blog.name}}" class="btn btn-default">取消</a>
-        {{#if blogInfo.isPublished}}
+        {{#if articleInfo.isPublished}}
           <button class="btn btn-warning" data-action="save-article">保存修改</button>
         {{else}}
           <button class="btn btn-default" data-action="save-article" data-for="draft">存为草稿</button>
@@ -12,11 +12,11 @@
       </div>
     </div>
     <div class="fixed-fluid">
-      {{> articleInfo blogInfo=blogInfo}}
+      {{> articleInfo articleInfo=articleInfo}}
 
       <div class="fluid">
         <div class="form-group">
-          <input type="text" placeholder="Blog Title" class="form-control input-lg" value="{{blogInfo.name}}">
+          <input type="text" placeholder="Blog Title" class="form-control input-lg" value="{{articleInfo.name}}">
         </div>
         <div class="panel">
           <div class="panel-body">

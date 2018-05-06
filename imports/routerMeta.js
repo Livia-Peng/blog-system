@@ -55,41 +55,42 @@ export const routerMeta = {
     breadcrumb: '',
     template: 'AdminBlogList'
   },
-  blogCreate: {
-    path: '/blog/create',
-    name: 'admin.blog.create',
+  blogConfig: {
+    path: '/blog/:userId/config',
+    name: 'admin.blog.config',
+    title: '博客管理',
+    parent: 'admin.blog',
+    params: ['userId'],
+    breadcrumb: '',
+    template: ''
+  },
+
+  articleCreate: {
+    path: '/article/create',
+    name: 'admin.article.create',
     title: '创建博文',
     parent: 'admin.blog',
     params: [],
     breadcrumb: '',
-    template: 'AdminBlogCreate'
+    template: 'AdminArticleCreate'
   },
-  blogView: {
-    path: '/blog/:bid/view',
-    name: 'blog.view',
+  articleView: {
+    path: '/article/:aid/view',
+    name: 'article.view',
     title: '博文详情',
     parent: 'admin.blog',
-    params: ['bid'],
+    params: ['aid'],
     breadcrumb: '',
-    template: 'AdminBlogView'
+    template: 'AdminArticleView'
   },
-  blogEdit: {
-    path: '/blog/:bid/edit',
-    name: 'admin.blog.edit',
+  articleEdit: {
+    path: '/article/:aid/edit',
+    name: 'admin.article.edit',
     title: '博文修改',
     parent: 'admin.blog',
-    params: ['bid'],
+    params: ['aid'],
     breadcrumb: '',
-    template: 'AdminBlogEdit'
-  },
-  blogConfig: {
-    path: '/blog/config',
-    name: 'admin.blog.config',
-    title: '博客管理',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: ''
+    template: 'AdminArticleEdit'
   },
 
   // todo
