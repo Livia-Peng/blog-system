@@ -9,6 +9,6 @@ import '/imports/api/account/server/publications.js'
 // inviteCode
 import '/imports/api/inviteCode/methods.js'
 
-// blog
-import '/imports/api/blog/methods.js'
-import '/imports/api/blog/server/publications.js'
+// Article
+import '/imports/api/article/methods.js'
+import '/imports/api/article/server/publications.js'

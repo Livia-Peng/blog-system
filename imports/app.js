@@ -47,7 +47,7 @@ App.strings = {
   },
   collection: {
     user: '用户',
-    blog: '博文',
+    article: '博文',
   },
 };
 

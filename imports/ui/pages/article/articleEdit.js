@@ -7,7 +7,7 @@ import {FlowRouter} from "meteor/kadira:flow-router"
 import {Meteor} from 'meteor/meteor'
 import {Subs} from '/imports/subs.js'
 import {App} from '/imports/app.js'
-import {Blog} from '/imports/api/blog/blog.js'
+import {Article} from '/imports/api/article/article.js'
 import {Image} from '/imports/api/image/image.js'
 import {getBlogInfoData} from '../../components/artical/articleInfo.js'
 import {showError} from '/imports/app/client/utils.js'
@@ -28,7 +28,7 @@ Template.AdminArticleEdit.onCreated(function () {
   this.rArticleDoc = new ReactiveVar({});
   this.autorun(() => {
     if (Subs.ready()) {
-      const articleDoc = Blog.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
+      const articleDoc = Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
       if (articleDoc) {
         console.log(articleDoc);
         $('#summernote-content').summernote('code', articleDoc.content);

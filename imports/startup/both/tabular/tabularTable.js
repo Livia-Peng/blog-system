@@ -49,7 +49,7 @@ TabularFactory({
 TabularFactory({
   name: 'systemBlogManage',
   extraFields: ['createdBy'],
-  collection: Collections.Blog,
+  collection: Collections.Article,
   order: [[0, 'desc']],
   selector: function () {
     return {

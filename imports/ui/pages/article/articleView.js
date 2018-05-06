@@ -7,7 +7,7 @@ import {FlowRouter} from "meteor/kadira:flow-router"
 import {Meteor} from 'meteor/meteor'
 import {Subs} from '/imports/subs.js'
 import {App} from '/imports/app.js'
-import {Blog} from '/imports/api/blog/blog.js'
+import {Article} from '/imports/api/article/article.js'
 
 Template.AdminArticleView.helpers({
   articleDoc: function () {
@@ -21,7 +21,7 @@ Template.AdminArticleView.onCreated(function () {
   this.rArticleDoc = new ReactiveVar({});
   this.autorun(() => {
     if (Subs.ready()) {
-      const articleDoc = Blog.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
+      const articleDoc = Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
       if (articleDoc) {
         // console.log(articleDoc);
         $('div[id="blog-content"]').empty();

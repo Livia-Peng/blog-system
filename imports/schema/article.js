@@ -5,7 +5,7 @@ import {sSchema, BasicSchema} from "../sharedSchemas";
 import {Tracker} from "meteor/tracker";
 // import {App} from '/imports/app';
 
-export const blog = new sSchema({
+export const article = new sSchema({
   name: {
     type: String,
     label: '文章标题',
@@ -82,4 +82,4 @@ export const blog = new sSchema({
 
 }, {tracker: Tracker});
 
-blog.extend(BasicSchema);
+article.extend(BasicSchema);
