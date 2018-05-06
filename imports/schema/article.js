@@ -52,34 +52,6 @@ export const article = new sSchema({
     label: '文章类别',
     optional: true,
   },
-  skinCount: {
-    type: Number,
-    label: '文章浏览量',
-    optional: true,
-    autoValue: function () {
-      if (Meteor.isServer && this.isInsert) {
-        return 0
-      }
-    }
-  },
-  // todo: 是否需要
-  storedCount: {
-    type: Number,
-    label: '文章收藏量',
-    optional: true,
-    autoValue: function () {
-      if (Meteor.isServer && this.isInsert) {
-        return 0
-      }
-    }
-  },
-  // todo： 存储形式待思考
-  comments: {
-    type: Array,
-    label: '文章评论',
-    optional: true,
-  },
-
 }, {tracker: Tracker});
 
 article.extend(BasicSchema);

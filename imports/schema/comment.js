@@ -6,7 +6,7 @@ import {Tracker} from "meteor/tracker";
 // import {App} from '/imports/app';
 
 export const comment = new sSchema({
-  blogId: {
+  articleId: {
     type: String,
     label: '博文Id'
   },
