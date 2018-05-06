@@ -47,7 +47,7 @@ export const routerMeta = {
   },
 
   blog: {
-    path: '/blog',
+    path: '/blog/:userId/space',
     name: 'admin.blog',
     title: '我的博客',
     parent: '',
@@ -56,7 +56,7 @@ export const routerMeta = {
     template: 'AdminBlogList'
   },
   blogConfig: {
-    path: '/blog/:userId/config',
+    path: '/blog/config',
     name: 'admin.blog.config',
     title: '博客管理',
     parent: 'admin.blog',
