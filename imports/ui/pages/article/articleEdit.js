@@ -31,7 +31,6 @@ Template.AdminArticleEdit.onCreated(function () {
       const articleDoc = Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
       if (articleDoc) {
         console.log(articleDoc);
-        $('#summernote-content').summernote('code', articleDoc.content);
         this.rArticleDoc.set(articleDoc)
       }
     }
@@ -43,7 +42,14 @@ Template.AdminArticleEdit.onRendered(function () {
     $('#summernote-content').summernote({
       toolbar: App.config.summerNoteToolbar
     })
-  }, 0)
+  }, 0);
+
+  this.autorun(() => {
+    const articleDoc = this.rArticleDoc.get();
+    if (articleDoc) {
+      $('#summernote-content').summernote('code', articleDoc.content)
+    }
+  })
 });
 
 Template.AdminArticleEdit.events({
@@ -56,9 +62,14 @@ Template.AdminArticleEdit.events({
     if (!articleDoc.isPublished) {
       const dataFor = target.attr('data-for');
       switch (dataFor) {
-        case 'draft': articleInfo.isPublished = false; break;
-        case 'publish': articleInfo.isPublished = true; break;
-        default: return
+        case 'draft':
+          articleInfo.isPublished = false;
+          break;
+        case 'publish':
+          articleInfo.isPublished = true;
+          break;
+        default:
+          return
       }
     }
     articleInfo.name = $('input[name="articleTitle"]').val();
@@ -75,4 +86,8 @@ Template.AdminArticleEdit.events({
       }
     })
   },
+});
+
+Template.AdminArticleEdit.onDestroyed(function () {
+  $('#summernote').summernote('destroy')
 });

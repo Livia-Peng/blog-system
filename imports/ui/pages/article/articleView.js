@@ -24,8 +24,6 @@ Template.AdminArticleView.onCreated(function () {
       const articleDoc = Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
       if (articleDoc) {
         // console.log(articleDoc);
-        $('div[id="blog-content"]').empty();
-        $('div[id="blog-content"]').append(articleDoc.content);
         this.rArticleDoc.set(articleDoc)
       }
     }
@@ -33,6 +31,12 @@ Template.AdminArticleView.onCreated(function () {
 });
 
 Template.AdminArticleView.onRendered(function () {
+  this.autorun(() => {
+    const articleDoc = this.rArticleDoc.get();
+    if (articleDoc) {
+      $('div[id="blog-content"]').append(articleDoc.content);
+    }
+  })
 });
 
 Template.AdminArticleView.events({
@@ -40,4 +44,8 @@ Template.AdminArticleView.events({
     event.preventDefault();
     const target = $(event.target);
   },
+});
+
+Template.AdminArticleView.onDestroyed(function () {
+  $('div[id="blog-content"]').empty();
 });
