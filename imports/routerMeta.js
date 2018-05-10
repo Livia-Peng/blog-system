@@ -51,7 +51,7 @@ export const routerMeta = {
     name: 'admin.blog',
     title: '我的博客',
     parent: '',
-    params: [],
+    params: ['userId'],
     breadcrumb: '',
     template: 'AdminBlogList'
   },

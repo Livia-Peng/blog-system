@@ -34,5 +34,6 @@ Meteor.methods({
 });
 
 export function createArticleDynamics(articleId) {
-  return ArticleDynamics.insert({articleId: articleId})
+  const userId = Meteor.userId();
+  return ArticleDynamics.insert({userId: userId, articleId: articleId})
 }

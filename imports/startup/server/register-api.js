@@ -12,3 +12,7 @@ import '/imports/api/inviteCode/methods.js'
 // Article
 import '/imports/api/article/methods.js'
 import '/imports/api/article/server/publications.js'
+
+// articleDynamics
+import '/imports/api/articleDynamics/methods.js'
+import '/imports/api/articleDynamics/server/publications.js'

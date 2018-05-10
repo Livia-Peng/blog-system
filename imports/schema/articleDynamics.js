@@ -5,6 +5,10 @@ import {sSchema} from "../sharedSchemas";
 import {Tracker} from "meteor/tracker";
 
 export const articleDynamics = new sSchema({
+  userId: {
+    type: String,
+    label: '博主id'
+  },
   articleId: {
     type: String,
     label: '文章id'
