@@ -54,7 +54,7 @@ const tableBasic = () => {
         $and: []
       };
       sel['$and'].push(selector);
-      Logger.debug('==> selector changed to : ', sel);
+      // Logger.debug('==> selector changed to : ', sel);
 
       return sel;
     }

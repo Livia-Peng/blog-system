@@ -6,6 +6,7 @@ import {Article} from "./article.js"
 import {App} from "/imports/app.js"
 import {checkIsLogin, handleCatchErr, getChangedDoc, schemaValidate} from '/imports/app/server/utils.js'
 import {Schemas} from '/imports/schemas.js'
+import {createArticleDynamics} from '/imports/api/articleDynamics/methods.js'
 
 Meteor.methods({
   article_insert (insertDoc) {
@@ -15,6 +16,9 @@ Meteor.methods({
     try {
       const articleId = Article.insert(insertDoc);
       Logger.info('**** > Methods article_insert success, id: ', articleId);
+      const articleDynamicId = createArticleDynamics(articleId);
+      Logger.info('**** > Methods article_insert createArticleDynamics success, id: ', articleDynamicId);
+
       return articleId
     } catch (err) {
       Logger.error('**** > Methods article_insert error:', err, {});

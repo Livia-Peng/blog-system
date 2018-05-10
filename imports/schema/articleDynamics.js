@@ -7,7 +7,7 @@ import {Tracker} from "meteor/tracker";
 export const articleDynamics = new sSchema({
   articleId: {
     type: String,
-    label: ''
+    label: '文章id'
   },
   skinCount: {
     type: Number,

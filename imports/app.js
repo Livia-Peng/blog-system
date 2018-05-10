@@ -34,9 +34,11 @@ App.strings = {
   firstOption: '- 请选择 -',
   categories: {
     internet: '互联网',
-    reading: '读书',
+    develop: '技术开发',
+    literature: '文字',
     movies: '电影',
     musics: '音乐',
+    travel: '旅行',
     entertainment: '游戏娱乐',
     sports: '运动',
   },
@@ -48,6 +50,11 @@ App.strings = {
   collection: {
     user: '用户',
     article: '博文',
+  },
+  dynamicKey: {
+    skinCount: 'skinCount',
+    praiseCount: 'praiseCount',
+    storedCount: 'storedCount',
   },
 };
 
