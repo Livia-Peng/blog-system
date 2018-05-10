@@ -10,7 +10,7 @@ export const article = new sSchema({
     type: String,
     label: '文章标题',
     min: 2,
-    max: 15,
+    max: 20,
   },
   abstract: {
     type: String,

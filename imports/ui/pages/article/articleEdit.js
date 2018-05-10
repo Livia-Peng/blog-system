@@ -17,7 +17,7 @@ import '../../components/artical/articleInfo.js'
 import '../../components/forms/formImageUploader.js'
 
 Template.AdminArticleEdit.helpers({
-  articleInfo: function () {
+  articleDoc: function () {
     const inst = Template.instance();
     return inst.rArticleDoc.get();
   }

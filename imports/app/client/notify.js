@@ -2,7 +2,7 @@
 
 export const Notify = {
   trigger: function (configs = {
-                       icon: 'glyphicon glyphicon-info-sign',
+                       icon: 'fa fa-info-circle',
                        title: 'title',
                        message: 'message',
                        type: 'warning'
@@ -34,7 +34,7 @@ export const Notify = {
 
   infoNotice (message = '') {
     this.trigger({
-      icon: 'glyphicon glyphicon-info-sign',
+      icon: 'fa fa-info-circle',
       title: '提示',
       message: message,
       type: 'info'
@@ -43,7 +43,7 @@ export const Notify = {
 
   editFailure(message = '') {
     this.trigger({
-      icon: 'glyphicon glyphicon-info-sign',
+      icon: 'fa fa-info-circle',
       title: '操作失败！',
       message: message,
       type: 'warning'
@@ -52,7 +52,7 @@ export const Notify = {
 
   saveSuccess() {
     this.trigger({
-      icon: 'glyphicon glyphicon-info-sign',
+      icon: 'fa fa-info-circle',
       title: '保存成功！',
       message: '',
       type: 'success'
@@ -61,7 +61,7 @@ export const Notify = {
 
   saveFailure(msg = '保存失败！') {
     this.trigger({
-      icon: 'glyphicon glyphicon-info-sign',
+      icon: 'fa fa-info-circle',
       title: msg,
       message: '',
       type: 'danger'
@@ -70,7 +70,7 @@ export const Notify = {
 
   delSuccess() {
     this.trigger({
-      icon: 'glyphicon glyphicon-info-sign',
+      icon: 'fa fa-info-circle',
       title: '删除成功！',
       message: '',
       type: 'success'

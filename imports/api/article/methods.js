@@ -36,7 +36,9 @@ Meteor.methods({
       Logger.debug('article 并无更新，直接返回');
       return true
     }
-    schemaValidate(Schemas.article, _.extend({}, articleCurDoc, changedDoc), 'article_update');
+    const validateDoc = _.extend({}, articleCurDoc, changedDoc);
+    delete validateDoc._id;
+    schemaValidate(Schemas.article, validateDoc, 'article_update');
     try {
       const result = Article.update({_id: articleId}, {$set: changedDoc});
       Logger.info('**** > Methods article_update success, result: ', result);
