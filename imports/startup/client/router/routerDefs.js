@@ -29,7 +29,8 @@ const mainDefs = [
       params: rtM.blog.params
     },
     subs: function (params, queryParams) {
-      sf.articleAll(this, params, queryParams, {});
+      sf.articleByUserId(this, params, queryParams, {});
+      sf.articleDynByUserId(this, params, queryParams, {});
     },
     action: function () {
       DocHead.setTitle(`${rtM.blog.title} | ${App.config.siteTitle}`);

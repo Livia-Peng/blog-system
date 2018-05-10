@@ -35,8 +35,12 @@ export const subsFn = {
       self.register('articleById', Subs.subscribe('article_byId', params.aid, {}));
     }
   },
-  articleAll: function (self, params, queryParams, fields = {}) {
-    self.register('articleAll', Subs.subscribe('article_all', fields));
+  articleByUserId: function (self, params, queryParams, fields = {}) {
+    self.register('articleByUserId', Subs.subscribe('article_byUserId', params.userId));
+  },
+
+  articleDynByUserId: function (self, params, queryParams, fields = {}) {
+    self.register('articleDynByUserId', Subs.subscribe('articleDyn_byUserId', params.userId));
   },
 
   system: function (self, params, queryParams) {

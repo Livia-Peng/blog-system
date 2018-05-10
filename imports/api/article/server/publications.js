@@ -12,3 +12,12 @@ Meteor.publish('article_byId', function (aid) {
 
   return Article.find({$and: [{_id: aid}, App.selector.unDeleted]})
 });
+
+Meteor.publish('article_byUserId', function (userId) {
+  Logger.info('########## Publish article_byUserId:', userId, Meteor.user());
+  checkIsLogin();
+
+  return Article.find({$and: [{createdBy: userId}, App.selector.unDeleted]}, {
+    fields: {name: 1, abstract: 1, createdBy: 1, createdAt: 1, isDeleted: 1}
+  })
+});

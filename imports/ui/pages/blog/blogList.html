@@ -127,231 +127,31 @@
     </div>
 
     <div class="fluid">
-
       <div class="blog blog-list">
-
         <!-- Panel  Blog -->
-        <!--===================================================-->
         <div class="panel">
-          <div class="blog-header">
-            <img class="img-responsive" src="/img/shared-img-5.jpg" alt="Image">
-          </div>
-          <div class="blog-content">
-            <div class="blog-title media-block">
-              <div class="media-right textright">
-                <a href="#" class="btn btn-icon demo-psi-twitter icon-lg add-tooltip" data-original-title="Twitter"
-                   data-container="body"></a>
-                <a href="#" class="btn btn-icon demo-psi-instagram icon-lg add-tooltip"
-                   data-original-title="Instagram" data-container="body"></a>
-              </div>
-              <div class="media-body">
-                <a href="#" class="btn-link">
-                  <h2>Far far away, behind the word mountains</h2>
+          {{#each blogList}}
+            <div class="blog-content">
+              <div class="blog-title media-block">
+                <a href="{{pathFor ROUTER.articleView.name aid=articleId}}" class="btn-link">
+                  <h2>{{articleName}}</h2>
                 </a>
               </div>
-            </div>
-            <div class="blog-body">
-              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring
-                which I enjoy with my whole heart. </p>
-              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring
-                which I enjoy with my whole heart. </p>
-              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring
-                which I enjoy with my whole heart. A wonderful serenity has taken possession of my entire soul, like
-                these sweet mornings of spring which I enjoy with my whole heart. </p>
-            </div>
-          </div>
-          <div class="blog-footer">
-            <div class="media-left">
-              <span class="label label-success">5 Days ago</span>
-            </div>
-            <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>519</span>
-              <i class="demo-pli-speech-bubble-5 icon-fw"></i>23
-            </div>
-          </div>
-        </div>
-        <!--===================================================-->
-
-
-        <!-- Panel  Blog -->
-        <!--===================================================-->
-        <div class="panel">
-          <div class="blog-header">
-            <div class="bg-info blog-img-sm text-center">
-              <h3 class="text-light"><i class="demo-pli-mail-send icon-4x"></i></h3>
-            </div>
-          </div>
-          <div class="blog-content">
-            <div class="blog-title media-block">
-              <a href="#" class="btn-link">
-                <h2>Blazzing fast</h2>
-              </a>
-            </div>
-            <div class="blog-body">
-              <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                born and I will give you a complete account of the system.</p>
-              <p>I must explain to you how all this mistaken idea of denouncing pleasure was born and I will give
-                you a complete account of the system.</p>
-            </div>
-          </div>
-          <div class="blog-footer">
-            <div class="media-left">
-              <label class="label label-primary">Feature</label>
-              <label class="label label-default">New</label>
-              <label class="label label-default">Modern</label>
-            </div>
-            <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>65</span>
-              <i class="demo-pli-speech-bubble-5 icon-fw"></i>8
-            </div>
-          </div>
-        </div>
-        <!--===================================================-->
-
-
-        <!-- Panel  Blog -->
-        <!--===================================================-->
-        <div class="panel bg-mint">
-          <div class="blog-content">
-            <div class="blog-title media-block">
-              <a href="#" class="btn-link">
-                <h2>The European languages</h2>
-              </a>
-            </div>
-            <div class="blog-body">
-              <p>The European languages are members of the same family. Their separate existence is a myth. For
-                science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their
-                grammar, their pronunciation and their most common words. Everyone realizes why a new common
-                language would be desirable: one could refuse to pay expensive translators.</p>
-              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring
-                which I enjoy with my whole heart. A wonderful serenity has taken possession of my entire soul, like
-                these sweet mornings of spring which I enjoy with my whole heart. </p>
-            </div>
-          </div>
-          <div class="blog-footer">
-            <div class="media-left">9 Days ago</div>
-            <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>456</span>
-              <i class="demo-pli-speech-bubble-5 icon-fw"></i>22
-            </div>
-          </div>
-        </div>
-        <!--===================================================-->
-
-
-        <!-- Panel  Blog -->
-        <!--===================================================-->
-        <div class="panel">
-          <div class="blog-header">
-            <div class="bg-warning blog-img-sm">
-              <blockquote class="bq-open bq-close mar-no">How all this mistaken idea of denouncing pleasure and
-                praising pain was born and I will give you a complete account of the system.
-              </blockquote>
-            </div>
-          </div>
-          <div class="blog-content">
-            <div class="blog-title media-block">
-              <div class="media-right textright">
-                <a href="#" class="btn btn-icon demo-pli-paperclip icon-lg add-tooltip"
-                   data-original-title="Add file" data-container="body"></a>
-              </div>
-              <div class="media-body">
-                <a href="#" class="btn-link">
-                  <h2>Achieve this</h2>
-                </a>
+              <div class="blog-body">
+                <p>{{articleAbstract}}</p>
               </div>
             </div>
-            <div class="blog-body">
-              <p>The European languages are members of the same family. Their separate existence is a myth. For
-                science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their
-                grammar, their pronunciation and their most common words.</p>
-              <p>Everyone realizes why a new common language would be desirable.</p>
+            <div class="blog-footer">
+              <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{createdBy}}</div>
+              <div class="media-body text-right">
+                <span class="mar-rgt"><i class="fa fa-thumbs-o-up icon-fw"></i>{{praiseCount}}</span>
+                <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>{{storedCount}}</span>
+                <i class="demo-pli-speech-bubble-5 icon-fw"></i>{{commentCount}}
+              </div>
             </div>
-          </div>
-          <div class="blog-footer">
-            <div class="media-left">17 Days ago</div>
-            <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>75</span>
-              <i class="demo-pli-speech-bubble-5 icon-fw"></i>2
-            </div>
-          </div>
+          {{/each}}
         </div>
-        <!--===================================================-->
-
-
-        <!-- Panel  Blog -->
-        <!--===================================================-->
-        <div class="panel">
-          <div class="blog-header">
-            <img class="img-responsive" src="/img/shared-img.jpg" alt="Image">
-          </div>
-          <div class="blog-content">
-            <div class="blog-title media-block">
-              <a href="#" class="btn-link">
-                <h2>The new common language</h2>
-              </a>
-            </div>
-            <div class="blog-body">
-              <p>The European languages are members of the same family. Their separate existence is a myth. For
-                science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their
-                grammar, their pronunciation and their most common words.</p>
-              <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure. Like these sweet
-                mornings of spring which I enjoy with my whole heart.</p>
-              <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                born and I will give you a complete account of the system.</p>
-            </div>
-          </div>
-          <div class="blog-footer">
-            <div class="media-left">25 Days ago</div>
-            <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>81</span>
-              <i class="demo-pli-speech-bubble-5 icon-fw"></i>4
-            </div>
-          </div>
-        </div>
-        <!--===================================================-->
-
-
-        <!-- Panel  Blog -->
-        <!--===================================================-->
-        <div class="panel pad-all">
-          <div class="blog-header">
-            <img class="img-responsive" src="/img/shared-img-3.jpg" alt="Image">
-          </div>
-          <div class="blog-content">
-            <div class="blog-title media-block">
-              <a href="#" class="btn-link">
-                <h2>No one rejects, dislikes</h2>
-              </a>
-            </div>
-            <div class="blog-body">
-              <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure. Like these sweet
-                mornings of spring which I enjoy with my whole heart.</p>
-              <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                born and I will give you a complete account of the system.</p>
-              <p>The European languages are members of the same family. Their separate existence is a myth. For
-                science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their
-                grammar, their pronunciation and their most common words.</p>
-            </div>
-          </div>
-          <div class="blog-footer">
-            <div class="media-left">
-              <span>1 month ago</span>
-            </div>
-            <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>52</span>
-              <i class="demo-pli-speech-bubble-5 icon-fw"></i>7
-            </div>
-          </div>
-        </div>
-        <!--===================================================-->
-
-        <ul class="pager pager-rounded">
-          <li class="previous"><a href="#fakelink">← Older</a></li>
-          <li class="next disabled"><a href="#fakelink">Newer →</a></li>
-        </ul>
       </div>
-
     </div>
   </div>
 </template>
