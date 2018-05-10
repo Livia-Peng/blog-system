@@ -14,6 +14,7 @@ Template.headerMain.helpers({
     if (user && user.profile) {
       return {
         // username: user.username,
+        id: user._id,
         name: user.profile.name,
         isSuper: user.profile.isSuper
       }

@@ -14,8 +14,9 @@
       <!--NavBar-->
       <div class="navbar-content">
         <ul class="nav navbar-top-links">
+          <!-- todo: 暂不提供全局搜索 -->
           <!--Search-->
-          <li>
+          <!--<li>
             <div class="custom-search-form">
               <label class="btn btn-trans" for="search-input" data-toggle="collapse" data-target="#nav-searchbox">
                 <i class="demo-pli-magnifi-glass"></i>
@@ -26,7 +27,7 @@
                 </div>
               </form>
             </div>
-          </li>
+          </li>-->
           <!--End Search-->
         </ul>
 
@@ -34,7 +35,7 @@
           {{#if user}}
             <!-- blog -->
             <li class="dropdown">
-              <a href="{{pathFor ROUTER.blog.name}}" class="dropdown-toggle">
+              <a href="{{pathFor ROUTER.blog.name userId=user.id}}" class="dropdown-toggle">
                 <div class="username">我的博客</div>
               </a>
             </li>
