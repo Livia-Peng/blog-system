@@ -1,0 +1,13 @@
+<template name="blogNav">
+  <div class="panel blog-nav">
+    <div class="panel-heading">
+      <ul class="list-group clear-float">
+        {{#each menu}}
+          <li class="list-group-item col-xs-3 {{active}}">
+            <a href="{{url}}">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>

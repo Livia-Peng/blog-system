@@ -41,6 +41,9 @@ App.strings = {
     travel: '旅行',
     entertainment: '游戏娱乐',
     sports: '运动',
+    family: '家庭',
+    work: '工作',
+    study: '学习',
   },
   visibilities: {
     public: '所有人可见',

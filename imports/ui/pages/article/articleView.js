@@ -8,6 +8,8 @@ import {Meteor} from 'meteor/meteor'
 import {Subs} from '/imports/subs.js'
 import {App} from '/imports/app.js'
 import {Article} from '/imports/api/article/article.js'
+import '/imports/ui/components/nav/blogNav.js'
+import '/imports/ui/components/nav/userNav.js'
 
 Template.AdminArticleView.helpers({
   articleDoc: function () {

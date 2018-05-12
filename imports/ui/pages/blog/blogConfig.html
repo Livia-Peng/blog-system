@@ -1,0 +1,16 @@
+<template name="AdminBlogConfig">
+  {{> blogNav}}
+
+  <div class="tab-base">
+    <!--Nav Tabs-->
+    <ul class="nav nav-tabs">
+      {{#each tabs}}
+        <li class="{{active}}" data-action="system-tabs" data-for="{{dataFor}}">
+          <a class="cursor-pointer">{{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+    <!--Tabs Content-->
+    {{> Template.dynamic template=dynamic.template data=dynamic.data}}
+  </div>
+</template>

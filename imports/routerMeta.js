@@ -48,7 +48,7 @@ export const routerMeta = {
 
   blog: {
     path: '/blog/:userId/space',
-    name: 'admin.blog',
+    name: 'home.blog',
     title: '我的博客',
     parent: '',
     params: ['userId'],
@@ -60,9 +60,9 @@ export const routerMeta = {
     name: 'admin.blog.config',
     title: '博客管理',
     parent: 'admin.blog',
-    params: ['userId'],
+    params: [],
     breadcrumb: '',
-    template: ''
+    template: 'AdminBlogConfig'
   },
 
   articleCreate: {
@@ -76,7 +76,7 @@ export const routerMeta = {
   },
   articleView: {
     path: '/article/:aid/view',
-    name: 'article.view',
+    name: 'home.blog.view',
     title: '博文详情',
     parent: 'admin.blog',
     params: ['aid'],

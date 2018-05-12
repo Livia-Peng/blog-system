@@ -8,6 +8,8 @@ import {Meteor} from 'meteor/meteor'
 import {Collections} from '/imports/collections.js'
 import {Subs} from '/imports/subs.js'
 import {App} from '/imports/app.js'
+import '/imports/ui/components/nav/blogNav.js'
+import '/imports/ui/components/nav/userNav.js'
 
 Template.AdminBlogList.helpers({
   blogList: function () {
