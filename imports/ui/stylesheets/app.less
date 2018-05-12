@@ -42,8 +42,8 @@ table.dataTable thead .sorting_desc:after {
   }
 }
 .blog-details .blog-content {
-  margin-top: 10px;
-  padding: 5px 10px;
+  margin-top: 10px !important;
+  padding: 5px 10px !important;
 }
 
 .blog-nav {
@@ -56,9 +56,11 @@ table.dataTable thead .sorting_desc:after {
     border: none;
     text-align: center;
     margin-bottom: 0;
-    padding: 13px 15px;
+    padding: 0;
     a {
       padding: 13px 0;
+      display: inline-block;
+      width: 100%;
     }
   }
   .list-group-item.active, .list-group-item:hover, .list-group-item.active:focus {

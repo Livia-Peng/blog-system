@@ -20,7 +20,7 @@ Template.AdminSystem.helpers({
     const currentTab = rCurrentTab.get();
     return [
       {
-        title: '博文管理',
+        title: '博客管理',
         dataFor: tabs.blog,
         active: currentTab === tabs.blog ? 'active' : ''
       },
