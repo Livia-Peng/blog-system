@@ -27,6 +27,7 @@ Template.AdminArticleCreate.onRendered(function () {
       height: 210,
       minHeight: null,
       maxHeight: null,
+      placeholder:'请输入文章正文',
       toolbar: App.config.summerNoteToolbar
     })
   }, 0)

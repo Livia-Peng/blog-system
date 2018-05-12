@@ -1,12 +1,16 @@
 <template name="articleInfo">
   <div class="fixed-sm-300 pull-sm-right">
+    <div class="form-group visible-xs">
+      <input name="articleTitle" type="text" placeholder="请输入文章标题 20字以内"
+             class="form-control input-lg" value="{{articleDoc.name}}" autofocus>
+    </div>
     <div class="panel">
       <div class="panel-body">
         <p class="text-main text-bold text-uppercase">文章摘要</p>
         <div class="form-horizontal">
           <div class="form-group">
             <textarea name="abstract" class="form-control" rows="5"
-                      placeholder="Blog Abstract 100字以内">{{articleInfo.abstract}}</textarea>
+                      placeholder="请输入文章摘要 100字以内">{{articleInfo.abstract}}</textarea>
           </div>
         </div>
         <hr>

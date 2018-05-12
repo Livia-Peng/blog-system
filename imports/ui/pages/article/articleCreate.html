@@ -2,7 +2,7 @@
   <div class="">
     <div class="row pad-btm">
       <div class="col-sm-6 col-sm-offset-6 toolbar-right text-right">
-        <a href="{{pathFor ROUTER.blog.name}}" class="btn btn-default">取消</a>
+        <a href="{{pathFor ROUTER.blog.name userId=curUserId}}" class="btn btn-default">取消</a>
         <button class="btn btn-default" data-action="save-article" data-for="draft">存为草稿</button>
         <button class="btn btn-warning" data-action="save-article" data-for="publish">发布文章</button>
       </div>
@@ -10,8 +10,9 @@
     <div class="fixed-fluid">
       {{> articleInfo}}
       <div class="fluid">
-        <div class="form-group">
-          <input name="articleTitle" type="text" placeholder="Article Title" class="form-control input-lg" autofocus>
+        <div class="form-group hidden-xs">
+          <input name="articleTitle" type="text" placeholder="请输入文章标题 20字以内"
+                 class="form-control input-lg" autofocus>
         </div>
         <div class="panel">
           <div class="panel-body">
