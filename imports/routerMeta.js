@@ -35,7 +35,6 @@ export const routerMeta = {
     breadcrumb: '',
     template: 'Admin_notFound'
   },
-  // todo
   noPermission: {
     path: '/no-permission',
     name: 'noPermission',
@@ -43,7 +42,7 @@ export const routerMeta = {
     parent: '',
     params: [],
     breadcrumb: '',
-    template: ''
+    template: 'Admin_noPermission'
   },
 
   blog: {

@@ -12,6 +12,7 @@ import '/imports/ui/pages/home/blogHome'
 import '/imports/ui/pages/account/login.js'
 import '/imports/ui/pages/account/register.js'
 import '/imports/ui/pages/notFound/notFound.js'
+import '/imports/ui/pages/noPermission/noPermission.js'
 
 import './router/routerDefs.js'
 
@@ -46,5 +47,13 @@ FlowRouter.route(rtM.notFound.path, {
   action() {
     DocHead.setTitle(`${rtM.notFound.title} | ${App.config.siteTitle}`);
     BlazeLayout.render(rtM.notFound.template);
+  }
+});
+
+FlowRouter.route(rtM.noPermission.path, {
+  name: rtM.noPermission.name,
+  action() {
+    DocHead.setTitle(`${rtM.noPermission.title} | ${App.config.siteTitle}`);
+    BlazeLayout.render(rtM.noPermission.template);
   }
 });
