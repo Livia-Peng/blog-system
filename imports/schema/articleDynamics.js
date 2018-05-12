@@ -4,6 +4,22 @@
 import {sSchema} from "../sharedSchemas";
 import {Tracker} from "meteor/tracker";
 
+const comment = new sSchema({
+  commentId: {
+    type: String,
+    label: '评论Id'
+  },
+  replies: {
+    type: Array,
+    label: '评论回复',
+    optional: true,
+  },
+  'replies.$': {
+    type: String,
+    label: '评论回复Id'
+  }
+});
+
 export const articleDynamics = new sSchema({
   userId: {
     type: String,
@@ -48,4 +64,8 @@ export const articleDynamics = new sSchema({
     label: '文章评论',
     optional: true,
   },
+  'comments.$': {
+    type: comment,
+    optional: true,
+  }
 }, {tracker: Tracker});

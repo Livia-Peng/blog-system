@@ -1,0 +1,57 @@
+<template name="articleComment">
+  {{#if commentInfo}}
+    <div class="comments media-block">
+      <button class="media-left btn btn-default">{{commentInfo.count}}&nbsp;楼</button>
+      <div class="media-body">
+        <div class="comment-header clear-float">
+          <div class="pull-left">
+            <a href="#" class="media-heading box-inline text-main text-bold">{{commentInfo.userName}}</a>
+            <p class="text-muted text-sm">{{commentInfo.createdAt}}</p>
+          </div>
+          <div class="pull-right">
+            <button class="btn btn-sm btn-success">
+              <i class="icon-lg demo-pli-like"></i>{{commentInfo.praiseCount}} Liked
+            </button>
+            <button class="btn btn-sm btn-default" data-action="write-comment" data-for="show">
+              <i class="icon-lg demo-pli-right-4"></i>{{commentInfo.replyCount}} 回复
+            </button>
+          </div>
+        </div>
+        <p class="bord-btm">{{commentInfo.content}}</p>
+
+        {{#each reply in commentInfo.leaf}}
+          <div class="comment-body">
+            <div class="comment-content">
+              <div class="comment-header">
+                <a href="#" class="text-main text-bold">{{reply.userName}}</a>
+                <small class="text-muted">{{reply.createdAt}}</small>
+              </div>
+              <p class="mar-top-10">{{reply.content}}</p>
+            </div>
+          </div>
+        {{/each}}
+
+        {{#if showReplyText}}
+          <div class="comment-body">
+            <div class="comment-content">
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-8">
+                    <textarea class="form-control" name="replyContent" rows="1"
+                              placeholder="评论内容 至少5个字符"></textarea>
+                  </div>
+                  <div class="col-sm-4">
+                    <button class="btn btn-sm btn-success" data-action="reply-comment">
+                      <i class="demo-pli-speech-bubble-2"></i>&nbsp; 提交回复
+                    </button>
+                    <button class="btn btn-sm btn-default" data-action="write-comment">取消</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  {{/if}}
+</template>

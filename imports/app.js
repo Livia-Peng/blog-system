@@ -53,6 +53,7 @@ App.strings = {
   collection: {
     user: '用户',
     article: '博文',
+    comment: '评论',
   },
   dynamicKey: {
     skinCount: 'skinCount',

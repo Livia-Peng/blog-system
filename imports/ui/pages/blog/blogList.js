@@ -29,7 +29,7 @@ Template.AdminBlogList.onCreated(function () {
       if (!user || !user.profile || !articles) {
         return
       }
-      console.log(articles)
+      // console.log(articles)
       const articleIdList = _.pluck(articles, '_id');
       const articleDynList = Collections.ArticleDynamics.find({articleId: {$in: articleIdList}}).fetch();
       const blogList = articles.map(data => {

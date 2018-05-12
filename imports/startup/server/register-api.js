@@ -16,3 +16,6 @@ import '/imports/api/article/server/publications.js'
 // articleDynamics
 import '/imports/api/articleDynamics/methods.js'
 import '/imports/api/articleDynamics/server/publications.js'
+
+// comment
+import '/imports/api/comment/methods.js'
