@@ -12,13 +12,16 @@ Meteor.methods({
   articleDynamic_count(articleId, dynamicKey) {
     Logger.info('########## Methods articleDynamic_count: ', arguments, Meteor.user());
     checkIsLogin();
+    if (!articleId || ['praiseCount', 'storedCount'].indexOf(dynamicKey) === -1) {
+      throw new Meteor.Error('入参错误：' + arguments)
+    }
     const articleDynCur = ArticleDynamics.findOne({$and: [{articleId: articleId}, App.selector.unDeleted]});
     if (!articleDynCur) {
       Logger.error('**** > Methods articleDynamic_count 文章不存在, articleId:', articleId);
-      return
+      throw App.err.server.whatNotExist(App.strings.collection.articleDynamics)
     }
     const dynamicCount = articleDynCur[dynamicKey] ? articleDynCur[dynamicKey]++ : 1;
-    ArticleDynamics.update({_id: articleDynCur._id}, {$set: {[dynamicKey]: dynamicCount}})
+    return ArticleDynamics.update({_id: articleDynCur._id}, {$set: {[dynamicKey]: dynamicCount}})
   },
 
   articleDynamic_comments(articleId, commentInfo) {

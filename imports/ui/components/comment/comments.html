@@ -1,7 +1,9 @@
 <template name="articleComment">
   {{#if commentInfo}}
     <div class="comments media-block">
-      <button class="media-left btn btn-default">{{commentInfo.count}}&nbsp;楼</button>
+      <a href="#" class="media-left">
+        <img class="img-circle img-sm" alt="Profile Picture" src="/img/profile-photos/5.png">
+      </a>
       <div class="media-body">
         <div class="comment-header clear-float">
           <div class="pull-left">
@@ -9,24 +11,28 @@
             <p class="text-muted text-sm">{{commentInfo.createdAt}}</p>
           </div>
           <div class="pull-right">
-            <button class="btn btn-sm btn-success">
-              <i class="icon-lg demo-pli-like"></i>{{commentInfo.praiseCount}} Liked
+            <button class="btn btn-sm btn-pink">
+              <i class="icon-lg demo-pli-like"></i>{{commentInfo.praiseCount}}
             </button>
             <button class="btn btn-sm btn-default" data-action="write-comment" data-for="show">
               <i class="icon-lg demo-pli-right-4"></i>{{commentInfo.replyCount}} 回复
             </button>
           </div>
         </div>
-        <p class="bord-btm">{{commentInfo.content}}</p>
+        <p class="pad-btm bord-btm">{{commentInfo.content}}</p>
 
         {{#each reply in commentInfo.leaf}}
           <div class="comment-body">
-            <div class="comment-content">
-              <div class="comment-header">
-                <a href="#" class="text-main text-bold">{{reply.userName}}</a>
-                <small class="text-muted">{{reply.createdAt}}</small>
+            <div class="comment-content media">
+              <a class="media-left" href="#">
+                <img class="img-circle img-xs" alt="Profile Picture" src="/img/profile-photos/4.png"></a>
+              <div class="media-body">
+                <div class="comment-header">
+                  <a href="#" class="text-main text-bold">{{reply.userName}}</a>
+                  <small class="text-muted">{{reply.createdAt}}</small>
+                </div>
+                <p class="mar-top-10">{{reply.content}}</p>
               </div>
-              <p class="mar-top-10">{{reply.content}}</p>
             </div>
           </div>
         {{/each}}
@@ -41,8 +47,8 @@
                               placeholder="评论内容 至少5个字符"></textarea>
                   </div>
                   <div class="col-sm-4">
-                    <button class="btn btn-sm btn-success" data-action="reply-comment">
-                      <i class="demo-pli-speech-bubble-2"></i>&nbsp; 提交回复
+                    <button class="btn btn-sm btn-warning" data-action="reply-comment">
+                      <i class="demo-pli-speech-bubble-5"></i>&nbsp; 提交回复
                     </button>
                     <button class="btn btn-sm btn-default" data-action="write-comment">取消</button>
                   </div>

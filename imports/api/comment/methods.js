@@ -38,7 +38,7 @@ Meteor.methods({
 
     const articleDynDoc = ArticleDynamics.findOne({articleId: articleId});
     if (!articleDynDoc || !articleDynDoc.comments) {
-      throw App.err.server.whatNotExist(App.strings.collection.article + '动态信息');
+      throw App.err.server.whatNotExist(App.strings.collection.articleDynamics);
     }
     const commentDoc = articleDynDoc.comments.find(item => item.commentId === commentId);
     if (!commentDoc) {

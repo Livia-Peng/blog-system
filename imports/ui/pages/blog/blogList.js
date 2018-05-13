@@ -46,7 +46,7 @@ Template.AdminBlogList.onCreated(function () {
           commentCount: articleDyn && articleDyn.comments && articleDyn.comments.length ? articleDyn.comments.length : '',
         }
       });
-      console.log(blogList);
+      // console.log(blogList);
       this.rBlogList.set(blogList)
     }
   })

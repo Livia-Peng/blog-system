@@ -41,6 +41,24 @@ Template.AdminArticleView.onRendered(function () {
 });
 
 Template.AdminArticleView.events({
+  'click a[data-action="dynamic-count"]': function (event, inst) {
+    event.preventDefault();
+    const target = $(event.currentTarget);
+    const dataFor = target.attr('data-for');
+    if (!dataFor) {
+      return
+    }
+    console.log(dataFor);
+    const articleId = FlowRouter.getParam('aid');
+    Meteor.call('articleDynamic_count', articleId, dataFor, function (err, result) {
+      if (err) {
+        console.log(err)
+      } else if (result) {
+        console.log(dataFor + 'success')
+      }
+    })
+  },
+
   'click button[data-action="create-comment"]': function (event, inst) {
     event.preventDefault();
     if (!Meteor.userId()) {
@@ -63,16 +81,13 @@ Template.AdminArticleView.events({
   },
 });
 
-Template.AdminArticleView.onDestroyed(function () {
-  $('div[id="blog-content"]').empty();
-});
-
 function reNewArticleInfo(articleId, rArticleInfo) {
+  $('div[id="blog-content"]').empty();
   Meteor.call('combine_article_dynamic', articleId, (err, result) => {
     if (err) {
       console.log(err)
-    } else if (!_.isEmpty(result)){
-      console.log(result);
+    } else if (!_.isEmpty(result)) {
+      // console.log(result);
       rArticleInfo.set(result)
     }
   })

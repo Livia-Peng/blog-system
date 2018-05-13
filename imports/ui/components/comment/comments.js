@@ -78,7 +78,7 @@ function reNewCommentInfo(articleId, commentId, rCommentInfo) {
     if (err) {
       console.log(err)
     } else if (!_.isEmpty(result)) {
-      console.log(result);
+      // console.log(result);
       rCommentInfo.set(result)
     }
   })

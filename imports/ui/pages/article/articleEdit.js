@@ -30,7 +30,7 @@ Template.AdminArticleEdit.onCreated(function () {
     if (Subs.ready()) {
       const articleDoc = Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
       if (articleDoc) {
-        console.log(articleDoc);
+        // console.log(articleDoc);
         this.rArticleDoc.set(articleDoc)
       }
     }

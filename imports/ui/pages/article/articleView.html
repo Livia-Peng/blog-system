@@ -21,12 +21,16 @@
           </div>
           <div class="blog-footer">
             <div class="media-left">
-              <span class="label label-success">{{articleInfo.createdAt}}</span>
+              <small>{{articleInfo.createdAt}} &nbsp;</small>
               <small>@ <a href="#" class="btn-link">{{articleInfo.userName}}</a></small>
             </div>
             <div class="media-body text-right">
-              <span class="mar-rgt"><i class="demo-pli-heart-2 icon-fw"></i>{{articleInfo.praiseCount}}</span>
-              <span class="mar-rgt"><i class="demo-pli-speech-bubble-5 icon-fw"></i>{{articleInfo.commentCount}}</span>
+              <a class="mar-rgt cursor-pointer" title="点赞" data-action="dynamic-count" data-for="praiseCount">
+                <i class="demo-pli-like icon-fw"></i>{{articleInfo.praiseCount}}</a>
+              <a class="mar-rgt cursor-pointer" title="收藏" data-action="dynamic-count" data-for="storedCount">
+                <i class="demo-pli-heart-2 icon-fw"></i>{{articleInfo.storedCount}}</a>
+              <a class="mar-rgt cursor-pointer" title="评论">
+                <i class="demo-pli-speech-bubble-5 icon-fw"></i>{{articleInfo.commentCount}}</a>
               <a href="{{pathFor ROUTER.articleEdit.name aid=articleInfo._id}}" title="编辑">
                 <i class="demo-pli-pen-5 icon-fw"></i></a>
             </div>
@@ -43,14 +47,13 @@
               </div>
               <div class="col-sm-3 pull-right">
                 <div class="form-group">
-                  <button class="btn btn-success btn-block" data-action="create-comment">
-                    <i class="demo-pli-speech-bubble-2"></i>&nbsp; 发表评论
+                  <button class="btn btn-warning btn-block" data-action="create-comment">
+                    <i class="demo-pli-speech-bubble-5"></i>&nbsp; 发表评论
                   </button>
                 </div>
               </div>
             </div>
-
-            <hr class="new-section-sm">
+            <hr class="new-section-sm mar-ver">
             <p class="text-lg text-main text-bold text-uppercase pad-btm">评论列表</p>
             <!-- Comments -->
             {{#each comment in articleInfo.comments}}
