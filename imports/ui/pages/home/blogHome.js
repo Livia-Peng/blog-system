@@ -7,15 +7,15 @@ import {Meteor} from 'meteor/meteor'
 import '/imports/ui/components/blog/blogPanels.js'
 
 
-Template.blogBrowse.helpers({});
+Template.blogHome.helpers({});
 
-Template.blogBrowse.onCreated(function () {
+Template.blogHome.onCreated(function () {
   this.autorun(function () {
   })
 });
 
-Template.blogBrowse.onRendered(function () {
+Template.blogHome.onRendered(function () {
   $(window).resize(); // fix if content height < window height});
 });
 
-Template.blogBrowse.events({});
+Template.blogHome.events({});

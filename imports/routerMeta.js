@@ -6,7 +6,7 @@ export const routerMeta = {
     parent: '',
     params: [],
     breadcrumb: '',
-    template: 'blogBrowse'
+    template: 'blogHome'
   },
   login: {
     path: '/login',

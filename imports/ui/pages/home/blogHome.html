@@ -1,3 +1,61 @@
+<template name="blogHome">
+  <div class="row blog">
+    <div class="panel">
+      <div class="col-md-8">
+        {{#each blogList}}
+          <div class="blog-content">
+            <div class="blog-title media-block">
+              <a href="{{pathFor ROUTER.articleView.name aid=articleId}}" class="btn-link" title="查看详情">
+                <h2>{{articleName}}</h2>
+              </a>
+            </div>
+            <div class="blog-body">
+              <p class="text-overflow">{{articleAbstract}}</p>
+            </div>
+          </div>
+          <div class="blog-footer">
+            <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{createdBy}}</div>
+            <div class="media-body text-right">
+              <span class="mar-rgt"><i class="demo-pli-like icon-fw"></i>{{praiseCount}}</span>
+              <span class="mar-rgt"><i class="demo-pli-speech-bubble-5 icon-fw"></i>{{commentCount}}</span>
+              <a href="{{pathFor ROUTER.articleEdit.name aid=articleId}}" title="编辑">
+                <i class="demo-pli-pen-5 icon-fw"></i></a>
+            </div>
+          </div>
+        {{/each}}
+        <!--todo-->
+        <ul class="pager">
+          <li class="previous disabled">
+            <a href="#"><i class="demo-psi-arrow-left"></i> Previous</a>
+          </li>
+          <li class="next">
+            <a href="#">Next <i class="demo-psi-arrow-right"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">搜索</p>
+        <div class="input-group pad-all bord-btm">
+          <input type="text" placeholder="搜索" class="form-control">
+          <span class="input-group-btn">
+           <button class="btn btn-primary"><i class="demo-pli-magnifi-glass icon-lg"></i></button>
+          </span>
+        </div>
+
+        <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">标签分类</p>
+        <ul class="list-inline mar-hor pad-btm bord-btm">
+          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Family</a></li>
+          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Home</a></li>
+          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Work</a></li>
+          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Film</a></li>
+          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Music</a></li>
+          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Photography</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="blogBrowse">
   <div class="row blog">
     <div class="col-lg-6">
