@@ -7,7 +7,7 @@ import {FlowRouter} from "meteor/kadira:flow-router"
 import {Meteor} from 'meteor/meteor'
 import {Subs} from '/imports/subs.js'
 import {App} from '/imports/app.js'
-import {Article} from '/imports/api/article/article.js'
+import {Collections} from '/imports/collections.js'
 import {showError} from '/imports/app/client/utils.js'
 import {Notify} from '/imports/app/client/notify.js'
 import '/imports/ui/components/nav/blogNav.js'
@@ -15,25 +15,57 @@ import '/imports/ui/components/nav/userNav.js'
 import '/imports/ui/components/comment/comments.js'
 
 Template.AdminArticleView.helpers({
-  articleInfo: function () {
+  articleDoc: function () {
     const inst = Template.instance();
-    return inst.rArticleInfo.get();
-  }
+    return inst.rArticleDoc.get();
+  },
+  articleDynDoc: function () {
+    const inst = Template.instance();
+    return inst.rArticleDynDoc.get();
+  },
+  authorInfo: function () {
+    const inst = Template.instance();
+    return inst.rAuthorInfo.get();
+  },
 });
 
 Template.AdminArticleView.onCreated(function () {
   const articleId = FlowRouter.getParam('aid');
-  this.rArticleInfo = new ReactiveVar({});
+  this.rArticleDoc = new ReactiveVar({});
+  this.rArticleDynDoc = new ReactiveVar({});
+  this.rAuthorInfo = new ReactiveVar({});
+
   this.autorun(() => {
-    if (articleId) {
-      reNewArticleInfo(articleId, this.rArticleInfo)
+    if (Subs.ready()) {
+      const articleDoc = Collections.Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
+      if (articleDoc) {
+        console.log(articleDoc);
+        this.rArticleDoc.set(articleDoc);
+        Meteor.call('account_findName', articleDoc.createdBy, (err, result) => {
+          if (err) {
+            console.log(err)
+          } else if (result) {
+            this.rAuthorInfo.set({
+              userId: articleDoc.createdBy,
+              userName: result
+            })
+          }
+        })
+      }
+      let articleDynDoc = Collections.ArticleDynamics.findOne({articleId: articleId});
+      if (articleDynDoc) {
+        console.log(articleDynDoc);
+        articleDynDoc.commentCount = articleDynDoc.comments && articleDynDoc.comments.length ?
+          articleDynDoc.comments.length : '';
+        this.rArticleDynDoc.set(articleDynDoc)
+      }
     }
   })
 });
 
 Template.AdminArticleView.onRendered(function () {
   this.autorun(() => {
-    const articleDoc = this.rArticleInfo.get();
+    const articleDoc = this.rArticleDoc.get();
     if (articleDoc) {
       $('div[id="blog-content"]').append(articleDoc.content);
     }
@@ -66,29 +98,16 @@ Template.AdminArticleView.events({
     }
     const content = $('textarea[name="commentContent"]').val();
     console.log(content);
-    const articleId = FlowRouter.getParam('aid');
+    const articleDoc = inst.rArticleDoc.get();
     SUIBlock.block('保存中...');
-    Meteor.call('comment_insert', {articleId: articleId, content: content}, function (err, result) {
+    Meteor.call('comment_insert', {articleId: articleDoc._id, content: content}, function (err, result) {
       SUIBlock.unblock();
       if (err) {
         showError(err)
       } else if (result) {
         $('textarea[name="commentContent"]').val('');
-        reNewArticleInfo(articleId, inst.rArticleInfo);
         Notify.saveSuccess();
       }
     })
   },
 });
-
-function reNewArticleInfo(articleId, rArticleInfo) {
-  $('div[id="blog-content"]').empty();
-  Meteor.call('combine_article_dynamic', articleId, (err, result) => {
-    if (err) {
-      console.log(err)
-    } else if (!_.isEmpty(result)) {
-      // console.log(result);
-      rArticleInfo.set(result)
-    }
-  })
-}

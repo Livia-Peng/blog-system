@@ -2,7 +2,6 @@
  * Created by livia on 2018/5/6.
  */
 import {Meteor} from "meteor/meteor"
-import {Article} from '../article/article.js'
 import {ArticleDynamics} from './articleDynamics.js'
 import {checkIsLogin} from '/imports/app/server/utils.js'
 import {App} from '/imports/app.js'
@@ -33,33 +32,6 @@ Meteor.methods({
       // return
     }
     // todo: insert comment
-  },
-
-  combine_article_dynamic(articleId) {
-    const articleDoc = Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
-    const articleDynDoc = ArticleDynamics.findOne({articleId: articleId});
-    if (!articleDoc || !articleDynDoc) {
-      throw App.err.server.whatNotExist(App.strings.collection.article);
-    }
-    const createdUser = Meteor.users.findOne({_id: articleDoc.createdBy});
-    if (!createdUser) {
-      return {}
-    }
-    return {
-      _id: articleDoc._id,
-      name: articleDoc.name,
-      abstract: articleDoc.abstract,
-      content: articleDoc.content,
-      category: articleDoc.category,
-      allowComment: articleDoc.allowComment,
-      praiseCount: articleDynDoc.praiseCount || '',
-      storedCount: articleDynDoc.storedCount || '',
-      commentCount: articleDynDoc.comments && articleDynDoc.comments.length ? articleDynDoc.comments.length : '',
-      comments: articleDynDoc.comments,
-      userId: createdUser._id,
-      userName: createdUser.profile.name,
-      createdAt: moment(articleDoc.createdAt).format(App.config.format.datetime),
-    }
   },
 });
 

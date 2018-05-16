@@ -9,7 +9,7 @@
         <div class="panel-body">
           <div class="blog-title media-block">
             <div class="media-body">
-              <a class="btn-link"><h1>{{articleInfo.name}}</h1></a>
+              <a class="btn-link"><h1>{{articleDoc.name}}</h1></a>
             </div>
           </div>
           <!--<div class="blog-header">
@@ -21,22 +21,22 @@
           </div>
           <div class="blog-footer">
             <div class="media-left">
-              <small>{{articleInfo.createdAt}} &nbsp;</small>
-              <small>@ <a href="#" class="btn-link">{{articleInfo.userName}}</a></small>
+              <small>{{articleDoc.createdAt}} &nbsp;</small>
+              <small>@ <a href="#" class="btn-link">{{authorInfo.userName}}</a></small>
             </div>
             <div class="media-body text-right">
               <a class="mar-rgt cursor-pointer" title="点赞" data-action="dynamic-count" data-for="praiseCount">
-                <i class="demo-pli-like icon-fw"></i>{{articleInfo.praiseCount}}</a>
+                <i class="demo-pli-like icon-fw"></i>{{articleDynDoc.praiseCount}}</a>
               <a class="mar-rgt cursor-pointer" title="收藏" data-action="dynamic-count" data-for="storedCount">
-                <i class="demo-pli-heart-2 icon-fw"></i>{{articleInfo.storedCount}}</a>
+                <i class="demo-pli-heart-2 icon-fw"></i>{{articleDynDoc.storedCount}}</a>
               <a class="mar-rgt cursor-pointer" title="评论">
-                <i class="demo-pli-speech-bubble-5 icon-fw"></i>{{articleInfo.commentCount}}</a>
-              <a href="{{pathFor ROUTER.articleEdit.name aid=articleInfo._id}}" title="编辑">
+                <i class="demo-pli-speech-bubble-5 icon-fw"></i>{{articleDynDoc.commentCount}}</a>
+              <a href="{{pathFor ROUTER.articleEdit.name aid=articleDoc._id}}" title="编辑">
                 <i class="demo-pli-pen-5 icon-fw"></i></a>
             </div>
           </div>
 
-          {{#if articleInfo.allowComment}}
+          {{#if articleDoc.allowComment}}
             <!-- Comment form -->
             <hr class="new-section-sm bord-no">
             <div class="row">
@@ -56,8 +56,8 @@
             <hr class="new-section-sm mar-ver">
             <p class="text-lg text-main text-bold text-uppercase pad-btm">评论列表</p>
             <!-- Comments -->
-            {{#each comment in articleInfo.comments}}
-              {{> articleComment articleId=articleInfo._id commentId=comment.commentId index=@index}}
+            {{#each comment in articleDynDoc.comments}}
+              {{> articleComment articleId=articleDoc._id commentId=comment.commentId index=@index}}
             {{/each}}
           {{/if}}
         </div>
