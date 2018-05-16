@@ -47,7 +47,7 @@ export const routerMeta = {
 
   blog: {
     path: '/blog/:userId/space',
-    name: 'home.blog',
+    name: 'public.blog',
     title: '我的博客',
     parent: '',
     params: ['userId'],
@@ -56,9 +56,9 @@ export const routerMeta = {
   },
   blogConfig: {
     path: '/blog/config',
-    name: 'admin.blog.config',
+    name: 'private.blog.config',
     title: '博客管理',
-    parent: 'admin.blog',
+    parent: 'public.blog',
     params: [],
     breadcrumb: '',
     template: 'AdminBlogConfig'
@@ -66,27 +66,28 @@ export const routerMeta = {
 
   articleCreate: {
     path: '/article/create',
-    name: 'admin.article.create',
+    name: 'private.article.create',
     title: '创建博文',
-    parent: 'admin.blog',
+    parent: 'public.blog',
     params: [],
     breadcrumb: '',
     template: 'AdminArticleCreate'
   },
   articleView: {
     path: '/article/:aid/view',
-    name: 'home.blog.view',
+    name: 'public.blog.view',
     title: '博文详情',
-    parent: 'admin.blog',
+    parent: 'public.blog',
     params: ['aid'],
     breadcrumb: '',
     template: 'AdminArticleView'
   },
+  // 只有博主本人能访问
   articleEdit: {
     path: '/article/:aid/edit',
-    name: 'admin.article.edit',
+    name: 'private.article.edit',
     title: '博文修改',
-    parent: 'admin.blog',
+    parent: 'public.blog',
     params: ['aid'],
     breadcrumb: '',
     template: 'AdminArticleEdit'
@@ -95,7 +96,7 @@ export const routerMeta = {
   // todo
   accountInfo: {
     path: '/account/info',
-    name: 'admin.account.info',
+    name: 'private.account.info',
     title: '我的主页',
     parent: '',
     params: [],
@@ -104,7 +105,7 @@ export const routerMeta = {
   },
   accountNews: {
     path: '/account/news',
-    name: 'admin.account.news',
+    name: 'private.account.news',
     title: '我的消息',
     parent: '',
     params: [],
@@ -113,7 +114,7 @@ export const routerMeta = {
   },
   accountConfig: {
     path: '/account/config',
-    name: 'admin.account.config',
+    name: 'private.account.config',
     title: '账户设置',
     parent: '',
     params: [],
@@ -122,8 +123,8 @@ export const routerMeta = {
   },
 
   system: {
-    path: '/admin/system',
-    name: 'admin.system',
+    path: '/system',
+    name: 'private.system',
     title: '系统管理',
     parent: '',
     params: [],

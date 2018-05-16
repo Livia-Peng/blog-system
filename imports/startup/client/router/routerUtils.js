@@ -10,10 +10,10 @@ export function routerGen(router, routerDefs) {
   routerDefs.forEach((def) => {
     let triggersEnter = def.hasOwnProperty('triggersEnter') ? def.triggersEnter : [];
     // 如果是admin，需要登录验证
-    if (def.name.indexOf('admin.') === 0) {
+    if (def.name.indexOf('private.') === 0) {
       triggersEnter = [function (context) {
-        if (!Meteor.user()) {
-          // FlowRouter.go('/login')
+        if (!Meteor.userId()) {
+          FlowRouter.go('/login')
         }
       }].concat(triggersEnter);
     }
