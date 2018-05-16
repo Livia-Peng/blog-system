@@ -3,6 +3,8 @@
  */
 import {Meteor} from "meteor/meteor"
 import {Article} from "./article.js"
+import {ArticleDynamics} from '../articleDynamics/articleDynamics.js'
+import {Comment} from '../comment/comment.js'
 import {App} from "/imports/app.js"
 import {checkIsLogin, handleCatchErr, getChangedDoc, schemaValidate} from '/imports/app/server/utils.js'
 import {Schemas} from '/imports/schemas.js'
@@ -75,5 +77,45 @@ Meteor.methods({
       Logger.error('**** > Methods article_delete error:', err, {});
       handleCatchErr(err)
     }
+  },
+
+  articleList_api(selector = {}, pageNum = 1) {
+    const articleArr = Article.find({$and: [selector, App.selector.unDeleted]},
+      {sort: {createdAt: -1}}).fetch();
+
+    const groupArticleDoc = _.groupBy(articleArr, (item, index) => {
+      return Math.floor(index / 10);
+    });
+    Logger.debug('groupArticleDoc', _.keys(groupArticleDoc));
+    if (!groupArticleDoc.hasOwnProperty(pageNum - 1)) {
+      return 0
+    }
+    const articleList = groupArticleDoc[pageNum - 1];
+
+    let resultArr = [];
+    articleList.forEach(articleDoc => {
+      const articleDynDoc = ArticleDynamics.findOne({articleId: articleDoc._id});
+      const createdUser = Meteor.users.findOne({_id: articleDoc.createdBy});
+      if (createdUser && articleDynDoc) {
+        resultArr.push({
+          _id: articleDoc._id,
+          name: articleDoc.name,
+          abstract: articleDoc.abstract,
+          content: articleDoc.content,
+          category: articleDoc.category,
+          allowComment: articleDoc.allowComment,
+          createdAt: moment(articleDoc.createdAt).format(App.config.format.datetime),
+          praiseCount: articleDynDoc.praiseCount || '',
+          storedCount: articleDynDoc.storedCount || '',
+          commentCount: articleDynDoc.commentCount || '',
+          authorId: createdUser._id,
+          authorName: createdUser.profile.name,
+        })
+      } else {
+        articleDoc.createdAt = moment(articleDoc.createdAt).format(App.config.format.datetime);
+        resultArr.push(articleDoc)
+      }
+    });
+    return resultArr
   },
 });

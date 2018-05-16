@@ -39,6 +39,7 @@ Template.AdminArticleView.onCreated(function () {
     if (Subs.ready()) {
       const articleDoc = Collections.Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
       if (articleDoc) {
+        articleDoc.createdAt = moment(articleDoc.createdAt).format(App.config.format.datetime);
         console.log(articleDoc);
         this.rArticleDoc.set(articleDoc);
         Meteor.call('account_findName', articleDoc.createdBy, (err, result) => {
@@ -46,8 +47,8 @@ Template.AdminArticleView.onCreated(function () {
             console.log(err)
           } else if (result) {
             this.rAuthorInfo.set({
-              userId: articleDoc.createdBy,
-              userName: result
+              authorId: articleDoc.createdBy,
+              authorName: result
             })
           }
         })
