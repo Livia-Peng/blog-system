@@ -29,10 +29,6 @@ const mainDefs = [
       parent: rtM.blog.parent,
       params: rtM.blog.params
     },
-    subs: function (params, queryParams) {
-      sf.articleByUserId(this, params, queryParams, {});
-      sf.articleDynByUserId(this, params, queryParams, {});
-    },
     action: function () {
       DocHead.setTitle(`${rtM.blog.title} | ${App.config.siteTitle}`);
       BlazeLayout.render('Admin_body', {

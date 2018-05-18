@@ -53,12 +53,14 @@
                 </div>
               </div>
             </div>
-            <hr class="new-section-sm mar-ver">
-            <p class="text-lg text-main text-bold text-uppercase pad-btm">评论列表</p>
-            <!-- Comments -->
-            {{#each comment in articleDynDoc.comments}}
-              {{> articleComment articleId=articleDoc._id commentId=comment.commentId index=@index}}
-            {{/each}}
+            {{#if articleDynDoc.commentCount}}
+              <hr class="new-section-sm mar-ver">
+              <p class="text-lg text-main text-bold text-uppercase pad-btm">评论列表</p>
+              <!-- Comments -->
+              {{#each comment in articleDynDoc.comments}}
+                {{> articleComment articleId=articleDoc._id commentId=comment.commentId index=@index}}
+              {{/each}}
+            {{/if}}
           {{/if}}
         </div>
       </div>
