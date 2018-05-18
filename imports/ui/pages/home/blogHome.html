@@ -1,7 +1,14 @@
 <template name="blogHome">
   <div class="row blog blog-list">
+    <div class="input-group pad-all bord-btm visible-xs">
+      <input type="text" placeholder="搜索" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-primary"><i class="demo-pli-magnifi-glass icon-lg"></i></button>
+      </span>
+    </div>
+
     <div class="panel clear-float">
-      <div class="col-md-8">
+      <div class="col-md-8 pad-top">
         {{#each blogList}}
           <div class="blog-content">
             <div class="blog-title media-block">
@@ -33,7 +40,8 @@
           </li>
         </ul>
       </div>
-      <div class="col-md-4">
+
+      <div class="col-md-4 hidden-xs">
         <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">搜索</p>
         <div class="input-group pad-all bord-btm">
           <input type="text" placeholder="搜索" class="form-control">

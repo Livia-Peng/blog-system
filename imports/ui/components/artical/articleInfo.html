@@ -16,7 +16,7 @@
         <hr>
         <p class="text-main text-bold text-uppercase">文章设置</p>
         <div class="form-horizontal">
-          <div class="form-group">
+          <!--<div class="form-group">
             <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">可见性</label>
             <div class="col-sm-7">
               <div class="select">
@@ -27,7 +27,7 @@
                 </select>
               </div>
             </div>
-          </div>
+          </div>-->
           <div class="form-group">
             <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">文章类别</label>
             <div class="col-sm-7">
@@ -39,6 +39,14 @@
                   {{/each}}
                 </select>
               </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 control-label text-left" for="demo-hor-inputpass">在首页公开</label>
+            <div class="col-sm-7">
+              <input name="isPublic" class="toggle-switch" id="demo-allow-public"
+                     type="checkbox" checked="{{articleInfo.isPublic}}">
+              <label for="demo-allow-public"></label>
             </div>
           </div>
           <div class="form-group">

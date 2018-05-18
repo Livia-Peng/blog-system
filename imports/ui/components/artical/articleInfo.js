@@ -41,8 +41,9 @@ Template.articleInfo.events({
 export function getBlogInfoData() {
   return {
     abstract: $('textarea[name="abstract"]').val(),
-    visibility: $('select[name="visibility"]').val(),
+    // visibility: $('select[name="visibility"]').val(),
     category: $('select[name="category"]').val(),
-    allowComment: $('input[name="allowComment"]').is(':checked')
+    allowComment: $('input[name="allowComment"]').is(':checked'),
+    isPublic: $('input[name="isPublic"]').is(':checked'),
   }
 }
