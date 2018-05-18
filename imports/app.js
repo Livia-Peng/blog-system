@@ -47,7 +47,7 @@ App.strings = {
   },
   visibilities: {
     public: '所有人可见',
-    friend: '仅好友可见',
+    // friend: '仅好友可见',
     private: '仅自己可见'
   },
   collection: {

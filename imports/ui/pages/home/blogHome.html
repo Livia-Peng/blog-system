@@ -1,24 +1,24 @@
 <template name="blogHome">
-  <div class="row blog">
+  <div class="row blog blog-list">
     <div class="panel clear-float">
       <div class="col-md-8">
         {{#each blogList}}
           <div class="blog-content">
             <div class="blog-title media-block">
-              <a href="{{pathFor ROUTER.articleView.name aid=articleId}}" class="btn-link" title="查看详情">
-                <h2>{{articleName}}</h2>
+              <a href="{{pathFor ROUTER.articleView.name aid=_id}}" class="btn-link" title="查看详情">
+                <h2>{{name}}</h2>
               </a>
             </div>
             <div class="blog-body">
-              <p class="text-overflow">{{articleAbstract}}</p>
+              <p class="text-overflow">{{abstract}}</p>
             </div>
           </div>
           <div class="blog-footer">
-            <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{createdBy}}</div>
+            <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{authorName}}</div>
             <div class="media-body text-right">
               <span class="mar-rgt"><i class="demo-pli-like icon-fw"></i>{{praiseCount}}</span>
               <span class="mar-rgt"><i class="demo-pli-speech-bubble-5 icon-fw"></i>{{commentCount}}</span>
-              <a href="{{pathFor ROUTER.articleEdit.name aid=articleId}}" title="编辑">
+              <a href="{{pathFor ROUTER.articleEdit.name aid=_id}}" title="编辑">
                 <i class="demo-pli-pen-5 icon-fw"></i></a>
             </div>
           </div>
@@ -43,7 +43,7 @@
         </div>
 
         <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">标签分类</p>
-        <ul class="list-inline mar-hor pad-btm bord-btm">
+        <ul class="list-inline mar-hor">
           <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Family</a></li>
           <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Home</a></li>
           <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Work</a></li>
