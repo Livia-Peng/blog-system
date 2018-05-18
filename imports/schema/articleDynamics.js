@@ -39,19 +39,27 @@ export const articleDynamics = new sSchema({
       }
     }
   },
-  praiseCount: {
-    type: Number,
-    label: '文章点赞量',
+  praises: {
+    type: Array,
+    label: '文章点赞',
     optional: true,
-    autoValue: function () {
-      if (Meteor.isServer && this.isInsert) {
-        return 0
-      }
-    }
   },
-  storedCount: {
-    type: Number,
+  'praises.$': {
+    type: String,
+    label: '用户id'
+  },
+  stores: {
+    type: Array,
     label: '文章收藏量',
+    optional: true,
+  },
+  'stores.$': {
+    type: String,
+    label: '用户id'
+  },
+  commentCount: {
+    type: Number,
+    label: '文章评论量',
     optional: true,
     autoValue: function () {
       if (Meteor.isServer && this.isInsert) {

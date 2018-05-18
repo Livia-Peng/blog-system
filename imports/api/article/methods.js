@@ -48,6 +48,11 @@ Meteor.methods({
     try {
       const result = Article.update({_id: articleId}, {$set: changedDoc});
       Logger.info('**** > Methods article_update success, result: ', result);
+
+      if (!ArticleDynamics.findOne({articleId: articleId})) {
+        createArticleDynamics(articleId)
+      }
+
       return result
     } catch (err) {
       Logger.error('**** > Methods article_update error:', err, {});
@@ -105,8 +110,8 @@ Meteor.methods({
           category: articleDoc.category,
           allowComment: articleDoc.allowComment,
           createdAt: moment(articleDoc.createdAt).format(App.config.format.datetime),
-          praiseCount: articleDynDoc.praiseCount || '',
-          storedCount: articleDynDoc.storedCount || '',
+          praiseCount: articleDynDoc.praises && articleDynDoc.praises.length ? articleDynDoc.praises.length : '',
+          storedCount: articleDynDoc.stores && articleDynDoc.stores.length ? articleDynDoc.stores.length : '',
           commentCount: articleDynDoc.commentCount || '',
           authorId: createdUser._id,
           authorName: createdUser.profile.name,

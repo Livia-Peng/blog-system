@@ -7,7 +7,7 @@ import {checkIsLogin} from '/imports/app/server/utils.js'
 import {App} from '/imports/app.js'
 
 Meteor.methods({
-  // dynamicKey: skinCount/praiseCount/storedCount
+  // dynamicKey: skinCount/praises/stores
   articleDynamic_count(articleId, dynamicKey) {
     Logger.info('########## Methods articleDynamic_count: ', arguments, Meteor.user());
     checkIsLogin();
@@ -19,19 +19,15 @@ Meteor.methods({
       Logger.error('**** > Methods articleDynamic_count 文章不存在, articleId:', articleId);
       throw App.err.server.whatNotExist(App.strings.collection.articleDynamics)
     }
-    const dynamicCount = articleDynCur[dynamicKey] ? articleDynCur[dynamicKey]++ : 1;
-    return ArticleDynamics.update({_id: articleDynCur._id}, {$set: {[dynamicKey]: dynamicCount}})
-  },
 
-  articleDynamic_comments(articleId, commentInfo) {
-    Logger.info('########## Methods articleDynamic_comments: ', arguments, Meteor.user());
-    checkIsLogin();
-    const articleDynCur = ArticleDynamics.findOne({$and: [{articleId: articleId}, App.selector.unDeleted]});
-    if (!articleDynCur) {
-      Logger.error('**** > Methods articleDynamic_comments 文章不存在, articleId:', articleId);
-      // return
+    const userId = Meteor.userId();
+    let dynamicArr = articleDynCur[dynamicKey] || [];
+    if (dynamicArr.indexOf(userId) !== -1) {
+      return
     }
-    // todo: insert comment
+    dynamicArr.push(userId);
+
+    return ArticleDynamics.update({_id: articleDynCur._id}, {$set: {[dynamicKey]: dynamicArr}})
   },
 });
 
@@ -61,6 +57,7 @@ export function updateArticleDynComments(articleId, commentInfo) {
       replies: []
     })
   }
+  const commentCount = articleDynCur.commentCount ? articleDynCur.commentCount ++ : 1;
   Logger.debug('commentArr change to:', commentArr);
-  return ArticleDynamics.update({articleId: articleId}, {$set: {comments: commentArr}})
+  return ArticleDynamics.update({articleId: articleId}, {$set: {comments: commentArr, commentCount: commentCount}})
 }

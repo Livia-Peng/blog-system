@@ -32,6 +32,11 @@ export const article = new sSchema({
     label: '文章内容',
     min: 200,
   },
+  isPublic: {
+    type: Boolean,
+    label: '在首页公开',
+    optional: true,
+  },
   isPublished: {
     type: Boolean,
     label: '是否发布',
