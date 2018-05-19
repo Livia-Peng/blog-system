@@ -4,6 +4,7 @@
 import './blogConfig.html'
 import './tab/articleManage.js'
 import './tab/userBlogManage.js'
+import './tab/collectionManage.js'
 import './tab/commentManage.js'
 import {Template} from 'meteor/templating'
 import {Meteor} from 'meteor/meteor'
@@ -14,6 +15,7 @@ import '/imports/ui/components/table/tableCells.js'
 const tabs = {
   article: 'article',
   comment: 'comment',
+  collection: 'collection',
   userBlog: 'userBlog',
 };
 const rCurrentTab = new ReactiveVar(tabs.article);
@@ -31,6 +33,11 @@ Template.AdminBlogConfig.helpers({
         title: '评论管理',
         dataFor: tabs.comment,
         active: currentTab === tabs.comment ? 'active' : ''
+      },
+      {
+        title: '我的收藏',
+        dataFor: tabs.collection,
+        active: currentTab === tabs.collection ? 'active' : ''
       },
       {
         title: '博客设置',
