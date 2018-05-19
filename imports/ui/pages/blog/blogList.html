@@ -3,41 +3,43 @@
     {{> userNav}}
 
     <div class="fluid">
-      {{> blogNav}}
-
       <div class="blog blog-list">
         <!-- Panel  Blog -->
         <div class="panel">
-          {{#each blogList}}
-            <div class="blog-content">
-              <div class="blog-title media-block">
-                <a href="{{pathFor ROUTER.articleView.name aid=_id}}" class="btn-link" title="查看详情">
-                  <h2>{{name}}</h2>
-                </a>
+          {{> blogNav}}
+
+          <div class="panel-body">
+            {{#each blogList}}
+              <div class="blog-content">
+                <div class="blog-title media-block">
+                  <a href="{{pathFor ROUTER.articleView.name aid=_id}}" class="btn-link" title="查看详情">
+                    <h2>{{name}}</h2>
+                  </a>
+                </div>
+                <div class="blog-body">
+                  <p class="text-overflow">{{abstract}}</p>
+                </div>
               </div>
-              <div class="blog-body">
-                <p class="text-overflow">{{abstract}}</p>
+              <div class="blog-footer">
+                <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{authorName}}</div>
+                <div class="media-body text-right">
+                  <span class="mar-rgt"><i class="demo-pli-like icon-fw"></i>{{praiseCount}}</span>
+                  <span class="mar-rgt"><i class="demo-pli-speech-bubble-5 icon-fw"></i>{{commentCount}}</span>
+                  <a href="{{pathFor ROUTER.articleEdit.name aid=_id}}" title="编辑">
+                    <i class="demo-pli-pen-5 icon-fw"></i></a>
+                </div>
               </div>
-            </div>
-            <div class="blog-footer">
-              <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{authorName}}</div>
-              <div class="media-body text-right">
-                <span class="mar-rgt"><i class="demo-pli-like icon-fw"></i>{{praiseCount}}</span>
-                <span class="mar-rgt"><i class="demo-pli-speech-bubble-5 icon-fw"></i>{{commentCount}}</span>
-                <a href="{{pathFor ROUTER.articleEdit.name aid=_id}}" title="编辑">
-                  <i class="demo-pli-pen-5 icon-fw"></i></a>
-              </div>
-            </div>
-          {{/each}}
-          <!--todo-->
-          <ul class="pager">
-            <li class="previous disabled">
-              <a href="#"><i class="demo-psi-arrow-left"></i> Previous</a>
-            </li>
-            <li class="next">
-              <a href="#">Next <i class="demo-psi-arrow-right"></i></a>
-            </li>
-          </ul>
+            {{/each}}
+            <!--todo-->
+            <ul class="pager">
+              <li class="previous disabled">
+                <a href="#"><i class="demo-psi-arrow-left"></i> Previous</a>
+              </li>
+              <li class="next">
+                <a href="#">Next <i class="demo-psi-arrow-right"></i></a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
