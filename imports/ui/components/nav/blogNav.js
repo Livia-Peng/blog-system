@@ -14,20 +14,20 @@ Template.blogNav.helpers({
     const userId = Meteor.userId();
     return [
       {
+        active: routeName.indexOf(routerMeta.home.name) === 0 ? 'active' : '',
         url: '/',
-        title: '首页'
+        title: '博客首页'
       },
       {
         active: routeName.indexOf(routerMeta.blog.name) === 0 ? 'active' : '',
         url: FlowRouter.path(routerMeta.blog.name, {userId: userId}),
-        title: '我的博客'
+        title: '个人博客'
       },
       {
         url: FlowRouter.path(routerMeta.articleCreate.name),
         title: '新文章'
       },
       {
-        active: routeName.indexOf(routerMeta.blogConfig.name) === 0 ? 'active' : '',
         url: FlowRouter.path(routerMeta.blogConfig.name),
         title: '博客管理'
       },

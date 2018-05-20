@@ -23,10 +23,10 @@
               <div class="blog-footer">
                 <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{authorName}}</div>
                 <div class="media-body text-right">
-                  <span class="mar-rgt"><i class="demo-pli-like icon-fw"></i>{{praiseCount}}</span>
-                  <span class="mar-rgt"><i class="demo-pli-speech-bubble-5 icon-fw"></i>{{commentCount}}</span>
-                  <a href="{{pathFor ROUTER.articleEdit.name aid=_id}}" title="编辑">
-                    <i class="demo-pli-pen-5 icon-fw"></i></a>
+                  <span class="mar-rgt text-xs">推荐&nbsp;{{praiseCount}}</span>
+                  <span class="mar-rgt text-xs">评论&nbsp;{{commentCount}}</span>
+                  <a href="{{pathFor ROUTER.articleView.name aid=_id}}" class="text-xs">查看详情</a>
+                  <a href="{{pathFor ROUTER.articleEdit.name aid=_id}}" class="mar-lft text-xs">编辑</a>
                 </div>
               </div>
             {{/each}}

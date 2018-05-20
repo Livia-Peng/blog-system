@@ -7,6 +7,7 @@ import {Meteor} from 'meteor/meteor'
 import {App} from '/imports/app.js'
 import {getBlogList} from '/imports/app/client/apiFuncs.js'
 import '/imports/ui/components/blog/blogPanels.js'
+import '/imports/ui/components/nav/blogNav.js'
 
 
 Template.blogHome.helpers({
