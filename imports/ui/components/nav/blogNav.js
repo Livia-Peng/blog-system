@@ -16,7 +16,7 @@ Template.blogNav.helpers({
       {
         active: routeName.indexOf(routerMeta.home.name) === 0 ? 'active' : '',
         url: '/',
-        title: '博客首页'
+        title: '首页'
       },
       {
         active: routeName.indexOf(routerMeta.blog.name) === 0 ? 'active' : '',
