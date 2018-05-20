@@ -28,7 +28,8 @@
             </div>
           </div>
           <div class="blog-footer">
-            <div class="media-left">{{createdAt}}&nbsp;-&nbsp;{{authorName}}</div>
+            <div class="media-left">
+              <a href="#" class="btn-link">{{authorName}}</a>&nbsp;发布于&nbsp;{{createdAt}}</div>
             <div class="media-body text-right">
               <span class="mar-rgt text-xs">推荐&nbsp;{{praiseCount}}</span>
               <span class="mar-rgt text-xs">评论&nbsp;{{commentCount}}</span>
@@ -36,14 +37,20 @@
             </div>
           </div>
         {{/each}}
-        <!--todo-->
+
         <ul class="pager">
-          <li class="previous disabled">
-            <a href="#"><i class="demo-psi-arrow-left"></i> Previous</a>
-          </li>
-          <li class="next">
-            <a href="#">Next <i class="demo-psi-arrow-right"></i></a>
-          </li>
+          {{#if pageBtn.showPre}}
+            <li class="previous">
+              <a class="cursor-pointer" data-action="change-page" data-for="previous">
+                <i class="demo-psi-arrow-left"></i> 上一页</a>
+            </li>
+          {{/if}}
+          {{#if pageBtn.showNext}}
+            <li class="next">
+              <a class="cursor-pointer" data-action="change-page" data-for="next">
+                下一页 <i class="demo-psi-arrow-right"></i></a>
+            </li>
+          {{/if}}
         </ul>
       </div>
 

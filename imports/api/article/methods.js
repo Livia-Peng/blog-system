@@ -84,14 +84,17 @@ Meteor.methods({
     }
   },
 
-  articleList_api(selector = {}, pageNum = 1) {
+  articleList_api(selector = {}, pageNum = 1, pageSize = 5) {
+    Logger.info('########## Methods articleList_api arguments: ', arguments, Meteor.user());
     const articleArr = Article.find({$and: [selector, App.selector.unDeleted]},
       {sort: {createdAt: -1}}).fetch();
 
     const groupArticleDoc = _.groupBy(articleArr, (item, index) => {
-      return Math.floor(index / 10);
+      return Math.floor(index / pageSize);
     });
-    Logger.debug('groupArticleDoc', _.keys(groupArticleDoc));
+    Logger.debug('articleArr.length:', articleArr.length, {});
+    Logger.debug('totalPages:', _.keys(groupArticleDoc).length, {});
+    Logger.debug('groupArticleDoc keys:', _.keys(groupArticleDoc));
     if (!groupArticleDoc.hasOwnProperty(pageNum - 1)) {
       return 0
     }
@@ -121,6 +124,16 @@ Meteor.methods({
         resultArr.push(articleDoc)
       }
     });
-    return resultArr
+    return {
+      blogList: resultArr,
+      totalLength: articleArr.length,
+      totalPages: _.keys(groupArticleDoc).length,
+      pageNum: pageNum
+    }
   },
+
+  categoryList_api(selector) {
+    Logger.info('########## Methods categoryList_api arguments: ', arguments, Meteor.user());
+    const articleArr = Article.find({$and: [selector, App.selector.unDeleted]}).fetch();
+  }
 });

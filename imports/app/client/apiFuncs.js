@@ -4,13 +4,24 @@
 import {Meteor} from 'meteor/meteor'
 import {showError} from './utils.js'
 
-export  function getBlogList(selector, pageNum, rBlogList) {
+export function getBlogList(selector, pageNum, rQueryResult) {
   Meteor.call('articleList_api', selector, pageNum, (err, result) => {
     if (err) {
       showError(err)
     } else if (result) {
       console.log(result);
-      rBlogList.set(result)
+      rQueryResult.set(result)
+    }
+  })
+}
+
+export function getCategories(selector, rCategoryList) {
+  Meteor.call('categoryList_api', selector, (err, result) => {
+    if (err) {
+      showError(err)
+    } else if (result) {
+      console.log(result);
+      rCategoryList.set(result)
     }
   })
 }
