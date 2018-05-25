@@ -113,9 +113,9 @@ Meteor.methods({
           category: articleDoc.category,
           allowComment: articleDoc.allowComment,
           createdAt: moment(articleDoc.createdAt).format(App.config.format.datetime),
-          praiseCount: articleDynDoc.praises && articleDynDoc.praises.length ? articleDynDoc.praises.length : '',
-          storedCount: articleDynDoc.stores && articleDynDoc.stores.length ? articleDynDoc.stores.length : '',
-          commentCount: articleDynDoc.commentCount || '',
+          praiseCount: articleDynDoc.praises && articleDynDoc.praises.length ? articleDynDoc.praises.length : 0,
+          storedCount: articleDynDoc.stores && articleDynDoc.stores.length ? articleDynDoc.stores.length : 0,
+          commentCount: articleDynDoc.commentCount || 0,
           authorId: createdUser._id,
           authorName: createdUser.profile.name,
         })

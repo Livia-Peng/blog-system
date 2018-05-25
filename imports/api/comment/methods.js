@@ -7,6 +7,7 @@ import {Comment} from "./comment.js";
 import {ArticleDynamics} from '/imports/api/articleDynamics/articleDynamics.js'
 import {Schemas} from '/imports/schemas.js'
 import {App} from "/imports/app.js";
+import {Collections} from '/imports/collections.js'
 import {checkIsLogin, handleCatchErr, getChangedDoc, schemaValidate} from '/imports/app/server/utils.js'
 import {updateArticleDynComments} from '/imports/api/articleDynamics/methods.js'
 
@@ -14,6 +15,8 @@ Meteor.methods({
   comment_insert(insertDoc) {
     Logger.info('########## Methods comment_insert insertDoc: ', insertDoc, Meteor.user());
     checkIsLogin();
+    const articleDoc = Collections.Article.findOne({_id: insertDoc.articleId});
+    insertDoc.articleTitle = articleDoc.name;
     schemaValidate(Schemas.comment, insertDoc, 'comment_insert');
     try {
       const commentId = Comment.insert(insertDoc);

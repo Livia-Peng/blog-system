@@ -10,6 +10,10 @@ export const comment = new sSchema({
     type: String,
     label: '博文Id'
   },
+  articleTitle: {
+    type: String,
+    label: '博文名称'
+  },
   content: {
     type: String,
     label: '评论内容',

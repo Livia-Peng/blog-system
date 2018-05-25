@@ -41,6 +41,7 @@ export function updateArticleDynComments(articleId, commentInfo) {
   if (!articleDynCur) {
     Logger.error('**** > Methods articleDynamic_comments 文章不存在, articleId:', articleId);
   }
+  Logger.debug('articleDynCur:', articleDynCur);
   let commentArr = articleDynCur.comments || [];
   const replyCommentId = commentInfo.replyCommentId;
   if (replyCommentId) {
@@ -57,7 +58,8 @@ export function updateArticleDynComments(articleId, commentInfo) {
       replies: []
     })
   }
-  const commentCount = articleDynCur.commentCount ? articleDynCur.commentCount ++ : 1;
+  const commentCount = articleDynCur.commentCount ? articleDynCur.commentCount + 1 : 1;
   Logger.debug('commentArr change to:', commentArr);
+  Logger.debug('commentCount change to:', commentCount);
   return ArticleDynamics.update({articleId: articleId}, {$set: {comments: commentArr, commentCount: commentCount}})
 }
