@@ -43,6 +43,10 @@ export const subsFn = {
     self.register('articleDynByUserId', Subs.subscribe('articleDyn_byUserId', params.userId));
   },
 
+  articleDynByAId: function (self, params, queryParams, fields = {}) {
+    self.register('articleDynByAId', Subs.subscribe('articleDyn_byAId', params.aid));
+  },
+
   system: function (self, params, queryParams) {
     self.register('system', Subs.subscribe('system'));
   }

@@ -83,6 +83,7 @@ const mainDefs = [
     },
     subs: function (params, queryParams) {
       sf.articleById(this, params, queryParams)
+      sf.articleDynByAId(this, params, queryParams)
     },
     action: function () {
       DocHead.setTitle(`${rtM.articleView.title} | ${App.config.siteTitle}`);

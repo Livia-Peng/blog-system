@@ -38,9 +38,10 @@ Template.AdminArticleView.onCreated(function () {
   this.autorun(() => {
     if (Subs.ready()) {
       const articleDoc = Collections.Article.findOne({$and: [{_id: articleId}, App.selector.unDeleted]});
+      const articleDynDoc = Collections.ArticleDynamics.findOne({articleId: articleId});
       if (articleDoc) {
         articleDoc.createdAt = moment(articleDoc.createdAt).format(App.config.format.datetime);
-        console.log(articleDoc);
+        // console.log(articleDoc);
         this.rArticleDoc.set(articleDoc);
         Meteor.call('account_findName', articleDoc.createdBy, (err, result) => {
           if (err) {
@@ -53,11 +54,8 @@ Template.AdminArticleView.onCreated(function () {
           }
         })
       }
-      let articleDynDoc = Collections.ArticleDynamics.findOne({articleId: articleId});
       if (articleDynDoc) {
-        console.log(articleDynDoc);
-        articleDynDoc.commentCount = articleDynDoc.comments && articleDynDoc.comments.length ?
-          articleDynDoc.comments.length : '';
+        // console.log(articleDynDoc);
         this.rArticleDynDoc.set(articleDynDoc)
       }
     }
@@ -68,6 +66,7 @@ Template.AdminArticleView.onRendered(function () {
   this.autorun(() => {
     const articleDoc = this.rArticleDoc.get();
     if (articleDoc) {
+      $('div[id="blog-content"]').empty();
       $('div[id="blog-content"]').append(articleDoc.content);
     }
   })
