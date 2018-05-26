@@ -24,7 +24,15 @@ Template.blogHome.helpers({
         showNext: queryResult.pageNum < queryResult.totalPages
       }
     }
-  }
+  },
+  categoryList: function () {
+    return _.keys(App.strings.categories).map(key => {
+      return {
+        label: App.strings.categories[key],
+        value: key
+      }
+    })
+  },
 });
 
 Template.blogHome.onCreated(function () {
@@ -60,5 +68,10 @@ Template.blogHome.events({
     }
     inst.rSelectedPageNum.set(selectedPageNum);
     getBlogList(selector, selectedPageNum, inst.rQueryResult)
-  }
+  },
+  'click li[data-action="chooseCategory"]': function (event, inst) {
+    const target = $(event.currentTarget);
+    const dataFor = target.attr('data-for');
+    console.log(dataFor)
+  },
 });

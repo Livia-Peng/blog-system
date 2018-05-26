@@ -13,12 +13,12 @@
 
     <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">文章分类</p>
     <ul class="list-inline mar-hor pad-btm bord-btm">
-      <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Family</a></li>
-      <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Home</a></li>
-      <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Work</a></li>
-      <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Film</a></li>
-      <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Music</a></li>
-      <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Photography</a></li>
+      {{#each categoryList}}
+        <li class="tag tag-sm">
+          <a class="cursor-pointer" data-for="{{value}}" data-action="chooseCategory">
+            <i class="demo-pli-tag"></i> {{label}}</a>
+        </li>
+      {{/each}}
     </ul>
 
     <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">最新评论</p>

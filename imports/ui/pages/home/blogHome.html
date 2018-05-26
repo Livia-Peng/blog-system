@@ -59,18 +59,17 @@
         <div class="input-group pad-all bord-btm">
           <input type="text" placeholder="搜索" class="form-control">
           <span class="input-group-btn">
-           <button class="btn btn-primary"><i class="demo-pli-magnifi-glass icon-lg"></i></button>
+           <button class="btn btn-primary">
+             <i class="demo-pli-magnifi-glass icon-lg"></i></button>
           </span>
         </div>
 
         <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">标签分类</p>
-        <ul class="list-inline mar-hor">
-          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Family</a></li>
-          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Home</a></li>
-          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Work</a></li>
-          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Film</a></li>
-          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Music</a></li>
-          <li class="tag tag-sm"><a href="#"><i class="demo-pli-tag"></i> Photography</a></li>
+        <ul class="home-category-list list-group mar-hor">
+          {{#each categoryList}}
+            <li class="list-group-item cursor-pointer text-xs"
+                data-for="{{value}}" data-action="chooseCategory">{{label}}</li>
+          {{/each}}
         </ul>
       </div>
     </div>

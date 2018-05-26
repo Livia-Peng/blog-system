@@ -39,11 +39,11 @@ Template.AdminBlogConfig.helpers({
         dataFor: tabs.collection,
         active: currentTab === tabs.collection ? 'active' : ''
       },
-      {
-        title: '博客设置',
-        dataFor: tabs.userBlog,
-        active: currentTab === tabs.userBlog ? 'active' : ''
-      },
+      // {
+      //   title: '博客设置',
+      //   dataFor: tabs.userBlog,
+      //   active: currentTab === tabs.userBlog ? 'active' : ''
+      // },
     ]
   },
   dynamic: function () {
