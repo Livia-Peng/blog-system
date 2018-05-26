@@ -25,22 +25,15 @@ TabularFactory({
       title: "创建时间",
       render: function (val) {
         return moment(val).format(App.config.format.datetime) || App.strings.noRecord;
-        // if (val instanceof Date) {
-        // } else {
-        //   return ;
-        // }
       }
     },
-    // {
-    //   title: "操作",
-    //   tmpl: Meteor.isClient && Template.cellButtonAccount,
-    //   tmplContext(rowData) {
-    //     rowData.dataFor = 'account';
-    //     rowData.name = rowData.profile.name;
-    //     // console.log(rowData);
-    //     return rowData;
-    //   }
-    // }
+    {
+      title: "操作",
+      tmpl: Meteor.isClient && Template.cellBlogButton,
+      tmplContext(rowData) {
+        return rowData;
+      }
+    }
   ]
 });
 
@@ -174,8 +167,53 @@ TabularFactory({
       title: "操作",
       tmpl: Meteor.isClient && Template.cellBlogButton,
       tmplContext(rowData) {
-        // rowData.dataFor = 'account';
-        // console.log(rowData);
+        return rowData;
+      }
+    }
+  ]
+});
+
+
+// 用户评论管理
+TabularFactory({
+  name: 'userCommentManage',
+  collection: Collections.Comment,
+  order: [[0, 'desc']],
+  selector: function () {
+    return {
+      $and: [{createdBy: Meteor.userId()}, App.selector.unDeleted]
+    }
+  },
+  columns: [
+    {data: "articleTitle", title: "博文名称"},
+    {
+      data: "content",
+      title: "评论内容",
+      render: function (val) {
+        return val && val.length >= 10 ? val.slice(0, 9) + '...' : (val || App.strings.noRecord)
+      }
+    },
+    {
+      data: "createdAt",
+      title: "创建时间",
+      render: function (val) {
+        return moment(val).format(App.config.format.datetime) || App.strings.noRecord
+      }
+    },
+    {
+      data: "createdBy",
+      title: "创建人",
+      tmpl: Meteor.isClient && Template.cellCreatedBy,
+      tmplContext(rowData) {
+        return {
+          createdBy: rowData.createdBy
+        }
+      }
+    },
+    {
+      title: "操作",
+      tmpl: Meteor.isClient && Template.cellBlogButton,
+      tmplContext(rowData) {
         return rowData;
       }
     }
