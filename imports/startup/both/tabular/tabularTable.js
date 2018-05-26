@@ -160,6 +160,9 @@ TabularFactory({
       title: "文章动态",
       tmpl: Meteor.isClient && Template.cellArticleDynamic,
       tmplContext(rowData) {
+        rowData.praiseCount = 3;
+        rowData.storedCount = 0;
+        rowData.commentCount = 5;
         return rowData;
       }
     },

@@ -13,6 +13,18 @@ Template.userNav.helpers({
       }
     })
   },
+  userInfo: function () {
+    const user = Meteor.user();
+    if (user) {
+      console.log(user);
+      return {
+        id: user._id,
+        name: user.profile.name,
+        fans: 2,
+        interested: 5
+      }
+    }
+  },
 });
 
 Template.userNav.events({

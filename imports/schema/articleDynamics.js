@@ -41,7 +41,7 @@ export const articleDynamics = new sSchema({
   },
   praises: {
     type: Array,
-    label: '文章点赞',
+    label: '文章推送',
     optional: true,
   },
   'praises.$': {
