@@ -10,6 +10,7 @@ import {App} from '/imports/app.js'
 import {Collections} from '/imports/collections.js'
 import {showError} from '/imports/app/client/utils.js'
 import {Notify} from '/imports/app/client/notify.js'
+import {routerMeta} from '/imports/routerMeta.js'
 import '/imports/ui/components/nav/blogNav.js'
 import '/imports/ui/components/nav/userNav.js'
 import '/imports/ui/components/comment/comments.js'
@@ -19,9 +20,26 @@ Template.AdminArticleView.helpers({
     const inst = Template.instance();
     return inst.rArticleDoc.get();
   },
-  articleDynDoc: function () {
+  articleDynInfo: function () {
     const inst = Template.instance();
-    return inst.rArticleDynDoc.get();
+    const articleDynDoc = inst.rArticleDynDoc.get();
+    const userId = Meteor.userId();
+    return {
+      praiseCount: articleDynDoc.praises ? articleDynDoc.praises.length : 0,
+      praisedStatus: articleDynDoc.praises && articleDynDoc.praises.indexOf(userId) !== -1 ? {
+        icon: 'demo-psi-like', text: '取消', dataFor: 'cancel-praises',
+      } : {
+        icon: 'demo-pli-like', text: '', dataFor: 'praises',
+      },
+      storedCount: articleDynDoc.stores ? articleDynDoc.stores.length : 0,
+      storedStatus: articleDynDoc.stores && articleDynDoc.stores.indexOf(userId) !== -1 ? {
+        icon: 'demo-psi-heart-2', text: '取消', dataFor: 'cancel-stores',
+      } : {
+        icon: 'demo-pli-heart-2', text: '', dataFor: 'stores',
+      },
+      commentCount: articleDynDoc.commentCount,
+      comments: articleDynDoc.comments,
+    }
   },
   authorInfo: function () {
     const inst = Template.instance();
@@ -30,6 +48,7 @@ Template.AdminArticleView.helpers({
 });
 
 Template.AdminArticleView.onCreated(function () {
+  const userId = Meteor.userId();
   const articleId = FlowRouter.getParam('aid');
   this.rArticleDoc = new ReactiveVar({});
   this.rArticleDynDoc = new ReactiveVar({});
@@ -49,7 +68,8 @@ Template.AdminArticleView.onCreated(function () {
           } else if (result) {
             this.rAuthorInfo.set({
               authorId: articleDoc.createdBy,
-              authorName: result
+              authorName: result,
+              isAuthor: articleDoc.createdBy === userId,
             })
           }
         })
@@ -67,13 +87,17 @@ Template.AdminArticleView.onRendered(function () {
     const articleDoc = this.rArticleDoc.get();
     if (articleDoc) {
       $('div[id="blog-content"]').empty();
-      $('div[id="blog-content"]').append(articleDoc.content);
+      $(`div[id="blog-content"]`).append(articleDoc.content);
     }
   })
 });
 
 Template.AdminArticleView.events({
   'click a[data-action="dynamic-count"]': function (event, inst) {
+    if (!Meteor.userId()) {
+      FlowRouter.go(routerMeta.login.name);
+      return
+    }
     event.preventDefault();
     const target = $(event.currentTarget);
     const dataFor = target.attr('data-for');
@@ -94,7 +118,8 @@ Template.AdminArticleView.events({
   'click button[data-action="create-comment"]': function (event, inst) {
     event.preventDefault();
     if (!Meteor.userId()) {
-      // todo: 请先登录
+      FlowRouter.go(routerMeta.login.name);
+      return
     }
     const content = $('textarea[name="commentContent"]').val();
     console.log(content);
