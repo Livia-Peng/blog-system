@@ -26,6 +26,9 @@ Template.AdminBlogList.helpers({
         showNext: queryResult.pageNum < queryResult.totalPages
       }
     }
+  },
+  blogUserId: function () {
+    return FlowRouter.getParam('userId')
   }
 });
 
@@ -59,5 +62,18 @@ Template.AdminBlogList.events({
     }
     inst.rSelectedPageNum.set(selectedPageNum);
     getBlogList(selector, selectedPageNum, inst.rQueryResult)
+  },
+
+  'click a[data-action="chooseCategory"]': function (event, inst) {
+    const target = $(event.currentTarget);
+    const dataFor = target.attr('data-for');
+    // console.log(dataFor);
+    let selector = inst.rSelector.get();
+    selector['$and'].push({
+      category: dataFor
+    });
+    inst.rSelector.set(selector);
+    inst.rSelectedPageNum.set(1);
+    getBlogList(selector, 1, inst.rQueryResult)
   }
 });

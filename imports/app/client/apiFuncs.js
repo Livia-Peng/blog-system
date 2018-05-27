@@ -15,7 +15,7 @@ export function getBlogList(selector, pageNum, rQueryResult) {
   })
 }
 
-export function getCategories(selector, rCategoryList) {
+export function getCategoryList(selector, rCategoryList) {
   Meteor.call('categoryList_api', selector, (err, result) => {
     if (err) {
       showError(err)

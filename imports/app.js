@@ -33,6 +33,7 @@ App.strings = {
   noRecord: '无',
   firstOption: '- 请选择 -',
   categories: {
+    none: '无分类',
     internet: '互联网',
     develop: '技术开发',
     literature: '文字',

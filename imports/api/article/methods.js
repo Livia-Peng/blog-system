@@ -135,5 +135,20 @@ Meteor.methods({
   categoryList_api(selector) {
     Logger.info('########## Methods categoryList_api arguments: ', arguments, Meteor.user());
     const articleArr = Article.find({$and: [selector, App.selector.unDeleted]}).fetch();
+    Logger.debug('articleArr.length:', articleArr.length, {});
+    let categoryArr = [];
+    articleArr.forEach(data => {
+      let categoryItem = categoryArr.find(item => item.value === data.category);
+      if (categoryItem) {
+        categoryItem.count++
+      } else {
+        categoryArr.push({
+          count: 1,
+          value: data.category
+        })
+      }
+    });
+    Logger.debug('categoryArr.length:', categoryArr.length, {});
+    return categoryArr
   }
 });

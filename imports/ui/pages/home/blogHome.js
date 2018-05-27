@@ -5,7 +5,7 @@ import './blogHome.html'
 import {Template} from 'meteor/templating'
 import {Meteor} from 'meteor/meteor'
 import {App} from '/imports/app.js'
-import {getBlogList} from '/imports/app/client/apiFuncs.js'
+import {getBlogList, getCategoryList} from '/imports/app/client/apiFuncs.js'
 import '/imports/ui/components/blog/blogPanels.js'
 import '/imports/ui/components/nav/blogNav.js'
 
@@ -26,12 +26,18 @@ Template.blogHome.helpers({
     }
   },
   categoryList: function () {
-    return _.keys(App.strings.categories).map(key => {
-      return {
-        label: App.strings.categories[key],
-        value: key
+    const inst = Template.instance();
+    const categoryArr = inst.rCategoryList.get();
+    let categoryList = [];
+    categoryArr.forEach(item => {
+      if (App.strings.categories.hasOwnProperty(item.value)) {
+        categoryList.push({
+          label: `${App.strings.categories[item.value]}&nbsp;&nbsp;${item.count}`,
+          value: item.value
+        })
       }
-    })
+    });
+    return categoryList
   },
 });
 
@@ -41,8 +47,10 @@ Template.blogHome.onCreated(function () {
   this.rBlogList = new ReactiveVar();
   this.rSelector = new ReactiveVar(selector);
   this.rSelectedPageNum = new ReactiveVar(1);
+  this.rCategoryList = new ReactiveVar([]);
 
-  getBlogList(selector, 1, this.rQueryResult)
+  getBlogList(selector, 1, this.rQueryResult);
+  getCategoryList(selector, this.rCategoryList)
 });
 
 Template.blogHome.onRendered(function () {
@@ -69,11 +77,20 @@ Template.blogHome.events({
     inst.rSelectedPageNum.set(selectedPageNum);
     getBlogList(selector, selectedPageNum, inst.rQueryResult)
   },
+
   'click li[data-action="chooseCategory"]': function (event, inst) {
     const target = $(event.currentTarget);
     const dataFor = target.attr('data-for');
-    console.log(dataFor)
+    console.log(dataFor);
+    let selector = inst.rSelector.get();
+    selector['$and'].push({
+      category: dataFor
+    });
+    inst.rSelector.set(selector);
+    inst.rSelectedPageNum.set(1);
+    getBlogList(selector, 1, inst.rQueryResult)
   },
+
   'keyup input[name="search-input-xs"]': function (event, inst) {
     if (event.keyCode === 13 || $(event.target).val() === '') {
       $('button[data-for="search-input-xs"]').click();
@@ -112,6 +129,7 @@ Template.blogHome.events({
       })
     }
     inst.rSelector.set(selector);
+    inst.rSelectedPageNum.set(1);
     getBlogList(selector, 1, inst.rQueryResult)
-  }
+  },
 });
