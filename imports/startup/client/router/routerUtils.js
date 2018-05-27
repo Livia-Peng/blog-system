@@ -30,17 +30,10 @@ export function routerGen(router, routerDefs) {
 }
 
 export const subsFn = {
-  articleById: function (self, params, queryParams) {
+  articleById: function (self, params, queryParams, checkLoginIn = false) {
     if (checkIdRegEx(params.aid, '博文')) {
-      self.register('articleById', Subs.subscribe('article_byId', params.aid, {}));
+      self.register('articleById', Subs.subscribe('article_byId', params.aid, checkLoginIn));
     }
-  },
-  articleByUserId: function (self, params, queryParams, fields = {}) {
-    self.register('articleByUserId', Subs.subscribe('article_byUserId', params.userId));
-  },
-
-  articleDynByUserId: function (self, params, queryParams, fields = {}) {
-    self.register('articleDynByUserId', Subs.subscribe('articleDyn_byUserId', params.userId));
   },
 
   articleDynByAId: function (self, params, queryParams, fields = {}) {

@@ -6,18 +6,11 @@ import {checkIsLogin} from '/imports/app/server/utils.js'
 import {Article} from '../article.js'
 import {App} from '/imports/app.js'
 
-Meteor.publish('article_byId', function (aid) {
+Meteor.publish('article_byId', function (aid, isCheck = false) {
   Logger.info('########## Publish article_byId aid: ', aid, Meteor.user());
-  checkIsLogin();
+  if (isCheck) {
+    checkIsLogin();
+  }
 
   return Article.find({$and: [{_id: aid}, App.selector.unDeleted]})
-});
-
-Meteor.publish('article_byUserId', function (userId) {
-  Logger.info('########## Publish article_byUserId:', userId, Meteor.user());
-  checkIsLogin();
-
-  return Article.find({$and: [{createdBy: userId}, App.selector.unDeleted]}, {
-    fields: {name: 1, abstract: 1, createdBy: 1, createdAt: 1, isDeleted: 1}
-  })
 });

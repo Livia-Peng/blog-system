@@ -14,12 +14,12 @@ Template.blogNav.helpers({
     const userId = Meteor.userId();
     return [
       {
-        active: routeName.indexOf(routerMeta.home.name) === 0 ? 'active' : '',
+        active: routeName === routerMeta.home.name ? 'active' : '',
         url: '/',
         title: '首页'
       },
       {
-        active: routeName.indexOf(routerMeta.blog.name) === 0 ? 'active' : '',
+        active: routeName === routerMeta.blog.name ? 'active' : '',
         url: FlowRouter.path(routerMeta.blog.name, {userId: userId}),
         title: '个人博客'
       },

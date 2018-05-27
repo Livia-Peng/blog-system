@@ -82,7 +82,7 @@ const mainDefs = [
       params: rtM.articleView.params
     },
     subs: function (params, queryParams) {
-      sf.articleById(this, params, queryParams)
+      sf.articleById(this, params, queryParams);
       sf.articleDynByAId(this, params, queryParams)
     },
     action: function () {
@@ -103,7 +103,7 @@ const mainDefs = [
       params: rtM.articleEdit.params
     },
     subs: function (params, queryParams) {
-      sf.articleById(this, params, queryParams)
+      sf.articleById(this, params, queryParams, true)
     },
     action: function () {
       DocHead.setTitle(`${rtM.articleEdit.title} | ${App.config.siteTitle}`);
