@@ -36,7 +36,7 @@ Template.blogHome.helpers({
 });
 
 Template.blogHome.onCreated(function () {
-  const selector = {isPublished: true, visibility: 'public'};
+  const selector = {$and: [{isPublished: true, isPublic: true}]};
   this.rQueryResult = new ReactiveVar();
   this.rBlogList = new ReactiveVar();
   this.rSelector = new ReactiveVar(selector);
@@ -74,4 +74,44 @@ Template.blogHome.events({
     const dataFor = target.attr('data-for');
     console.log(dataFor)
   },
+  'keyup input[name="search-input-xs"]': function (event, inst) {
+    if (event.keyCode === 13 || $(event.target).val() === '') {
+      $('button[data-for="search-input-xs"]').click();
+    }
+  },
+  'keyup input[name="search-input"]': function (event, inst) {
+    if (event.keyCode === 13 || $(event.target).val() === '') {
+      $('button[data-for="search-input"]').click();
+    }
+  },
+  'click button[data-action="search-article"]': function (event, inst) {
+    const target = $(event.currentTarget);
+    const dataFor = target.attr('data-for');
+    const searchValue = $(`input[name=${dataFor}]`).val();
+    // console.log(searchValue);
+    let selector = inst.rSelector.get();
+    if (searchValue) {
+      selector['$and'].push({
+        $or: [
+          {
+            name: {$regex: searchValue, $options: "$i"}
+          },
+          {
+            abstract: {$regex: searchValue, $options: "$i"}
+          },
+          {
+            content: {$regex: searchValue, $options: "$i"}
+          },
+        ]
+      });
+    } else {
+      selector['$and'].forEach((data, index) => {
+        if (data.hasOwnProperty('$or')) {
+          selector['$and'].splice(index, 1);
+        }
+      })
+    }
+    inst.rSelector.set(selector);
+    getBlogList(selector, 1, inst.rQueryResult)
+  }
 });

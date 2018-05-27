@@ -94,7 +94,7 @@ Meteor.methods({
     });
     Logger.debug('articleArr.length:', articleArr.length, {});
     Logger.debug('totalPages:', _.keys(groupArticleDoc).length, {});
-    Logger.debug('groupArticleDoc keys:', _.keys(groupArticleDoc));
+    Logger.debug('groupArticle keys:', _.keys(groupArticleDoc));
     if (!groupArticleDoc.hasOwnProperty(pageNum - 1)) {
       return 0
     }

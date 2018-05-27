@@ -7,9 +7,9 @@
 
       <div class="panel-body visible-xs">
         <div class="input-group">
-          <input name="search-input" type="text" placeholder="搜索" class="form-control">
+          <input name="search-input-xs" type="text" placeholder="搜索" class="form-control">
           <span class="input-group-btn">
-            <button class="btn btn-primary" data-action="search-article">
+            <button class="btn btn-primary" data-action="search-article" data-for="search-input-xs">
               <i class="demo-pli-magnifi-glass icon-lg"></i></button>
           </span>
         </div>
@@ -57,9 +57,9 @@
       <div class="col-sm-4 hidden-xs">
         <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">搜索</p>
         <div class="input-group pad-all bord-btm">
-          <input type="text" placeholder="搜索" class="form-control">
+          <input name="search-input" type="text" placeholder="搜索标题、摘要、内容" class="form-control">
           <span class="input-group-btn">
-           <button class="btn btn-primary">
+           <button class="btn btn-primary" data-action="search-article" data-for="search-input">
              <i class="demo-pli-magnifi-glass icon-lg"></i></button>
           </span>
         </div>

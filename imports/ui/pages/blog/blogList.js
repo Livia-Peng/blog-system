@@ -33,7 +33,7 @@ Template.AdminBlogList.onCreated(function () {
   const userId = FlowRouter.getParam('userId');
   this.rQueryResult = new ReactiveVar();
   this.rBlogList = new ReactiveVar([]);
-  const selector = {isPublished: true, createdBy: userId};
+  const selector = {$and: [{isPublished: true, createdBy: userId}]};
   this.rSelector = new ReactiveVar(selector);
   this.rSelectedPageNum = new ReactiveVar(1);
 
