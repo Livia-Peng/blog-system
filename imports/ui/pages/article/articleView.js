@@ -108,7 +108,7 @@ Template.AdminArticleView.events({
     const articleId = FlowRouter.getParam('aid');
     Meteor.call('articleDynamic_count', articleId, dataFor, function (err, result) {
       if (err) {
-        console.log(err)
+        showError(err)
       } else if (result) {
         console.log(dataFor + 'success')
       }

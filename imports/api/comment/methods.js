@@ -35,8 +35,8 @@ Meteor.methods({
     }
   },
 
-  comment_find( articleId, commentId) {
-    Logger.debug('comment_find, arguments:', arguments);
+  commentList_api( articleId, commentId) {
+    Logger.debug('commentList_api, arguments:', arguments);
     let commentInfo = {};
 
     const articleDynDoc = ArticleDynamics.findOne({articleId: articleId});
@@ -64,19 +64,20 @@ Meteor.methods({
       replyCount: commentDoc.replies && commentDoc.replies.length ? commentDoc.replies.length : '',
       leaf: []
     };
-    if (!commentDoc.replies || !commentDoc.replies.length) {
+    if (!commentInfo.replyCount) {
       return commentInfo
     }
     const replyComments = Comment.find({_id: {$in: commentDoc.replies}}, {sort: {createdAt: 1}});
     if (!replyComments.count()) {
+      commentInfo.replyCount = '';
       return commentInfo
     }
     replyComments.forEach(comment => {
       const replyUser = Meteor.users.findOne({_id: comment.createdBy});
       if (replyUser) {
         commentInfo.leaf.push({
-          userId: createdUser._id,
-          userName: createdUser.profile.name,
+          userId: replyUser._id,
+          userName: replyUser.profile.name,
           content: comment.content,
           createdAt: moment(comment.createdAt).format(App.config.format.datetime),
         })

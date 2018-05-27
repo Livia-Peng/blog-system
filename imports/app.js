@@ -102,7 +102,11 @@ if (Meteor.isServer) {
       name: "超级管理员",
       tel: "17612739581",
       email: 'livia_peng@163.com',
-    }
+    },
+    interest: {
+      praises: '推送',
+      stores: '收藏',
+    },
   };
 
   App.err.server = {
@@ -111,5 +115,6 @@ if (Meteor.isServer) {
     userExistedErr: new Meteor.Error('用户名已存在，请登录，或更改注册用户名'),
     whatNotExist: (what) => new Meteor.Error(what + '不存在或部分数据缺失'),
     dupOperateErr: (operation) => new Meteor.Error('数据已' + operation + '，请勿重复' + operation),
+    ownInterestErr: (operation) => new Meteor.Error('不能' + operation + '自己的内容'),
   }
 }

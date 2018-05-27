@@ -36,3 +36,14 @@ export function getBlogUserInfo(blogUserId, rBlogUserInfo) {
     }
   })
 }
+
+export function getCommentList(articleId, commentId, rCommentInfo) {
+  Meteor.call('commentList_api', articleId, commentId, (err, result) => {
+    if (err) {
+      console.log(err)
+    } else if (!_.isEmpty(result)) {
+      // console.log(result);
+      rCommentInfo.set(result)
+    }
+  })
+}

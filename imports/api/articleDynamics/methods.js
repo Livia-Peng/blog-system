@@ -11,7 +11,8 @@ Meteor.methods({
   articleDynamic_count(articleId, dynamicKey) {
     Logger.info('########## Methods articleDynamic_count: ', arguments, Meteor.user());
     checkIsLogin();
-    if (!articleId || ['praises', 'stores'].indexOf(dynamicKey) === -1) {
+    const schemaKey = ['praises', 'stores'].find(item => dynamicKey.indexOf(item) !== -1);
+    if (!articleId || !schemaKey) {
       throw new Meteor.Error('入参错误：' + arguments)
     }
     const articleDynCur = ArticleDynamics.findOne({$and: [{articleId: articleId}, App.selector.unDeleted]});
@@ -19,15 +20,28 @@ Meteor.methods({
       Logger.error('**** > Methods articleDynamic_count 文章不存在, articleId:', articleId);
       throw App.err.server.whatNotExist(App.strings.collection.articleDynamics)
     }
-
     const userId = Meteor.userId();
     let dynamicArr = articleDynCur[dynamicKey] || [];
-    if (dynamicArr.indexOf(userId) !== -1) {
+    if (schemaKey === dynamicKey) {
+      if (userId === articleDynCur.userId) {
+        throw App.err.server.ownInterestErr(App.config.server.interest[schemaKey])
+      }
+      if (dynamicArr.indexOf(userId) !== -1) {
+        return
+      }
+      dynamicArr.push(userId);
+    } else if (dynamicKey.indexOf('cancel') !== -1) {
+      const idIndex = dynamicArr.indexOf(userId);
+      if (idIndex === -1) {
+        return
+      }
+      dynamicArr.splice(idIndex, 1)
+    } else {
       return
     }
-    dynamicArr.push(userId);
+    Logger.debug('dynamicArr change to:', dynamicArr);
 
-    return ArticleDynamics.update({_id: articleDynCur._id}, {$set: {[dynamicKey]: dynamicArr}})
+    return ArticleDynamics.update({_id: articleDynCur._id}, {$set: {[schemaKey]: dynamicArr}})
   },
 });
 
