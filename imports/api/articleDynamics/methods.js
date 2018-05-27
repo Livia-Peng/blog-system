@@ -11,7 +11,7 @@ Meteor.methods({
   articleDynamic_count(articleId, dynamicKey) {
     Logger.info('########## Methods articleDynamic_count: ', arguments, Meteor.user());
     checkIsLogin();
-    if (!articleId || ['praiseCount', 'storedCount'].indexOf(dynamicKey) === -1) {
+    if (!articleId || ['praises', 'stores'].indexOf(dynamicKey) === -1) {
       throw new Meteor.Error('入参错误：' + arguments)
     }
     const articleDynCur = ArticleDynamics.findOne({$and: [{articleId: articleId}, App.selector.unDeleted]});

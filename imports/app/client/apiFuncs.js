@@ -9,7 +9,7 @@ export function getBlogList(selector, pageNum, rQueryResult) {
     if (err) {
       showError(err)
     } else if (result) {
-      console.log(result);
+      // console.log(result);
       rQueryResult.set(result)
     }
   })
@@ -20,8 +20,19 @@ export function getCategoryList(selector, rCategoryList) {
     if (err) {
       showError(err)
     } else if (result) {
-      console.log(result);
+      // console.log(result);
       rCategoryList.set(result)
+    }
+  })
+}
+
+export function getBlogUserInfo(blogUserId, rBlogUserInfo) {
+  Meteor.call('blogUserInfo_api', blogUserId, (err, result) => {
+    if (err) {
+      showError(err)
+    } else if (result) {
+      // console.log(result);
+      rBlogUserInfo.set(result)
     }
   })
 }

@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor"
 import {App} from "/imports/app.js"
+import {Collections} from "/imports/collections.js"
 import {checkNameRegEx, checkEmailRegEx} from '/imports/app/both/utils.js'
 import {handleCatchErr} from '/imports/app/server/utils.js'
 import {InviteCode} from '../inviteCode/inviteCode.js'
@@ -51,7 +52,26 @@ Meteor.methods({
       // Logger.debug('account_findName user:', user, {});
       return user.profile.name
     }
-  }
+  },
+
+  blogUserInfo_api (blogUserId) {
+    Logger.info('########## Methods blogUserInfo_api blogUserId:', blogUserId);
+    const blogUser = Meteor.users.findOne({_id: blogUserId});
+    if (blogUser && blogUser.profile) {
+      let blogUserInfo = {
+        id: blogUserId,
+        name: blogUser.profile.name
+      };
+      const fans = Collections.Interest.find({
+        interestedAuthor: {$elemMatch: {authorId: blogUserId}},
+      });
+      const interestDoc = Collections.Interest.findOne({userId: blogUserId});
+      blogUserInfo.fans = fans.count();
+      blogUserInfo.interestedAuthorCount = interestDoc && interestDoc.interestedAuthor ?
+        interestDoc.interestedAuthor.length : 0;
+      return blogUserInfo
+    }
+  },
 });
 
 // 创建账户

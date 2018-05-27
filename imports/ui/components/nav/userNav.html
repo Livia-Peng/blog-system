@@ -2,15 +2,15 @@
   <div class="fixed-sm-250 pull-sm-right hidden-xs">
     <div class="panel mar-hor">
       <ul class="list-group">
-        <li class="list-group-item">{{userInfo.name}}</li>
+        <li class="list-group-item">{{blogUserInfo.name}}</li>
         <!--<li class="list-group-item">Age</li>-->
-        <li class="list-group-item">粉丝&nbsp;{{userInfo.fans}}</li>
-        <li class="list-group-item">关注&nbsp;{{userInfo.interested}}</li>
-        <!--{{#unless compare curUserId '===' userInfo.id}}-->
+        <li class="list-group-item">粉丝&nbsp;{{blogUserInfo.fans}}</li>
+        <li class="list-group-item">关注&nbsp;{{blogUserInfo.interested}}</li>
+        {{#if blogUserInfo.showBtn}}
           <li class="list-group-item">
             <a class="btn-link cursor-pointer" title="添加关注"> 添加关注+ </a>
           </li>
-        <!--{{/unless}}-->
+        {{/if}}
       </ul>
     </div>
     <hr class="new-section-sm mar-hor">

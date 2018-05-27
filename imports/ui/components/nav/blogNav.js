@@ -12,6 +12,7 @@ Template.blogNav.helpers({
     FlowRouter.watchPathChange();
     const routeName = FlowRouter.current().route.name;
     const userId = Meteor.userId();
+    const blogUserId = Template.currentData().blogUserId;
     return [
       {
         active: routeName === routerMeta.home.name ? 'active' : '',
@@ -20,8 +21,8 @@ Template.blogNav.helpers({
       },
       {
         active: routeName === routerMeta.blog.name ? 'active' : '',
-        url: FlowRouter.path(routerMeta.blog.name, {userId: userId}),
-        title: '个人博客'
+        url: FlowRouter.path(routerMeta.blog.name, {userId: blogUserId}),
+        title: blogUserId === userId ? '我的博客' : '个人博客'
       },
       {
         url: FlowRouter.path(routerMeta.articleCreate.name),
