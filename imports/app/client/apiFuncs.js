@@ -47,3 +47,14 @@ export function getCommentList(articleId, commentId, rCommentInfo) {
     }
   })
 }
+
+export function getRecentComments(blogUserId, rCurComments) {
+  Meteor.call('commentRecent_api', blogUserId, (err, result) => {
+    if (err) {
+      console.log(err)
+    } else {
+      // console.log(result);
+      rCurComments.set(result)
+    }
+  })
+}

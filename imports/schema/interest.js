@@ -45,22 +45,6 @@ const interestedAuthor = new sSchema({
   }
 }, {tracker: Tracker});
 
-const comments = new sSchema({
-  commentId: {
-    type: String,
-    label: '评论id'
-  },
-  commentAt: {
-    type: String,
-    label: '发表时间',
-    autoValue: function () {
-      if (Meteor.isServer && this.isInsert) {
-        return this.isSet ? this.value : new Date()
-      }
-    }
-  },
-}, {tracker: Tracker});
-
 // 此表由系统创建，关联user表
 export const interest = new sSchema({
   userId: {
@@ -75,7 +59,6 @@ export const interest = new sSchema({
   },
   'interestedBlog.$': {
     type: interestedBlog,
-    optional: true
   },
   interestedAuthor: {
     type: Array,
@@ -84,16 +67,6 @@ export const interest = new sSchema({
   },
   'interestedAuthor.$': {
     type: interestedAuthor,
-    optional: true
-  },
-  comments: {
-    type: Array,
-    label: '发表的评论',
-    optional: true
-  },
-  'comments.$': {
-    type: comments,
-    optional: true
   },
 
 }, {tracker: Tracker});

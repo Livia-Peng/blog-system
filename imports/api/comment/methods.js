@@ -17,6 +17,7 @@ Meteor.methods({
     checkIsLogin();
     const articleDoc = Collections.Article.findOne({_id: insertDoc.articleId});
     insertDoc.articleTitle = articleDoc.name;
+    insertDoc.authorId = articleDoc.createdBy;
     schemaValidate(Schemas.comment, insertDoc, 'comment_insert');
     try {
       const commentId = Comment.insert(insertDoc);
@@ -35,8 +36,8 @@ Meteor.methods({
     }
   },
 
-  commentList_api( articleId, commentId) {
-    Logger.debug('commentList_api, arguments:', arguments);
+  commentList_api(articleId, commentId) {
+    Logger.info('########## Methods commentList_api, arguments:', arguments);
     let commentInfo = {};
 
     const articleDynDoc = ArticleDynamics.findOne({articleId: articleId});
@@ -84,5 +85,21 @@ Meteor.methods({
       }
     });
     return commentInfo
+  },
+
+  commentRecent_api(blogUserId) {
+    Logger.info('########## Methods commentRecent_api, arguments:', arguments);
+    const comments = Comment.find(
+      {$and: [{authorId: blogUserId}, App.selector.unDeleted]},
+      {sort: {createdAt: -1}, limit: 3});
+    return comments.map(data => {
+      const user = Meteor.users.findOne({_id: data.createdBy});
+      return {
+        articleTitle: data.articleTitle,
+        content: data.content,
+        commentedBy: user && user.profile ? user.profile.name : 'unknown',
+        createdAt: moment(data.createdAt).format(App.config.format.datetime),
+      }
+    })
   }
 });

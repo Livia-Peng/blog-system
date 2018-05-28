@@ -26,15 +26,16 @@
     </ul>
 
     <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">最新评论</p>
-    <div class="list-group bg-trans">
-      <a href="#" class="list-group-item">
-        <div class="media-body">
-          <p class="mar-no text-main">Samantha Reid</p>
-          <small>2 weeks ago</small>
-          <p class="pad-top text-sm">sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat.</p>
-        </div>
-      </a>
-    </div>
+    {{#each curComments}}
+      <div class="list-group bg-trans">
+        <a href="#" class="list-group-item">
+          <div class="media-body">
+            <p class="mar-no text-main">{{commentedBy}}</p>
+            <small>{{createdAt}}</small>
+            <p class="pad-top text-sm text-overflow">{{content}}</p>
+          </div>
+        </a>
+      </div>
+    {{/each}}
   </div>
 </template>

@@ -6,6 +6,10 @@ import {Tracker} from "meteor/tracker";
 import {App} from '/imports/app';
 
 export const comment = new sSchema({
+  authorId: {
+    type: String,
+    label: '博主Id'
+  },
   articleId: {
     type: String,
     label: '博文Id'

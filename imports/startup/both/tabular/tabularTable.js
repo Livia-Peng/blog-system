@@ -27,13 +27,13 @@ TabularFactory({
         return moment(val).format(App.config.format.datetime) || App.strings.noRecord;
       }
     },
-    {
-      title: "操作",
-      tmpl: Meteor.isClient && Template.cellBlogButton,
-      tmplContext(rowData) {
-        return rowData;
-      }
-    }
+    // {
+    //   title: "操作",
+    //   tmpl: Meteor.isClient && Template.cellBlogButton,
+    //   tmplContext(rowData) {
+    //     return rowData;
+    //   }
+    // }
   ]
 });
 
