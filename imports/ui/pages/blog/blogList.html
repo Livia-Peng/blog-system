@@ -9,6 +9,9 @@
           {{> blogNav blogUserId=blogUserId}}
 
           <div class="panel-body">
+            {{#if curCategory}}
+              <p class="text-center text-bold">当前分类：&nbsp;{{curCategory}}</p>
+            {{/if}}
             {{#each blogList}}
               <div class="blog-content">
                 <div class="blog-title media-block">

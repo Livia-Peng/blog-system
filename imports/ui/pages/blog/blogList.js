@@ -29,7 +29,11 @@ Template.AdminBlogList.helpers({
   },
   blogUserId: function () {
     return FlowRouter.getParam('userId')
-  }
+  },
+  curCategory: function () {
+    const inst = Template.instance();
+    return inst.rCurCategory.get()
+  },
 });
 
 Template.AdminBlogList.onCreated(function () {
@@ -39,6 +43,7 @@ Template.AdminBlogList.onCreated(function () {
   const selector = {$and: [{isPublished: true, createdBy: userId}]};
   this.rSelector = new ReactiveVar(selector);
   this.rSelectedPageNum = new ReactiveVar(1);
+  this.rCurCategory = new ReactiveVar('');
 
   getBlogList(selector, 1, this.rQueryResult)
 });
@@ -69,11 +74,17 @@ Template.AdminBlogList.events({
     const dataFor = target.attr('data-for');
     // console.log(dataFor);
     let selector = inst.rSelector.get();
-    selector['$and'].push({
-      category: dataFor
-    });
+    let categorySelected = selector['$and'].find(item => item.hasOwnProperty('category'));
+    if (categorySelected) {
+      categorySelected.category = dataFor
+    } else {
+      selector['$and'].push({
+        category: dataFor
+      })
+    }
     inst.rSelector.set(selector);
     inst.rSelectedPageNum.set(1);
+    inst.rCurCategory.set(App.strings.categories[dataFor]);
     getBlogList(selector, 1, inst.rQueryResult)
   }
 });

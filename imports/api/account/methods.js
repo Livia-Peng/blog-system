@@ -46,7 +46,7 @@ Meteor.methods({
   },
 
   account_findName (userId) {
-    Logger.info('########## Methods account_findName userId:', userId);
+    // Logger.info('########## Methods account_findName userId:', userId);
     const user = Meteor.users.findOne({_id: userId});
     if (user && user.profile) {
       // Logger.debug('account_findName user:', user, {});
