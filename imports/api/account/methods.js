@@ -7,6 +7,7 @@ import {Collections} from "/imports/collections.js"
 import {checkNameRegEx, checkEmailRegEx} from '/imports/app/both/utils.js'
 import {handleCatchErr} from '/imports/app/server/utils.js'
 import {InviteCode} from '../inviteCode/inviteCode.js'
+import {createInterest} from '../interest/methods.js'
 
 Meteor.methods({
   /**
@@ -90,6 +91,8 @@ export function createAccount(insertDoc) {
       email: insertDoc.email,
     }
   });
-  Logger.info('createAccount success, id: ' + accountId);
+  Logger.debug('createAccount success, id: ' + accountId);
+  const interestId = createInterest(accountId);
+  Logger.debug('createInterest success, id: ' + interestId);
   return accountId
 }

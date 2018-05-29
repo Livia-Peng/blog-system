@@ -8,3 +8,9 @@ import {Interest} from "./interest.js";
 
 Meteor.methods({
 });
+
+export function createInterest(userId) {
+  return Interest.insert({
+    userId: userId,
+  })
+}

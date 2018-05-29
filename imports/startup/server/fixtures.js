@@ -2,6 +2,7 @@
 import {Meteor} from "meteor/meteor";
 import {Accounts} from "meteor/accounts-base";
 import {App} from "/imports/app.js";
+import {createInterest} from '/imports/api/interest/methods.js'
 
 Meteor.startup(() => {
   // 创建superAdmin
@@ -30,6 +31,8 @@ function createSuperAdmin() {
         }
       });
       Logger.info('=====创建superAdmin，ID为：' + superAdminId + '=====');
+      const interestId = createInterest(superAdminId);
+      Logger.info('createInterest success, id: ' + interestId);
     } else {
       superAdminId = superAdminDoc._id;
       Logger.debug('=====superAdmin已经存在，ID为：' + superAdminId + '=====');
