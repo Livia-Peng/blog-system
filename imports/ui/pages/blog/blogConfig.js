@@ -5,7 +5,7 @@ import './blogConfig.html'
 import './tab/articleManage.js'
 import './tab/userBlogManage.js'
 import './tab/collectionManage.js'
-import './tab/commentManage.js'
+import './tab/userCommentManage.js'
 import {Template} from 'meteor/templating'
 import {Meteor} from 'meteor/meteor'
 import '/imports/ui/components/nav/blogNav.js'
@@ -14,7 +14,7 @@ import '/imports/ui/components/table/tableCells.js'
 
 const tabs = {
   article: 'article',
-  comment: 'comment',
+  userComment: 'userComment',
   collection: 'collection',
   userBlog: 'userBlog',
 };
@@ -31,8 +31,8 @@ Template.AdminBlogConfig.helpers({
       },
       {
         title: '评论管理',
-        dataFor: tabs.comment,
-        active: currentTab === tabs.comment ? 'active' : ''
+        dataFor: tabs.userComment,
+        active: currentTab === tabs.userComment ? 'active' : ''
       },
       {
         title: '我的收藏',

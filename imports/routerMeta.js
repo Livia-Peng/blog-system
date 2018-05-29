@@ -103,24 +103,6 @@ export const routerMeta = {
     breadcrumb: '',
     template: ''
   },
-  accountNews: {
-    path: '/account/news',
-    name: 'private.account.news',
-    title: '我的消息',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: ''
-  },
-  accountConfig: {
-    path: '/account/config',
-    name: 'private.account.config',
-    title: '账户设置',
-    parent: '',
-    params: [],
-    breadcrumb: '',
-    template: ''
-  },
 
   system: {
     path: '/system',
