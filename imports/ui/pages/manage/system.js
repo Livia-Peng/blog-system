@@ -32,7 +32,7 @@ Template.AdminSystem.helpers({
       },
       {
         title: '评论管理',
-        dataFor: tabs.blog,
+        dataFor: tabs.comment,
         active: currentTab === tabs.comment ? 'active' : ''
       },
     ]

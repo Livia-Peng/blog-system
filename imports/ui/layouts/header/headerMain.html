@@ -47,16 +47,16 @@
               <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right panel-default">
                 <ul class="head-list">
                   <li>
-                    <a href="{{pathFor ROUTER.accountInfo.name}}">
+                    <a href="{{pathFor ROUTER.userInfo.name userId=curUserId}}">
                       <i class="demo-pli-male icon-lg icon-fw"></i> {{user.name}}</a>
                   </li>
                   <li>
-                    <a href="{{pathFor ROUTER.accountInfo.name}}">
+                    <a href="{{pathFor ROUTER.userInfo.name userId=curUserId}}">
                       <!--<span class="badge badge-danger pull-right">9</span>-->
                       <i class="demo-pli-mail icon-lg icon-fw"></i> 我的消息</a>
                   </li>
                   <li>
-                    <a href="{{pathFor ROUTER.accountInfo.name}}">
+                    <a href="{{pathFor ROUTER.userInfo.name userId=curUserId}}">
                       <i class="demo-pli-gear icon-lg icon-fw"></i> 账户设置</a>
                   </li>
                   {{#if user.isSuper}}

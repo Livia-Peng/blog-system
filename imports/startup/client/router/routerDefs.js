@@ -15,6 +15,7 @@ import '/imports/ui/pages/article/articleView.js'
 import '/imports/ui/pages/article/articleCreate.js'
 import '/imports/ui/pages/article/articleEdit.js'
 
+import '/imports/ui/pages/user/userInfo.js'
 import '/imports/ui/pages/manage/system.js'
 
 
@@ -115,19 +116,19 @@ const mainDefs = [
   },
   // account
   {
-    path: rtM.accountInfo.path,
-    name: rtM.accountInfo.name,
-    title: rtM.accountInfo.title,
+    path: rtM.userInfo.path,
+    name: rtM.userInfo.name,
+    title: rtM.userInfo.title,
     breadcrumb: {
-      title: rtM.accountInfo.title,
-      parent: rtM.accountInfo.parent,
-      params: rtM.accountInfo.params
+      title: rtM.userInfo.title,
+      parent: rtM.userInfo.parent,
+      params: rtM.userInfo.params
     },
     action: function () {
-      DocHead.setTitle(`${rtM.accountInfo.title} | ${App.config.siteTitle}`);
+      DocHead.setTitle(`${rtM.userInfo.title} | ${App.config.siteTitle}`);
       BlazeLayout.render('Admin_body', {
-        bc: rtM.accountInfo.breadcrumb,
-        main: rtM.accountInfo.template,
+        bc: rtM.userInfo.breadcrumb,
+        main: rtM.userInfo.template,
       });
     },
   },

@@ -94,14 +94,14 @@ export const routerMeta = {
   },
 
   // todo
-  accountInfo: {
-    path: '/account/info',
-    name: 'private.account.info',
-    title: '我的主页',
+  userInfo: {
+    path: '/user/:userId/info',
+    name: 'private.user.info',
+    title: '个人主页',
     parent: '',
-    params: [],
+    params: ['userId'],
     breadcrumb: '',
-    template: ''
+    template: 'AdminUserInfo'
   },
 
   system: {

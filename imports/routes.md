@@ -11,7 +11,7 @@
 │   ├── articleEdit        // 博文修改页面
 │   └── articleView        // 博文详情页面
 ├── blogConfig             // 博客管理页面
-├── accountInfo            // 用户的主页页面
+├── userInfo            // 用户的主页页面
 │   ├── accountNews        // 动态消息页面
 │   └── accountConfig      // 账户设置页面
 └── system                 // 系统管理页面
